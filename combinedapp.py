@@ -20,6 +20,11 @@ import asyncio
 import time
 import stripe
 import pickle
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 # from Google import Create_Service
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = Flask(__name__)
@@ -32,8 +37,13 @@ if not os.path.exists(SESSION_FILE_DIR):
 # SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly']
 
-openai.api_key = 'sk-proj-mBJ7gOhn6nsTBfrPfI44T3BlbkFJblSu2hOU55JBRytP9oSR'  # Replace with your actual API key
-AIclient = OpenAI(api_key='sk-proj-mBJ7gOhn6nsTBfrPfI44T3BlbkFJblSu2hOU55JBRytP9oSR')
+
+
+openai_api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = openai_api_key
+AIclient = OpenAI(api_key=openai_api_key)
+
+
 ASSISTANT_ID = "asst_shvdCBA7snGDSENhmE5iugIm"
 REDIRECT_URI = 'http://localhost:5000/oauth2callback'
 COST_FILE = 'costs.json'
@@ -53,11 +63,10 @@ API_VERSION = 'v1'
 SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
 
-stripe.api_key = "sk_test_51MNx4UKJeZAyw8f48GWSXpvAEKCzEU5ISvITCblYwxBpKMhUF9yZcnaosy2ukX9I8iDhMkvctmBMZWBqygrDC08r00r0xpZvXa"
+stripe.api_key = os.getenv('STRIPE_API_KEY')
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
-
-uri = "mongodb+srv://syneticslz:gMN1GUBtevSaw8DE@synetictest.bl3xxux.mongodb.net/?retryWrites=true&w=majority&appName=SyneticTest"
+uri = os.getenv('MONGO_URI')
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
