@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Automation Tool</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- <script src="./checkout.js" defer></script> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- <link rel="icon" href="../logo.svg" type="image/svg+xml"> -->
+<!--
+ -->
+ <link rel="icon" href="../logo.svg" type="image/icon type">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<style>
+
+    body {
+    background: #240b36;  /* fallback for old browsers */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    background-color: #02021E;
+    }
+    .gradienst{
+        background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: #02021E;
+    }
+    .bold {
+        font-weight: bold;
+    }
+    #checkout{
+        width: 80%;
+        /* border: #1e88e5 solid 1px; */
+        border-radius: 10px;
+    }
+    button {
+        /* background: linear-gradient(to right, #240b36, #c31432); */
+        background: #c2233d00;
+        color: white;
+        border: 0.2px solid white;
+        border-radius: 25px; /* Adjust this value to make the button more or less rounded */
+        padding: 20px 50px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+    button:hover {
+        background: linear-gradient(to left, #240b36, #c31432);
+        color: white; /* Change this to a different color if desired */
+        /* border-color: #c31432; */
+    }
+    .nav {
+        width: 95%;
+        height: 20%;
+        margin: 1.5em;
+        display: flex;
+        flex-direction: row;
+        justify-content: start;
+        /* height: 10vh; */
+    }
+    
+    .container{
+        /* border: red 1px solid; */
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* margin-inline: 2em; */
+    }
+    .subscriptions{
+        /* border: blue 2px solid; */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        /* margin-block: 5em; */
+    }
+    .subscriptions h1{
+        font-size: 55px;
+        margin-bottom: 0.3em;
+    }
+    .subscriptions h1 b {
+        background: linear-gradient(to bottom, #e23f5a, #c2233e);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .subscriptions h2{
+        font-size: 30px;
+        font-weight: 200;
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+
+    h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+
+    p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    }
+
+    .toggle-container {
+    /* border: #1e88e5 solid 1px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+    }
+
+    .switch {
+    /* border: red solid 1px; */
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 15px;
+    margin-left: 15px;
+    }
+
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #240b3625;
+    border: white 0.1px solid;
+    transition: .4s;
+    border-radius: 34px;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    }
+
+input:checked + .slider {
+
+    background-color: #e23f5a25;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    /* background: #2c2c34; */
+    /* border: 1px solid #444; */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #e23f5a25;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(200px);
+    /* border: 1px solid #e23f5a; */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.consumerselected {
+    border: 1px solid #e23f5a;
+}
+.buisnessselected {
+    border: 1px solid #240b36;
+}
+.consumer{
+    background: #e23f5a50;
+}
+.buisness{
+    background: #240b3650;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h1{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.card h2{
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+.card .li {
+    font-size: 14px;
+    margin-bottom: 10px;
+    align-self: center;
+    text-align: left;
+}
+
+.card .price {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-c {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e23f5a80;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 75%;
+    align-self: center;
+}
+
+.btn-c:hover {
+    background-color: #1e88e5;
+}
+
+.btn-b {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #240b3680;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 75%;
+    align-self: center;
+}
+
+.btn-b:hover {
+    background-color: #1e88e5;
+}
+
+
+.contact-form label, .faq-question {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #33333320;
+    color: #fff;
+    border: white solid 1px;
+}
+
+.contact-form .submit-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: #ff6f61;
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+    footer {
+        width: 100%;
+        margin-top: 6em;
+        }
+    .footer-bottom {
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .footer-bottom a {
+        color: #e99694;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+    
+
+    @media (max-width: 768px) {
+
+        .icon-3{
+            flex-direction: column;
+            justify-content: start;
+            height: 120vh;
+        }
+        .card-container{
+            width: 100%;
+            height: 40%;
+            margin-bottom: 2em;
+            justify-content: center;
+        }
+        .icon {
+            margin-top: 0em;
+        }
+        .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+    }
+
+    .hidden {
+            display: none;
+        }
+        
+</style>
+
+<script>
+
+            // Embed the email in a JavaScript variable
+            var email = "{{ email }}";
+
+// Now you can use the email variable in your JavaScript code
+console.log("Customer email:", email);
+// Initialize Stripe.js
+// var email = "{{ email }}";
+
+        // async function startFreeTrial() {
+        //     const response = await fetch('/free-trial', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({ email: email })
+        //     });
+
+        //     const data = await response.json();
+
+        //     if (data.error) {
+        //         console.error('Error:', data.error);
+        //         alert('Failed to start free trial.');
+        //     } else {
+        //         window.location.href = `/Db?customer_id=${data.customer_id}&subscription_id=${data.subscription_id}&product_id=${data.product_id}&total_emails=${data.total_emails}&email=${data.email}`;
+        //     }
+        // }
+        async function startFreeTrial() {
+                // const response = await fetch('/payment-status-free', {
+                //     method: 'POST',
+                //     headers: {
+                //         'Content-Type': 'application/json',
+                //     },
+                //     body: JSON.stringify({ email: email })  // Pass the email in the request body
+                // });
+                // print(response)
+                // const data = await response.json();
+                // print(data)
+                // window.location.href = data
+                const body = document.getElementById('body');
+            const Container = document.getElementById('Container');
+                // body.classList.remove('gradient');
+                Container.innerHTML = `
+                <style>
+        //             body {
+        //     font-family: 'Arial', sans-serif;
+        //     background-color: #02021E;
+        //     color: #fff;
+        //     margin: 0;
+        //     padding: 0;
+        //     display: flex;
+        //     justify-content: center;
+        //     align-items: center;
+        //     height: 100vh;
+        // }
+
+        .container {
+            margin-top:10em;
+            max-width: 800px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0);
+            border-radius: 10px;
+            text-align: center;
+            width: 90%;
+            box-sizing: border-box;
+        }
+
+        .title {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(to bottom, #f0f, #0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .loader {
+            padding: 0;
+            margin: 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 150px;
+            height: 150px;
+            margin: 30px 0;
+            perspective: 780px;
+        }
+
+        .text {
+            font-size: 20px;
+            font-weight: 700;
+            color: #cecece;
+            z-index: 10;
+        }
+
+        .load-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            border-radius: 50%;
+        }
+
+        .load-inner.load-one {
+            left: 0%;
+            top: 0%;
+            border-bottom: 3px solid #5c5edc;
+            animation: rotate1 1.15s linear infinite;
+        }
+
+        .load-inner.load-two {
+            right: 0%;
+            top: 0%;
+            border-right: 3px solid #9147ff;
+            animation: rotate2 1.15s 0.1s linear infinite;
+        }
+
+        .load-inner.load-three {
+            right: 0%;
+            bottom: 0%;
+            border-top: 3px solid #3b82f6;
+            animation: rotate3 1.15s 0.15s linear infinite;
+        }
+
+        @keyframes rotate1 {
+            0% { transform: rotateX(45deg) rotateY(-45deg) rotateZ(0deg); }
+            100% { transform: rotateX(45deg) rotateY(-45deg) rotateZ(360deg); }
+        }
+
+        @keyframes rotate2 {
+            0% { transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg); }
+            100% { transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg); }
+        }
+
+        @keyframes rotate3 {
+            0% { transform: rotateX(-60deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(-60deg) rotateY(0deg) rotateZ(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .title {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 20px 0;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #ff6f61;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #e55a50;
+        }
+
+        .retry-link {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        .retry-link:hover {
+            text-decoration: underline;
+        }
+        .login {
+  /* width: 340px; */
+  /* height: 400px; */
+  /* background: #2c2c2c; */
+  padding: 47px;
+  padding-bottom: 57px;
+  color: #fff;
+  border-radius: 17px;
+  padding-bottom: 50px;
+  font-size: 1.3em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.login input[type="text"],
+.login input[type="password"] {
+  opacity: 1;
+  display: block;
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 13px 18px;
+  margin: 20px 0 0 0;
+  font-size: 0.8em;
+  border-radius: 100px;
+  background: #131212;
+  color: #fff;
+}
+
+.login input:focus {
+  animation: bounce 1s;
+  -webkit-appearance: none;
+}
+.login h1{
+    /* font-size: 60px; */
+}
+.login input[type=submit],
+.login input[type=button],
+.h1 {
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 13px;
+  margin: 40px 0 0 0;
+  border-radius: 500px;
+  font-weight: 600;
+  animation: bounce2 1.6s;
+
+}
+
+.h1 {
+  padding: 0;
+  position: relative;
+  top: -35px;
+  display: block;
+  margin-bottom: -0px;
+  font-size: 1.3em;
+}
+
+.btn {
+  background: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
+  color: #fff;
+  padding: 16px !important;
+}
+
+.btn:hover {
+    background: linear-gradient(144deg, #af40ffc8, #5b42f3c8 50%, #00ddebc8);
+  color: rgb(255, 255, 255);
+  padding: 16px !important;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.login input[type=text] {
+  animation: bounce 1s;
+  -webkit-appearance: none;
+  margin-top: 2em;
+}
+
+.login input[type=password] {
+  animation: bounce1 1.3s;
+}
+
+.ui {
+  font-weight: bolder;
+  background: -webkit-linear-gradient(#B563FF, #535EFC, #0EC8EE);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-bottom: 4px solid transparent;
+  border-image: linear-gradient(0.25turn, #535EFC, #0EC8EE, #0EC8EE);
+  border-image-slice: 1;
+  display: inline;
+}
+
+@media only screen and (max-width: 600px) {
+  .login {
+    width: 70%;
+    padding: 3em;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(-250px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce1 {
+  0% {
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce2 {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+                    </style>
+                <div id="success" class="active">
+            <div class="login wrap">
+                <h1 class="title">Payment Success</h1>
+                <input placeholder="What should we call you? " id="userName" name="email" type="text">
+                <input value="Get started" class="btn" type="submit" onclick="submitName()">
+              </div>
+        </div>
+
+        <div id="welcome" class="hidden">
+            <h1 class="title">Welcome to the Future of Email Automation</h1>
+            <div class="loader">
+                <div class="load-inner load-one"></div>
+                <div class="load-inner load-two"></div>
+                <div class="load-inner load-three"></div>
+                <span class="text">Setting up your account...</span>
+            </div>
+        </div>
+        
+                `;
+        }
+
+        // async function startFreeTrial() {
+        //     const email = '{{ email }}';
+        //     const response = await fetch('/free-trial-pm', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: JSON.stringify({ email: email })
+        //     });
+
+        //     const data = await response.json();
+
+        //     if (data.error) {
+        //         console.error('Error:', data.error);
+        //         alert('Failed to start free trial.');
+        //     } else {
+        //         window.location.href = `/free-trial-pm`;
+        //     }
+        // }
+
+        function submitName() {
+            const userName = document.getElementById('userName').value;
+            if (userName.trim() === '') {
+                alert('Please enter your name.');
+                return;
+            }
+
+            document.getElementById('success').classList.remove('active');
+            document.getElementById('success').classList.add('hidden');
+            document.getElementById('welcome').classList.remove('hidden');
+            document.getElementById('welcome').classList.add('active');
+
+            setTimeout(() => {
+                const email = '{{ email }}';
+                const sessionId = '{{ session_id }}';
+                const password = '{{ password }}'
+                const 
+                      customerData = {
+                      stripeID: sessionId,
+                      password: password,
+                      email: email,
+                      name: userName,
+                      plan: 'Free',
+                      total_emails: 20,
+                      priceID: 'price_1PJsseKJeZAyw8f4UVbMQfRa',
+                      service: '{{ service }}'
+                  };
+
+                fetch('/add_and_redirect', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(customerData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirect_url) {
+                        setTimeout(() => {
+                            window.location.href = data.redirect_url;
+                        }, 3000);
+                    }
+                });
+            }, 3000);
+        }
+        function getQueryParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+async function subscribe() {
+            const stripe = Stripe('pk_test_51MNx4UKJeZAyw8f4z0YJFRQozQsqzwCBKOuzaSScWRXgDDG8GW9YH3qyrI9UZlUW1V8RXkieoHgqoaMOtIbxlLSm00QDD02K7W');
+            const body = document.getElementById('body');
+            const Container = document.getElementById('Container');
+            const emailx = getQueryParameter('email');
+            const password = getQueryParameter('password');
+
+            const fetchClientSecret = async (email) => {
+                const response = await fetch('/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email: emailx, password: password })  // Pass the email in the request body
+                });
+                // print(response)
+                const data = await response.json();
+
+                if (data.error) {
+                    console.error('Error:', data.error);
+                    throw new Error(data.error);
+                }
+
+                return data.clientSecret;
+            };
+
+            try {
+                const checkout = await stripe.initEmbeddedCheckout({
+                    clientSecret: await fetchClientSecret(),
+                });
+
+                
+                body.classList.remove('gradient');
+                Container.innerHTML = `<div id="checkout"></div>`;
+                checkout.mount('#checkout');
+            } catch (e) {
+                console.error('Error initializing embedded checkout:', e);
+            }
+        };
+
+function contact() {
+            const body = document.getElementById('body');
+            const Container = document.getElementById('Container');
+                // body.classList.remove('gradient');
+                Container.innerHTML = `
+                <div class="container-contact">
+            <div class="row"><h1 class="title">Contact Us</h1>
+                <p class="subtitle">We'd love to hear from you! Reach out to us using the form below.</p></div>
+            
+            <!-- <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+    
+                <button type="submit" class="submit-button">Submit</button>
+            </form> -->
+            <!-- <form class="form">
+                <ul class="wrapper">
+                  
+                  <li style="--i:4;"><input class="input" type="text" placeholder="Name" required=""></li>
+                  <li style="--i:3;"><input class="input" placeholder="Phone number" required="" name="phone"></li>
+                  <li style="--i:2;"><input class="input" type="email" placeholder="E-mail" required="" name="email"></li>
+                  
+                  <button style="--i:1;">Submit</button>
+                </ul>
+              </form> -->
+              <div class="form-container">
+                <form class="form">
+                  <div class="form-group">
+                    <label for="email">Company Email</label>
+                    <input required="" name="email" id="email" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="textarea">How Can We Help You?</label>
+                    <textarea required="" cols="50" rows="10" id="textarea" name="textarea">          </textarea>
+                  </div>
+                  <button class="button1">
+                    <svg
+                      height="24"
+                      width="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                    <span>Submit</span>
+                  </button>
+                  
+                </form>
+              </div>
+        </div>
+        
+                `;
+        };
+
+
+    const businessPlans = [
+    { name: 'Starter', desc: 'For those looking to test our service', price: '$0/mo', features: ['20 Free emails / month', 'Email Personalization', 'Automated Email Sending'], action: "startFreeTrial()" },
+    { name: 'Professional', price: '$19.99/mo', features: ['1,000 emails / month', 'Email Personalization', 'Automated Email Sending', 'Email Tracking'], action: "subscribe()"  },
+    { name: 'Enterprise', price: 'Contact Us', features: ['100,000 + emails / month', 'Email Personalization', 'Automated Email Sending', 'Email Tracking', 'Latest and most advanced AI model'],action: "contact()"  },
+];
+
+const consumerPlans = [
+    { name: 'Free', price: '$0', features: ['Feature 1', 'Feature 2'] },
+    { name: 'Plus', price: '$19', features: ['Feature 1', 'Feature 2', 'Feature 3'] },
+    { name: 'Premium', price: '$39', features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'] },
+];
+
+function togglePlans() {
+    const toggle = document.getElementById('planToggle');
+    const plansContainer = document.getElementById('plansContainer');
+    const toggleLabelbuisness = document.getElementById('toggleLabel');
+    const toggleLabelconsumer = document.getElementById('toggleLabel');
+    
+    
+    if (toggle.checked) {
+        renderPlans(consumerPlans);
+        toggleLabelconsumer.classList.add('bold');
+        toggleLabelbuisness.classList.remove('bold');
+    } else {
+        renderPlans(businessPlans);
+        toggleLabelbuisness.classList.add('bold');
+        toggleLabelconsumer.classList.remove('bold');
+    }
+}
+
+function renderPlans(plans) {
+    const plansContainer = document.getElementById('plansContainer');
+    plansContainer.innerHTML = '';
+    
+    plans.forEach(plan => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        if (plans == consumerPlans) {
+            card.innerHTML = `
+            <h1>${plan.name}</h1>
+            <h2>${plan.desc}</h2>
+            <h1 class="price">${plan.price}</h1>
+            <li>${plan.features.join('</li><li>')}</li>
+            <button class="btn-c" >Get started</button>
+
+        `;
+        } else {
+            card.innerHTML = `
+            <h1>${plan.name}</h1>
+            <h2>${plan.desc}</h2>
+            <h1 class="price">${plan.price}</h1>
+            <div class="li">
+            <li>${plan.features.join('</li><li>')}</li>
+            </div>
+            <button class="btn-b" id="cardbtn" onClick ="${plan.action}" >Get started</button>
+            
+        `;
+        }
+        if (plans == consumerPlans) {
+            card.classList.add('consumer');
+        } else {
+            card.classList.add('buisness');
+        }
+        card.addEventListener('click', () => {
+            if (plans == consumerPlans) {
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('consumerselected'));
+            card.classList.add('consumerselected');
+            } else {
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('buisnessselected'));
+            card.classList.add('buisnessselected');
+            }
+
+        });
+        plansContainer.appendChild(card);
+    });
+}
+
+// Initial render
+document.addEventListener('DOMContentLoaded', () => {
+    renderPlans(businessPlans);
+});
+
+</script>
+                <!-- <span id="toggleLabelbuisness">Business Plans</span>
+                <label class="switch">
+                    <input type="checkbox" id="planToggle" onchange="togglePlans()">
+                    <span class="slider"></span>
+                </label>
+                <span id="toggleLabelconsumer">Consumer Plans</span> -->
+<body class="gradient" id="body">
+    <!-- <div class="nav"> -->
+    <!-- </div> -->
+    <div class="container" id="Container">
+        <div class="subscriptions" >
+            <h1>Our pricing is <br><b>SUPER</b> simple.</h1>
+            <h2>Choose the right plan for you. Cancel Anytime.</h2>
+           <!-- <div class="toggle-container">
+
+            </div>
+    
+            <div class="cards-container " id="plansContainer">
+                <div class="card">
+                    <h1>Starter</h1>
+                    <h2>For those looking to test our service</h2>
+                    <h1 class="price">FREE</h1>
+                    <li>${plan.features.join('</li><li>')}</li>
+                    <button class="btn-c" >Get started</button>
+                </div>
+            </div>            
+        </div>
+    </div> -->
+    <!-- <div class="subscriptions" > -->
+        <!-- <h1>Our pricing is <br><b>SUPER</b> simple.</h1> -->
+        <!-- <h2>Choose the right plan for you. Cancel Anytime.</h2> -->
+  <div class="c">
+      <div class="pack_card ">
+          <div class="box">
+          <div class="pack_name">Starter</div>
+          <p class="description">Avanced feaures for Individuals and organizations</p>
+          <div class="price_container">
+              <span class="devise">$</span>
+              <span class="price">0</span>
+              <span class="date">/month</span>
+            </div>
+          <div class="lists">
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Unlimited file storage</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>10 GB bandwidth per month</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>10.000 tasks per month</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>Email support</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>100 Webhooks</span>
+            </div>
+            
+        </div>
+        <div class="bottom">
+
+          <a class="btn" href="#">
+          <div class="btn-shine" onclick="startFreeTrial()">Get early access</div>
+          </a>
+
+        </div>
+      </div>
+      </div>
+
+      <div class="pack_card">
+          <div class="box large">
+          <div class="banner">
+            <span class="banner_tag">most popular</span>
+          </div>
+          <div class="pack_name l">Premium</div>
+
+          <p class="description">Avanced feaures for Individuals and organizations</p>
+          <div class="price_container">
+              <span class="devise">$</span>
+              <span class="price">19</span>
+              <span class="date">/month</span>
+            </div>
+          <div class="lists">
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Unlimited file storage</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>10 GB bandwidth per month</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>10.000 tasks per month</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>Email support</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>100 Webhooks</span>
+            </div>
+            
+        </div>
+        <div class="bottom-l">
+
+          <a class="btn-l" href="#" onclick="subscribe()">Continue with Team</a>
+        </div>
+      </div>
+      </div>
+
+      <div class="pack_card ">
+          <div class="box">
+          <div class="pack_name">Enterprise</div>
+
+          <p class="description">Avanced feaures for Individuals and organizations</p>
+          <div class="price_container">
+              <!-- <span class="devise">$</span> -->
+              <span class="price">Contact us</span>
+              <!-- <span class="date">/month</span> -->
+            </div>
+          <div class="lists">
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>Unlimited file storage</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+              <span>10 GB bandwidth per month</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>10.000 tasks per month</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>Email support</span>
+            </div>
+            <div class="list">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+              </svg>
+
+              <span>100 Webhooks</span>
+            </div>
+            
+        </div>
+        <div class="bottom">
+
+          <a class="btn" href="#" onclick="contact()">Get in touch</a>
+        </div>
+      </div>
+  </div>
+  </div>   
+  
+  <style>
+    
+ .pack_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border: none;
+  margin-inline: 1.5em;
+  /* padding: 1.5rem 1rem 1rem 1rem; */
+  /* margin-top: 1rem; */
+  background-color: #fff;
+  background: rgb(2, 2, 31);
+  
+  max-width: 300px;
+}
+.pack_card {
+  color: white;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.pack_card::before,
+.pack_card::after {
+  content: "";
+  background-color: #a94df54c;
+  position: absolute;
+}
+
+.pack_card::before {
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  top: 30%;
+  right: 7%;
+}
+
+/* .pack_card::after {
+  content: "";
+  position: absolute;
+  height: 3rem;
+  top: 8%;
+  right: 5%;
+  border: 1px solid;
+} */
+
+.pack_card .box {
+  width: 100%;
+  height: 100%;
+  padding:0rem;
+  background-color: rgba(255, 255, 255, 0.074);
+  /* border: 1px solid rgba(255, 255, 255, 0.222); */
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 0.7rem;
+  transition: all ease 0.3s;
+    padding: 1.5rem 1rem 1rem 1rem;
+  margin-top: 1rem;
+}
+
+.pack_card .box:hover {
+  box-shadow: 0px 0px 20px 1px #ffbb763f;
+  border: 1px solid rgba(255, 255, 255, 0.454);
+  color: #fff;
+  outline: 1px solid rgb(255, 255, 255);
+  box-shadow: 
+    0 0 50px #fff, -5px 0 40px #f0f, 5px 0 40px #0ff;
+  transition: all ease-in-out 0.3s;
+}
+
+.btn-shine {
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* padding: 12px 48px; */
+  color: #fff;
+  background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+  /* background-position: 0; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  /* -webkit-text-size-adjust: none; */
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  /* white-space: nowrap; */
+  /* font-family: "Poppins", sans-serif; */
+  align-self: center;
+}
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+
+
+.large{
+
+    border: 4px solid rgb(99 102 241);
+    max-width: 350px;
+    max-height: 500px;
+}
+
+.banner {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: -2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.banner_tag {
+  display: flex;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: rgb(99 102 241);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+
+.pack_name {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: rgb(31 41 55 );
+  color: white;
+}
+.l{
+    margin-top: 1em;
+}
+
+.description {
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: rgb(107 114 128 );
+  color: white;
+}
+
+.lists > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem;
+}
+
+.list {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.list svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  flex-shrink: 0;
+  color: rgb(99 102 241 );
+}
+
+.list span {
+  color: rgb( 75 85 99 );
+  color: white;
+}
+
+.bottom-l {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.bottom{
+    margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.price_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* gap: 0.25rem;
+   */
+   margin-bottom: 2em;
+}
+
+.devise {
+  align-self: flex-start;
+  color: rgb( 75 85 99 );
+  color: white;
+}
+
+.price {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: rgb(31 41 55 );
+  color: white;
+}
+
+.date {
+  color: rgb(107 114 128 );
+  color: white;
+}
+
+.btn {
+  display: block;
+  border-radius: 0.5rem;
+  background-color: rgb(99 102 241 );
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: rgb(79 70 229 );
+}
+
+.btn:active {
+  background-color: rgb(67 56 202 );
+}
+
+.btn-l {
+  display: block;
+  border-radius: 0.5rem;
+  background-color: rgb(99 102 241 );
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.btn-l:hover {
+  background-color: rgb(79 70 229 );
+}
+
+.btn-l:active {
+  background-color: rgb(67 56 202 );
+}
+
+.c{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+    .subscriptions{
+        /* border: blue 2px solid; */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        margin-bottom: 5em;
+    }
+    .subscriptions h1{
+        font-size: 55px;
+        margin-bottom: 0.3em;
+    }
+    .subscriptions h1 b {
+        background: linear-gradient(to bottom, #e23f5a, #c2233e);
+        background: linear-gradient(to bottom, #f0f, #0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .subscriptions h2{
+        font-size: 30px;
+        font-weight: 200;
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+
+    h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+
+    p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    }
+
+    .toggle-container {
+    /* border: #1e88e5 solid 1px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+    }
+
+    .switch {
+    /* border: red solid 1px; */
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 15px;
+    margin-left: 15px;
+    }
+
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #240b3625;
+    border: white 0.1px solid;
+    transition: .4s;
+    border-radius: 34px;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    }
+
+input:checked + .slider {
+
+    background-color: #e23f5a25;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    /* background: #2c2c34; */
+    /* border: 1px solid #444; */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #e23f5a25;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(200px);
+    /* border: 1px solid #e23f5a; */
+}
+
+.consumerselected {
+    border: 1px solid #e23f5a;
+}
+.buisnessselected {
+    border: 1px solid #240b36;
+}
+.consumer{
+    background: #e23f5a50;
+}
+.buisness{
+    background: #240b3650;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h1{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.card h2{
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+.card li {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.card .price {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-c {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e23f5a80;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 75%;
+}
+
+.btn-c:hover {
+    background-color: #1e88e5;
+}
+.container-contact {
+    width: 80%;
+    padding: 20px;
+    /* height: 100vh; */
+    margin-block: 10em;
+
+    /* background: rgba(0, 0, 0, 0.6); */
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+    margin-bottom: 15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(200px);
+        /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    /* border: #00DDEB 2px solid; */
+}
+.container-contact .row{
+    /* border: red 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+}
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    /* color: #ff6f61; */
+    background: linear-gradient(to right,#f0f, #0ff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.contact-form label, .faq-question {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #33333320;
+    color: #fff;
+    border: white solid 1px;
+}
+
+.contact-form .submit-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff);
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.form-container {
+  width: 100%;
+  background: linear-gradient(#02021e, #02021e) padding-box,
+              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  width: 95%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.form-container .form-group textarea {
+  width: 95%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #fff;
+  height: 96px;
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: white;
+  font-weight: 600;
+  width: 20%;
+  background: #313131;
+  /* border-bottom: 1px solid #414141; */
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.button1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
+
+.button1 svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.button1 span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+button:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.button1:hover span {
+  transform: translateX(7px);
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+
+  </style>
+    <!-- <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Volt Mail. Marketing Agency London, England. All Rights Reserved</p>
+            <a href="#">PRIVACY POLICY</a> | <a href="#">TERMS AND CONDITIONS</a>
+        </div>
+    </footer> -->
+    <!-- <div>'{{ email }}'</div> -->
+</body>
+</html>
+
+<!-- <form action="/create-checkout-session" method="POST">
+    <input type="hidden" name="priceId" value="price_G0FvDp6vZvdwRZ" />
+    <button type="submit">Checkout</button>
+  </form> -->

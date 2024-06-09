@@ -1,0 +1,2964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Automation Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- <link rel="icon" href="../logo.svg" type="image/svg+xml"> -->
+<link rel="icon" href="../logo.svg" type="image/icon type">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+</head>
+<style>
+
+
+    /* @keyframes animate {
+    0%{
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+    }
+    100%{
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+    } */
+/* } */
+/* 
+.background {
+    z-index: -2;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #240b36, #c31432);
+    overflow: hidden;
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(50px);
+        -webkit-backdrop-filter: blur(200px);
+}
+.background li {
+    position: absolute;
+    display: block;
+    list-style: none;
+    width: 20px;
+    height: 20px;
+    background: #240b3650;
+    animation: animate 17s linear infinite;
+}
+
+
+.background li:nth-child(0) {
+    left: 77%;
+    width: 252px;
+    height: 252px;
+    bottom: -252px;
+    animation-delay: 0s;
+}
+.background li:nth-child(1) {
+    left: 32%;
+    width: 223px;
+    height: 223px;
+    bottom: -223px;
+    animation-delay: 1s;
+}
+.background li:nth-child(2) {
+    left: 24%;
+    width: 166px;
+    height: 166px;
+    bottom: -166px;
+    animation-delay: 2s;
+}
+.background li:nth-child(3) {
+    left: 68%;
+    width: 122px;
+    height: 122px;
+    bottom: -122px;
+    animation-delay: 2s;
+}
+.background li:nth-child(4) {
+    left: 83%;
+    width: 147px;
+    height: 147px;
+    bottom: -147px;
+    animation-delay: 13s;
+}
+.background li:nth-child(5) {
+    left: 28%;
+    width: 227px;
+    height: 227px;
+    bottom: -227px;
+    animation-delay: 15s;
+}
+.background li:nth-child(6) {
+    left: 24%;
+    width: 109px;
+    height: 109px;
+    bottom: -109px;
+    animation-delay: 29s;
+}
+.background li:nth-child(7) {
+    left: 84%;
+    width: 184px;
+    height: 184px;
+    bottom: -184px;
+    animation-delay: 20s;
+}
+.background li:nth-child(8) {
+    left: 85%;
+    width: 183px;
+    height: 183px;
+    bottom: -183px;
+    animation-delay: 3s;
+}
+.background li:nth-child(9) {
+    left: 0%;
+    width: 274px;
+    height: 274px;
+    bottom: -274px;
+    animation-delay: 21s;
+}
+.background li:nth-child(10) {
+    left: 59%;
+    width: 190px;
+    height: 190px;
+    bottom: -190px;
+    animation-delay: 33s;
+}
+.background li:nth-child(11) {
+    left: 59%;
+    width: 259px;
+    height: 259px;
+    bottom: -259px;
+    animation-delay: 18s;
+}
+.background li:nth-child(12) {
+    left: 19%;
+    width: 101px;
+    height: 101px;
+    bottom: -101px;
+    animation-delay: 56s;
+}
+.background li:nth-child(13) {
+    left: 49%;
+    width: 204px;
+    height: 204px;
+    bottom: -204px;
+    animation-delay: 26s;
+}
+.background li:nth-child(14) {
+    left: 56%;
+    width: 204px;
+    height: 204px;
+    bottom: -204px;
+    animation-delay: 23s;
+}
+.background li:nth-child(15) {
+    left: 33%;
+    width: 252px;
+    height: 252px;
+    bottom: -252px;
+    animation-delay: 29s;
+}
+.background li:nth-child(16) {
+    left: 42%;
+    width: 216px;
+    height: 216px;
+    bottom: -216px;
+    animation-delay: 51s;
+}
+.background li:nth-child(17) {
+    left: 47%;
+    width: 211px;
+    height: 211px;
+    bottom: -211px;
+    animation-delay: 43s;
+}
+.background li:nth-child(18) {
+    left: 2%;
+    width: 238px;
+    height: 238px;
+    bottom: -238px;
+    animation-delay: 21s;
+}
+.background li:nth-child(19) {
+    left: 39%;
+    width: 165px;
+    height: 165px;
+    bottom: -165px;
+    animation-delay: 48s;
+}
+.background li:nth-child(20) {
+    left: 68%;
+    width: 245px;
+    height: 245px;
+    bottom: -245px;
+    animation-delay: 58s;
+}
+.background li:nth-child(21) {
+    left: 82%;
+    width: 246px;
+    height: 246px;
+    bottom: -246px;
+    animation-delay: 19s;
+}
+.background li:nth-child(22) {
+    left: 28%;
+    width: 262px;
+    height: 262px;
+    bottom: -262px;
+    animation-delay: 35s;
+}
+.background li:nth-child(23) {
+    left: 37%;
+    width: 217px;
+    height: 217px;
+    bottom: -217px;
+    animation-delay: 64s;
+}
+
+.background li:nth-child(24) {
+    left: 21%;
+    width: 269px;
+    height: 269px;
+    bottom: -269px;
+    animation-delay: 29s;
+}
+.background li:nth-child(25) {
+    left: 0%;
+    width: 266px;
+    height: 266px;
+    bottom: -266px;
+    animation-delay: 92s;
+}
+.background li:nth-child(26) {
+    left: 57%;
+    width: 233px;
+    height: 233px;
+    bottom: -233px;
+    animation-delay: 9s;
+}
+.background li:nth-child(27) {
+    left: 58%;
+    width: 202px;
+    height: 202px;
+    bottom: -202px;
+    animation-delay: 106s;
+}
+.background li:nth-child(28) {
+    left: 29%;
+    width: 139px;
+    height: 139px;
+    bottom: -139px;
+    animation-delay: 105s;
+}
+.background li:nth-child(29) {
+    left: 77%;
+    width: 172px;
+    height: 172px;
+    bottom: -172px;
+    animation-delay: 22s;
+}
+.background li:nth-child(30) {
+    left: 60%;
+    width: 173px;
+    height: 173px;
+    bottom: -173px;
+    animation-delay: 149s;
+}
+.background li:nth-child(31) {
+    left: 79%;
+    width: 251px;
+    height: 251px;
+    bottom: -251px;
+    animation-delay: 138s;
+}
+.background li:nth-child(32) {
+    left: 82%;
+    width: 189px;
+    height: 189px;
+    bottom: -189px;
+    animation-delay: 11s;
+}
+.background li:nth-child(33) {
+    left: 60%;
+    width: 153px;
+    height: 153px;
+    bottom: -153px;
+    animation-delay: 87s;
+}
+.background li:nth-child(34) {
+    left: 71%;
+    width: 125px;
+    height: 125px;
+    bottom: -125px;
+    animation-delay: 132s;
+}
+.background li:nth-child(35) {
+    left: 63%;
+    width: 150px;
+    height: 150px;
+    bottom: -150px;
+    animation-delay: 68s;
+}
+.background li:nth-child(36) {
+    left: 46%;
+    width: 253px;
+    height: 253px;
+    bottom: -253px;
+    animation-delay: 11s;
+}
+.background li:nth-child(37) {
+    left: 42%;
+    width: 149px;
+    height: 149px;
+    bottom: -149px;
+    animation-delay: 141s;
+}
+.background li:nth-child(38) {
+    left: 73%;
+    width: 208px;
+    height: 208px;
+    bottom: -208px;
+    animation-delay: 129s;
+}
+.background li:nth-child(39) {
+    left: 74%;
+    width: 185px;
+    height: 185px;
+    bottom: -185px;
+    animation-delay: 138s;
+}
+.background li:nth-child(40) {
+    left: 5%;
+    width: 218px;
+    height: 218px;
+    bottom: -218px;
+    animation-delay: 151s;
+}
+.background li:nth-child(41) {
+    left: 23%;
+    width: 181px;
+    height: 181px;
+    bottom: -181px;
+    animation-delay: 26s;
+}
+.background li:nth-child(42) {
+    left: 43%;
+    width: 235px;
+    height: 235px;
+    bottom: -235px;
+    animation-delay: 201s;
+}
+.background li:nth-child(43) {
+    left: 3%;
+    width: 210px;
+    height: 210px;
+    bottom: -210px;
+    animation-delay: 127s;
+}
+.background li:nth-child(44) {
+    left: 69%;
+    width: 137px;
+    height: 137px;
+    bottom: -137px;
+    animation-delay: 20s;
+}
+.background li:nth-child(45) {
+    left: 80%;
+    width: 133px;
+    height: 133px;
+    bottom: -133px;
+    animation-delay: 147s;
+}
+.background li:nth-child(46) {
+    left: 81%;
+    width: 143px;
+    height: 143px;
+    bottom: -143px;
+    animation-delay: 217s;
+}
+.background li:nth-child(47) {
+    left: 31%;
+    width: 192px;
+    height: 192px;
+    bottom: -192px;
+    animation-delay: 100s;
+}
+.background li:nth-child(48) {
+    left: 56%;
+    width: 117px;
+    height: 117px;
+    bottom: -117px;
+    animation-delay: 155s;
+}
+.background li:nth-child(49) {
+    left: 32%;
+    width: 127px;
+    height: 127px;
+    bottom: -127px;
+    animation-delay: 85s;
+} */
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #240b3650;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to top, #f0f, #0ff);
+  border-radius:10px ;      
+  background: linear-gradient(
+        15deg,
+        #880088,
+        #8320aa,
+        rgb(111, 0, 255),
+        #0ff,
+        #0ff,
+        rgb(111, 0, 255),
+        #8320aa,
+        #880088
+      )
+      no-repeat;
+    background-size: 500%;
+    background-position: left center;
+    transition: background 0.3s ease;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  /* background: #555; */
+  cursor: pointer;
+  background-size: 1000%;
+    background-position: right center;
+}
+body {
+        background: #c31432;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+    background: rgb(2, 2, 31);
+    }
+    .coin {
+  font-size: 100px;
+  width: 0.1em;
+  height: 0.25em;
+  background: linear-gradient(to right, #240b36, #c31432);
+  margin: auto;
+  margin-left: 0.1em;
+  /* position: absolute; */
+  /* top: 0; */
+  /* left: 0; */
+  /* right: 0; */
+  /* bottom: 0; */
+  animation: rotate_4001510 7s infinite linear;
+  transform-style: preserve-3d;
+}
+
+.coin .side, .coin:before, .coin:after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  overflow: hidden;
+  border-radius: 50%;
+  right: -0.4em;
+  text-align: center;
+  line-height: 1;
+  transform: rotateY(-90deg);
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.coin .tails, .coin:after {
+  left: -0.4em;
+  transform: rotateY(90deg);
+}
+
+.coin:before, .coin:after {
+  background: linear-gradient(to right, #240b36, #c31432);
+  backface-visibility: hidden;
+  transform: rotateY(90deg);
+}
+
+.coin:after {
+  transform: rotateY(-90deg);
+}
+
+@keyframes rotate_4001510 {
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.svg_back {
+  transform: scaleX(-1);
+}
+    .bold {
+        font-weight: bold;
+    }
+
+    button {
+        /* background: linear-gradient(to right, #240b36, #c31432); */
+        background: #c2233d00;
+        color: white;
+        border: 0.2px solid white;
+        border-radius: 25px; /* Adjust this value to make the button more or less rounded */
+        padding: 20px 50px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+
+    .nav {
+        width: 95%;
+        height: 20%;
+        margin: 1.5em;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        /* height: 10vh; */
+    }
+    
+    .google-signin-btn {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    border: 2px solid transparent; /* Use transparent border to make space for the gradient */
+    border-radius: 25px; /* Set border radius */
+    position: relative; /* Position relative to place pseudo-element correctly */
+    background-clip: padding-box; /* Clip the background to the padding box */
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    background-color: #02021E; 
+    color: #fff;
+}
+
+.google-signin-btn::before {
+    content: "";
+    position: absolute;
+    top: -2px; /* Adjust according to the border width */
+    left: -2px; /* Adjust according to the border width */
+    right: -2px; /* Adjust according to the border width */
+    bottom: -2px; /* Adjust according to the border width */
+    border-radius: inherit; /* Inherit the border radius from the parent */
+    padding: 2px; /* Adjust according to the border width */
+    background: linear-gradient(to bottom, rgba(255, 0, 255, 0.719), rgba(0, 255, 255, 0.637)); /* Gradient border */
+    z-index: -1; /* Place the pseudo-element behind the button content */
+}
+
+.google-signin-btn:hover {
+    background-color: #02021E10;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.google-signin-btn:focus {
+    outline: none;
+}
+
+.google-signin-btn img {
+    margin-right: 10px;
+}
+
+
+    .google-logo {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+    }
+    .container{
+        /* border: red 1px solid; */
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        /* margin-inline: 2em; */
+    }
+    .hero{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 92vh;
+
+    }
+    .hero h1{
+        font-size: 55px;
+        margin-bottom: 0.3em;
+        /* color: black; */
+    }
+    .hero h1 b {
+        background: linear-gradient(to bottom, #f0f, #0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .hero h2{
+        font-size: 30px;
+        font-weight: 200;
+        margin-top: 0;
+        margin-bottom: 1em;
+        /* color: black; */
+    }
+    .cta {
+  position: relative;
+  margin-block: 1em;
+  margin-bottom: 4em;
+  padding: 12px 18px;
+  transition: all 0.2s ease;
+  /* border: none; */
+  border: 2px solid; /* Set border width */
+    border-image: linear-gradient(to bottom, rgba(255, 0, 255, 0.719), rgba(0, 255, 255, 0.637)) 1;
+    border-radius: 50px;
+  background: none;
+  cursor: pointer;
+}
+
+.cta:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  /* border-radius: 50px; */
+  /* background: #b1dae7; */
+  /* background: linear-gradient(to right, #240b3696, #c31432); */
+  /* background: linear-gradient(to bottom, rgba(255, 0, 255, 0.719), rgba(0, 255, 255, 0.637)); */
+  /* -webkit-background-clip: text; */
+        -webkit-text-fill-color: transparent;
+        /* background-clip: text; */
+        color: transparent;
+        background: #ffffff00;
+  width: 45px;
+  height: 47px;
+  transition: all 0.3s ease;
+
+
+}
+
+.cta span {
+  position: relative;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: white;
+}
+
+.cta svg {
+  position: relative;
+  top: 0;
+  margin-left: 10px;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: white;
+  stroke-width: 2;
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+  width: 100%;
+  /* background:  #240b36 */
+  background: linear-gradient(to bottom, rgba(255, 0, 255, 0.719), rgba(0, 255, 255, 0.637));
+        /* -webkit-background-clip: text; */
+        -webkit-text-fill-color: transparent;
+        /* background-clip: text; */
+        color: transparent;
+}
+
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active {
+  transform: scale(0.95);
+}
+
+    .icon-3{
+        margin-top: 3em;
+        /* border: green 2px solid; */
+        width: 100%;
+        height: 50vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    
+
+    .parent {
+  width: 400px;
+  height: 100%;
+  padding: 20px;
+  perspective: 1000px;
+  margin-inline: 3em;
+}
+
+.cardc {
+  padding-top: 50px;
+  /* border-radius: 10px; */
+  border: 3px solid rgb(255, 255, 255);
+  transform-style: preserve-3d;
+  /* background: linear-gradient(135deg,#0000 18.75%,#090964 0 31.25%,#0000 0),
+      repeating-linear-gradient(45deg,#02021E -6.25% 6.25%,rgb(35, 8, 85) 0 18.75%);
+  background-size: 60px 60px;
+  background-position: 0 0, 0 0; */
+  width: 30%;
+        height: 70%;
+        background: rgba(255, 255, 255, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        /* backdrop-filter: blur(20px); */
+        /* -webkit-backdrop-filter: blur(200px); */
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+  /* background-color: #02021E; */
+  border-radius: 16px;
+  width: 100%;
+  height: 60%;
+  box-shadow: rgba(142, 142, 142, 0.3) 30px 30px 30px -10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.cardc:hover {
+  background-position: -100px 100px, -100px 100px;
+  transform: rotate3d(0.5, 1, 0, 30deg);
+}
+
+.content-box {
+  /* background: rgba(4, 193, 250, 0.732); */
+  /* border-radius: 10px 100px 10px 10px; */
+  transition: all 0.5s ease-in-out;
+  padding: 60px 25px 25px 25px;
+  transform-style: preserve-3d;
+}
+
+.content-box .card-title {
+  display: inline-block;
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 50px);
+}
+
+.content-box .card-title:hover {
+  transform: translate3d(0px, 0px, 60px);
+}
+
+.content-box .card-content {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #f2f2f2;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 30px);
+}
+
+.content-box .card-content:hover {
+  transform: translate3d(0px, 0px, 60px);
+}
+
+.content-box .see-more {
+  cursor: pointer;
+  margin-top: 1rem;
+  display: inline-block;
+  font-weight: 900;
+  font-size: 9px;
+  text-transform: uppercase;
+  /* color: rgb(7, 185, 255); */
+  /* border-radius: 5px; */
+  background: white;
+  padding: 0.75rem 2rem;
+  transition: all 0.5s ease-in-out;
+  transform: translate3d(0px, 0px, 20px);
+  background: rgba(255, 255, 255, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        /* display: flex; */
+        /* flex-direction: column; */
+        /* justify-content: top; */
+        /* align-items: center; */
+        color: white;
+}
+
+.content-box .see-more:hover {
+  transform: translate3d(0px, 0px, 60px);
+  background: linear-gradient(to left, rgba(255, 0, 255, 0.719), rgba(0, 255, 255, 0.637));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+}
+
+.date-box {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 60px;
+  width: 60px;
+  background: rgb(0, 0, 0);
+  /* border: 1px solid rgb(7, 185, 255); */
+  background: rgba(255,255,255,.05);
+  /* box-shadow: 0 0 10px rgba(0,0,0,0.25); */
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  /* border-radius: 10px; */
+  padding: 10px;
+  transform: translate3d(0px, 0px, 80px);
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 17px 10px -10px; */
+}
+
+.date-box span {
+  display: block;
+  text-align: center;
+}
+
+.date-box .month {
+  color: rgb(4, 193, 250);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.date-box .date {
+  font-size: 20px;
+  font-weight: 900;
+  color: rgb(4, 193, 250);
+}
+
+        .feature-cards {
+            display: flex;
+            gap: 20px;
+            margin-top: 70px;
+            flex-direction: row;
+            /* align-items: center; */
+            justify-content: space-between;
+        }
+
+        .feature-cards .row {
+            display: flex;
+            flex-direction: row;
+        }
+        .feature-cards .col {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            /* border: #000 1px solid; */
+            width: 100%;
+            height: 100%;
+        }
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(202, 15, 15, 0.1);
+            padding: 20px;
+            color: white;
+            width: 300px;
+            position: relative;
+        }
+
+        .card.one {
+            background: radial-gradient(circle 280px at 0% 0%, #ffffff73, #d0d4d4a2);
+            width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: top;
+            flex-direction: column;
+        }
+        .cardsx {
+  perspective: -500px;
+}
+
+.cardx {
+margin-top: 0;
+  width: 200px;
+  height: 100%;
+  /* background: #16161d; */
+  box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+  background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB);
+  /* border: 2px solid #555555; */
+  /* background: rgb(5, 6, 45); */
+  border-radius: 10px;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .5s;
+  padding: 5px;
+  /* border: #00DDEB 1px solid; */
+}
+.cardx-gmail {
+margin-top: 0;
+  width: 100%;
+  height: 90%;
+  /* background: #16161d; */
+  box-shadow: rgba(151, 65, 252, 0.8) 0 15px 30px -5px;
+  /* background-image: linear-gradient(144deg,#AF40FF, #5B42F3 50%,#00DDEB); */
+  /* border: 2px solid #555555; */
+  /* background: rgb(5, 6, 45); */
+  border-radius: 10px;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition: transform .5s;
+  /* padding: 5px; */
+  /* border: #00DDEB 1px solid; */
+}
+.content-gmail {
+  /* background: rgb(5, 6, 45); */
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.content {
+  background: rgb(5, 6, 45);
+  border-radius: 17px;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.cardx:hover, .cardx-gmail:hover {
+  transform: translateZ(10px) rotateX(20deg) rotateY(20deg);
+}
+
+.card_title {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  transition: transform .5s;
+  font: 700 1.5rem monospace;
+  text-shadow: -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+.cardx:hover .card_title{
+  transform: translateZ(50px);
+}
+.cardx:hover , .cardx-gmail:hover{
+  transform: translateZ(10px) rotateX(20deg) rotateY(20deg);
+}
+
+.card_title {
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  transition: transform .5s;
+  font: 700 1.5rem monospace;
+  text-shadow: -1px -1px 0 #000,  
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+     1px 1px 0 #000;
+}
+
+.cardx:hover .card_title {
+  transform: translateZ(50px);
+}
+
+        .card.two {
+            background: rgba(24, 23, 23, 0.3);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        /* border: 1px solid rgba(255, 255, 255, 0.3); */
+        /* background: linear-gradient(45deg, #000000 4%, #fff, #000); */
+        background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d40);
+        }
+
+      
+
+        .card.three {
+            background: linear-gradient(to bottom, #e23f5a90, #c2233e90);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        }
+
+        .card .h2 {
+            font-size: 50px;
+            font-weight: 600;
+            /* color: #000; */
+            margin: 0;
+            border-bottom: 1px solid white;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: 300;
+        }
+
+        .card p {
+            font-size: 14px;
+            margin: 10px 0;
+            font-weight: 100;
+        }
+
+         .features {
+            display: flex;
+            flex-direction:column;
+            /* flex-wrap: wrap; */
+            align-items: center;
+            justify-content: space-between;
+            gap: 5px;
+            width: 100%;
+            /* height:6em; */
+            /* background: rgba(24, 23, 23, 0.3); */
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        /* border: 1px solid rgba(255, 255, 255, 0.3); */
+        /* background: linear-gradient(45deg, #000000 4%, #fff, #000); */
+        /* background: radial-gradient(circle 280px at 0% 0%, #44444440, #0c0d0d80); */
+        background-color: white; 
+    }
+    .features::after {
+ position: absolute;
+ content: "";
+ top: 30px;
+ left: 0;
+ right: 0;
+ z-index: -1;
+ height: 100%;
+ width: 100%;
+ transform: scale(0.8);
+ filter: blur(25px);
+ background: #f7ba2b;
+ background: var(--background);
+ transition: opacity .5s;
+}
+        .email-row{
+            width: 100%;
+            border-radius: 16px;
+            background-color: white;
+            color: #000;
+            display: flex;
+            flex-direction: row;
+            /* align-content: center; */
+            align-items: center;
+            justify-content: start;
+            border-bottom: 1px solid #00000050;
+        }
+        .email-row-t{
+            width: 100%;
+            border-radius: 16px;
+            background-color: #fff;
+            color: #000;
+            display: flex;
+            flex-direction: row;
+            /* align-content: center; */
+            align-items: center;
+            justify-content: start;
+            border-bottom: 1px solid #00000050;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        }
+        .email-row .box{
+            margin-block: 30px;
+            margin-inline-start: 30px;
+            border: #000 1px solid;
+            height: 20px;
+            width: 20px;
+                }
+
+        .star .fi-ss-star {
+            font-size: 30px; /* Inherit the size from .star */
+            margin-inline: 20px;
+        }
+        .email-row .name{
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        .email-row-t .name-title{
+            font-weight: 800;
+            margin-right: 10px;
+            padding: 20px;
+            color: blue;
+            border-bottom: #1e88e5 2px solid;
+        }
+        .email-row .date{
+            font-weight: 700;
+            margin-inline: 30px;
+            justify-self: end;
+        }
+        .feature-tag {
+            /* height: 10px; */
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 5px 10px;
+            font-size: 12px;
+            margin-inline: 1em;
+        }
+
+        .card .avatar-group {
+            display: flex;
+            /* gap: 5px; */
+            width: 110%;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #ff6a00 0%, #ee0979 100%);
+        }
+
+        .card .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .card .get-started {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: white;
+            color: black;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        
+    .card-container{
+        width: 30%;
+        height: 70%;
+        background: rgba(255, 255, 255, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        flex-direction: column;
+        justify-content: top;
+        align-items: center;
+    }
+    
+    .card-container li{
+        text-align: center;
+        margin: 1em;
+        font-size: 16px;
+        font-weight: 200;
+    }
+    i {
+        font-size: 50px; /* Adjust the size as needed */
+        width: 60px; /* Optional: set specific width */
+        height: 60px; /* Optional: set specific height */
+    }
+    .icon {
+        margin-top: 2em;
+    }
+    .icon-head {
+        font-size: 1.5em;
+        margin-bottom: 1em;
+        font-weight: bold;
+    }
+    .container-glass {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2em;
+}
+
+.container-glass .glass {
+  position: relative;
+  width: 220px;
+  height: 240px;
+  background: linear-gradient(#fff2, transparent);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  border-radius: 10px;
+  margin: 0 -45px;
+  backdrop-filter: blur(10px);
+  transform: rotate(calc(var(--r) * 1deg));
+}
+
+.container-glass:hover .glass {
+  transform: rotate(0deg);
+  margin: 0 10px;
+}
+
+.container-glass .glass::before {
+  content: attr(data-text);
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.container-glass .glass svg {
+  font-size: 2.5em;
+  fill: #fff;
+}
+
+ .pack_card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.5rem;
+  border: none;
+  margin-inline: 1.5em;
+  /* padding: 1.5rem 1rem 1rem 1rem; */
+  /* margin-top: 1rem; */
+  background-color: #fff;
+  background: rgb(2, 2, 31);
+  
+  max-width: 300px;
+}
+.pack_card {
+  color: white;
+  position: relative;
+  font-family: sans-serif;
+}
+
+.pack_card::before,
+.pack_card::after {
+  content: "";
+  background-color: #a94df54c;
+  position: absolute;
+}
+
+.pack_card::before {
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  top: 30%;
+  right: 7%;
+}
+
+/* .pack_card::after {
+  content: "";
+  position: absolute;
+  height: 3rem;
+  top: 8%;
+  right: 5%;
+  border: 1px solid;
+} */
+
+.pack_card .box {
+  width: 100%;
+  height: 100%;
+  padding:0rem;
+  background-color: rgba(255, 255, 255, 0.074);
+  /* border: 1px solid rgba(255, 255, 255, 0.222); */
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: 0.7rem;
+  transition: all ease 0.3s;
+    padding: 1.5rem 1rem 1rem 1rem;
+  margin-top: 1rem;
+}
+
+.pack_card .box:hover {
+  box-shadow: 0px 0px 20px 1px #ffbb763f;
+  border: 1px solid rgba(255, 255, 255, 0.454);
+  color: #fff;
+  outline: 1px solid rgb(255, 255, 255);
+  box-shadow: 
+    0 0 50px #fff, -5px 0 40px #f0f, 5px 0 40px #0ff;
+  transition: all ease-in-out 0.3s;
+}
+
+.btn-shine {
+  /* position: absolute; */
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  /* padding: 12px 48px; */
+  color: #fff;
+  background: linear-gradient(to right, #9f9f9f 0, #fff 10%, #868686 20%);
+  /* background-position: 0; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s infinite linear;
+  animation-fill-mode: forwards;
+  /* -webkit-text-size-adjust: none; */
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  /* white-space: nowrap; */
+  /* font-family: "Poppins", sans-serif; */
+  align-self: center;
+}
+@-moz-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+@-webkit-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+@-o-keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  60% {
+    background-position: 180px;
+  }
+  100% {
+    background-position: 180px;
+  }
+}
+
+
+.large{
+
+    border: 4px solid rgb(99 102 241);
+    max-width: 350px;
+    max-height: 500px;
+}
+
+.banner {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: -2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.banner_tag {
+  display: flex;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background-color: rgb(99 102 241);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #fff;
+}
+
+.pack_name {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+  color: rgb(31 41 55 );
+  color: white;
+}
+.l{
+    margin-top: 1em;
+}
+
+.description {
+  margin: 0 auto 2rem auto;
+  text-align: center;
+  color: rgb(107 114 128 );
+  color: white;
+}
+
+.lists > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 0.5rem;
+}
+
+.list {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.list svg {
+  height: 1.5rem;
+  width: 1.5rem;
+  flex-shrink: 0;
+  color: rgb(99 102 241 );
+}
+
+.list span {
+  color: rgb( 75 85 99 );
+  color: white;
+}
+
+.bottom-l {
+  margin-top: 3em;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.bottom{
+    margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.price_container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* gap: 0.25rem;
+   */
+   margin-bottom: 2em;
+}
+
+.devise {
+  align-self: flex-start;
+  color: rgb( 75 85 99 );
+  color: white;
+}
+
+.price {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  font-weight: 700;
+  color: rgb(31 41 55 );
+  color: white;
+}
+
+.date {
+  color: rgb(107 114 128 );
+  color: white;
+}
+
+.btn {
+  display: block;
+  border-radius: 0.5rem;
+  background-color: rgb(99 102 241 );
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: rgb(79 70 229 );
+}
+
+.btn:active {
+  background-color: rgb(67 56 202 );
+}
+
+.btn-l {
+  display: block;
+  border-radius: 0.5rem;
+  background-color: rgb(99 102 241 );
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: #fff;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: all .1s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  margin-bottom: 1em;
+}
+
+.btn-l:hover {
+  background-color: rgb(79 70 229 );
+}
+
+.btn-l:active {
+  background-color: rgb(67 56 202 );
+}
+
+.c{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+    .subscriptions{
+        /* border: blue 2px solid; */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        margin-block: 5em;
+    }
+    .subscriptions h1{
+        font-size: 55px;
+        margin-bottom: 0.3em;
+    }
+    .subscriptions h1 b {
+        background: linear-gradient(to bottom, #e23f5a, #c2233e);
+        background: linear-gradient(to bottom, #f0f, #0ff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .subscriptions h2{
+        font-size: 30px;
+        font-weight: 200;
+        margin-top: 0;
+        margin-bottom: 2em;
+    }
+
+    h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    }
+
+    p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    }
+
+    .toggle-container {
+    /* border: #1e88e5 solid 1px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+    }
+
+    .switch {
+    /* border: red solid 1px; */
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 15px;
+    margin-left: 15px;
+    }
+
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #240b3625;
+    border: white 0.1px solid;
+    transition: .4s;
+    border-radius: 34px;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    }
+
+input:checked + .slider {
+
+    background-color: #e23f5a25;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    /* background: #2c2c34; */
+    /* border: 1px solid #444; */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background: #e23f5a25;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(200px);
+    /* border: 1px solid #e23f5a; */
+}
+
+.consumerselected {
+    border: 1px solid #e23f5a;
+}
+.buisnessselected {
+    border: 1px solid #240b36;
+}
+.consumer{
+    background: #e23f5a50;
+}
+.buisness{
+    background: #240b3650;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.card h1{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.card h2{
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+.card li {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.card .price {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.btn-c {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e23f5a80;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 75%;
+}
+
+.btn-c:hover {
+    background-color: #1e88e5;
+}
+
+.btn-b {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    background-color: #240b3680;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 75%;
+}
+
+.btn-b:hover {
+    background-color: #1e88e5;
+}
+
+    .info{
+        margin-top: 3em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .info-container{
+        width: 90%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        border: white 1px solid;
+        border-radius: 16px;
+        font-weight: 200;
+        background: rgba(255, 255, 255, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .info h3{
+        font-size: 40px;
+        margin-bottom: 2em;
+    }
+    .info-container p{
+        margin-inline: 2em;
+        font-size: large;
+        line-height: 2.6;
+    }
+    .info-container-btn{
+
+        margin-block: 2em;
+    }
+    
+.container-contact {
+    width: 80%;
+    padding: 20px;
+    /* height: 100vh; */
+    margin-block: 10em;
+
+    /* background: rgba(0, 0, 0, 0.6); */
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); */
+    margin-bottom: 15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        /* border: 1px solid rgba(255, 255, 255, 0.3); */
+    /* border: #00DDEB 2px solid; */
+}
+.container-contact .row{
+    /* border: red 2px solid; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+}
+.title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    /* color: #ff6f61; */
+    background: linear-gradient(to right,#f0f, #0ff);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: #ddd;
+}
+
+.contact-form label, .faq-question {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #33333320;
+    color: #fff;
+    border: white solid 1px;
+}
+
+.contact-form .submit-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 5px;
+    background: linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff);
+    color: #fff;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.form-container {
+  width: 100%;
+  background: linear-gradient(#02021e, #02021e) padding-box,
+              linear-gradient(145deg, transparent 35%,#e81cff, #40c9ff) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-size: 200% 100%;
+  animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.form-container button:active {
+  scale: 0.95;
+}
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  width: 95%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid white;
+}
+
+.form-container .form-group textarea {
+  width: 95%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #fff;
+  height: 96px;
+  border: none;
+  border-bottom: 1px solid white;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #e81cff;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  align-self: flex-start;
+  font-family: inherit;
+  color: white;
+  font-weight: 600;
+  width: 20%;
+  background: #313131;
+  /* border-bottom: 1px solid #414141; */
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+.button1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.3em 0.8em 0.9em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  border: none;
+  letter-spacing: 0.05em;
+  border-radius: 16px;
+}
+
+.button1 svg {
+  margin-right: 3px;
+  transform: rotate(30deg);
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.button1 span {
+  transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+button:hover svg {
+  transform: translateX(5px) rotate(90deg);
+}
+
+.button1:hover span {
+  transform: translateX(7px);
+}
+
+.form-container .form-submit-btn:hover {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+
+.faq{
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: center;
+    /* border: red 1px solid; */
+    width: 100%;
+    background: rgba(255, 255, 255, 0.027);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(200px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        /* color: #1e88e5; */
+}
+.faq .row{
+    margin-block: 2em;
+width: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+/* border: #00DDEB solid 1px; */
+
+}
+.row-cube{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.faq .title{
+    margin-bottom: 2em;
+    align-self: start;
+    margin-left: 1em;
+    color: white;
+}
+.faq .faq-item {
+    margin-bottom: 20px;
+    margin-left: 1em;
+}
+
+.faq-question {
+    margin-left: 1em;
+    font-size: 1.5em;
+    color:  rgba(0, 255, 255, 0.637)
+}
+
+.faq-answer {
+    margin-left: 1em;
+    margin-top: 10px;
+    font-size: 1em;
+    color: #ddd;
+}
+
+@keyframes animate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.container-cube {
+  position: relative;
+  top: -80px;
+  transform: skewY(-20deg);
+  animation: animate 5s linear infinite;
+  .cube {
+    position: relative;
+    z-index: 2;
+    &:nth-child(2) {
+      z-index: 1;
+      translate: -60px -60px;
+    }
+    &:nth-child(3) {
+      z-index: 3;
+      translate: 60px 60px;
+    }
+    div {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      translate: calc(-70px * var(--x)) calc(-60px * var(--y));
+      span {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: #dcdcdc;
+        z-index: calc(1 * var(--i));
+        transition: 1.5s;
+        &:hover {
+          transition: 0s;
+          background: #ef4149;
+          filter: drop-shadow(0 0 30px #ef4149);
+          &:before,
+          &:after {
+            transition: 0s;
+            background: #ef4149;
+          }
+        }
+        &:before {
+          content: "";
+          position: absolute;
+          left: -40px;
+          width: 40px;
+          height: 100%;
+          background: #fff;
+          transform-origin: right;
+          transform: skewY(45deg);
+          transition: 1.5s;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          top: -40px;
+          left: 0px;
+          width: 100%;
+          height: 40px;
+          background: #f2f2f2;
+          transform-origin: bottom;
+          transform: skewX(45deg);
+          transition: 1.5s;
+        }
+      }
+    }
+  }
+}
+
+    footer {
+        width: 100%;
+        margin-top: 6em;
+        }
+    .footer-bottom {
+        text-align: center;
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    .footer-bottom a {
+        color: #e99694;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+    
+
+    @media (max-width: 768px) {
+
+        .icon-3{
+            flex-direction: column;
+            justify-content: start;
+            height: 120vh;
+        }
+        .card-container{
+            width: 100%;
+            height: 40%;
+            margin-bottom: 2em;
+            justify-content: center;
+        }
+        .icon {
+            margin-top: 0em;
+        }
+        .card {
+        width: 100%;
+        margin: 10px 0;
+    }
+    }
+</style>
+<script>
+    const businessPlans = [
+    { name: 'Starter', price: '$9', features: ['Feature 1', 'Feature 2', 'Feature 3'] },
+    { name: 'Professional', price: '$49', features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'] },
+    { name: 'Enterprise', price: '$99', features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4', 'Feature 5'] },
+];
+
+const consumerPlans = [
+    { name: 'Free', price: '$0', features: ['Feature 1', 'Feature 2'] },
+    { name: 'Plus', price: '$19', features: ['Feature 1', 'Feature 2', 'Feature 3'] },
+    { name: 'Premium', price: '$39', features: ['Feature 1', 'Feature 2', 'Feature 3', 'Feature 4'] },
+];
+
+function togglePlans() {
+    const toggle = document.getElementById('planToggle');
+    const plansContainer = document.getElementById('plansContainer');
+    const toggleLabelbuisness = document.getElementById('toggleLabel');
+    const toggleLabelconsumer = document.getElementById('toggleLabel');
+    
+    
+    if (toggle.checked) {
+        renderPlans(consumerPlans);
+        toggleLabelconsumer.classList.add('bold');
+        toggleLabelbuisness.classList.remove('bold');
+    } else {
+        renderPlans(businessPlans);
+        toggleLabelbuisness.classList.add('bold');
+        toggleLabelconsumer.classList.remove('bold');
+    }
+}
+
+function renderPlans(plans) {
+    const plansContainer = document.getElementById('plansContainer');
+    plansContainer.innerHTML = '';
+    
+    plans.forEach(plan => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        if (plans == consumerPlans) {
+            card.innerHTML = `
+            <h1>${plan.name}</h1>
+            <h2>${plan.desc}</h2>
+            <h1 class="price">${plan.price}</h1>
+            <li>${plan.features.join('</li><li>')}</li>
+            <button class="btn-c" >Get started</button>
+
+        `;
+        } else {
+            card.innerHTML = `
+            <h1>${plan.name}</h1>
+            <h2>${plan.desc}</h2>
+            <h1 class="price">${plan.price}</h1>
+            <li>${plan.features.join('</li><li>')}</li>
+            <button class="btn-b" id="cardbtn">Get started</button>
+            
+        `;
+        }
+        if (plans == consumerPlans) {
+            card.classList.add('consumer');
+        } else {
+            card.classList.add('buisness');
+        }
+        card.addEventListener('click', () => {
+            if (plans == consumerPlans) {
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('consumerselected'));
+            card.classList.add('consumerselected');
+            } else {
+                document.querySelectorAll('.card').forEach(c => c.classList.remove('buisnessselected'));
+            card.classList.add('buisnessselected');
+            }
+
+        });
+        plansContainer.appendChild(card);
+    });
+}
+
+// Initial render
+document.addEventListener('DOMContentLoaded', () => {
+    renderPlans(businessPlans);
+});
+
+async function addCustomer() {
+            const data = {
+                stripeID: "cus_test123",
+                email: "test@example.com",
+                plan: "basic",
+                total_emails: 10,
+                priceID: "price_test123"
+            };
+
+            const response = await fetch('/add_customer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            console.log("Add Customer Response:", result);
+            // alert(JSON.stringify(result));
+        }
+
+</script>
+    <!-- <ul class="background">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+     </ul> -->
+<body>
+
+    <div class="nav">
+        <div class="logo" >
+            <div class="coin" style="display: none;">
+                <div class="side heads">
+                  <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" height="100%" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 4091.27 4091.73" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <g id="_1421344023328">
+                 <path fill="#F7931A" fill-rule="nonzero" d="M4030.06 2540.77c-273.24,1096.01 -1383.32,1763.02 -2479.46,1489.71 -1095.68,-273.24 -1762.69,-1383.39 -1489.33,-2479.31 273.12,-1096.13 1383.2,-1763.19 2479,-1489.95 1096.06,273.24 1763.03,1383.51 1489.76,2479.57l0.02 -0.02z"></path>
+                 <path fill="white" fill-rule="nonzero" d="M2947.77 1754.38c40.72,-272.26 -166.56,-418.61 -450,-516.24l91.95 -368.8 -224.5 -55.94 -89.51 359.09c-59.02,-14.72 -119.63,-28.59 -179.87,-42.34l90.16 -361.46 -224.36 -55.94 -92 368.68c-48.84,-11.12 -96.81,-22.11 -143.35,-33.69l0.26 -1.16 -309.59 -77.31 -59.72 239.78c0,0 166.56,38.18 163.05,40.53 90.91,22.69 107.35,82.87 104.62,130.57l-104.74 420.15c6.26,1.59 14.38,3.89 23.34,7.49 -7.49,-1.86 -15.46,-3.89 -23.73,-5.87l-146.81 588.57c-11.11,27.62 -39.31,69.07 -102.87,53.33 2.25,3.26 -163.17,-40.72 -163.17,-40.72l-111.46 256.98 292.15 72.83c54.35,13.63 107.61,27.89 160.06,41.3l-92.9 373.03 224.24 55.94 92 -369.07c61.26,16.63 120.71,31.97 178.91,46.43l-91.69 367.33 224.51 55.94 92.89 -372.33c382.82,72.45 670.67,43.24 791.83,-303.02 97.63,-278.78 -4.86,-439.58 -206.26,-544.44 146.69,-33.83 257.18,-130.31 286.64,-329.61l-0.07 -0.05zm-512.93 719.26c-69.38,278.78 -538.76,128.08 -690.94,90.29l123.28 -494.2c152.17,37.99 640.17,113.17 567.67,403.91zm69.43 -723.3c-63.29,253.58 -453.96,124.75 -580.69,93.16l111.77 -448.21c126.73,31.59 534.85,90.55 468.94,355.05l-0.02 0z"></path>
+                </g>
+               </g>
+                  </svg>
+                </div>
+                <div class="side tails">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="svg_back" xml:space="preserve" width="100%" height="100%" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 4091.27 4091.73" xmlns:xlink="http://www.w3.org/1999/xlink">
+               <g id="Layer_x0020_1">
+                <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                <g id="_1421344023328">
+                 <path fill="#F7931A" fill-rule="nonzero" d="M4030.06 2540.77c-273.24,1096.01 -1383.32,1763.02 -2479.46,1489.71 -1095.68,-273.24 -1762.69,-1383.39 -1489.33,-2479.31 273.12,-1096.13 1383.2,-1763.19 2479,-1489.95 1096.06,273.24 1763.03,1383.51 1489.76,2479.57l0.02 -0.02z"></path>
+                 <path fill="white" fill-rule="nonzero" d="M2947.77 1754.38c40.72,-272.26 -166.56,-418.61 -450,-516.24l91.95 -368.8 -224.5 -55.94 -89.51 359.09c-59.02,-14.72 -119.63,-28.59 -179.87,-42.34l90.16 -361.46 -224.36 -55.94 -92 368.68c-48.84,-11.12 -96.81,-22.11 -143.35,-33.69l0.26 -1.16 -309.59 -77.31 -59.72 239.78c0,0 166.56,38.18 163.05,40.53 90.91,22.69 107.35,82.87 104.62,130.57l-104.74 420.15c6.26,1.59 14.38,3.89 23.34,7.49 -7.49,-1.86 -15.46,-3.89 -23.73,-5.87l-146.81 588.57c-11.11,27.62 -39.31,69.07 -102.87,53.33 2.25,3.26 -163.17,-40.72 -163.17,-40.72l-111.46 256.98 292.15 72.83c54.35,13.63 107.61,27.89 160.06,41.3l-92.9 373.03 224.24 55.94 92 -369.07c61.26,16.63 120.71,31.97 178.91,46.43l-91.69 367.33 224.51 55.94 92.89 -372.33c382.82,72.45 670.67,43.24 791.83,-303.02 97.63,-278.78 -4.86,-439.58 -206.26,-544.44 146.69,-33.83 257.18,-130.31 286.64,-329.61l-0.07 -0.05zm-512.93 719.26c-69.38,278.78 -538.76,128.08 -690.94,90.29l123.28 -494.2c152.17,37.99 640.17,113.17 567.67,403.91zm69.43 -723.3c-63.29,253.58 -453.96,124.75 -580.69,93.16l111.77 -448.21c126.73,31.59 534.85,90.55 468.94,355.05l-0.02 0z"></path>
+                </g>
+               </g>
+              </svg></div>
+              </div>
+        </div>
+        <button class="google-signin-btn" onclick="window.location.href='/connect'"  >
+            <!-- <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Logo" class="google-logo"> -->
+            <span>Sign in / Log in</span>
+        </button>
+    </div>
+    <div class="container">
+        <div class="hero">
+            <h1>Boost Your Outreach with <b>Personalized Emails</b></h1>
+            <h2>Increase open rates and engagement with crafted personalized emails</h2>
+            <!-- <button>Get Started For Free</button> -->
+            <button class="cta" onclick="addCustomer()">
+                <span>Get Started</span>
+                <svg width="15px" height="10px" viewBox="0 0 13 10">
+                  <path d="M1,5 L11,5"></path>
+                  <polyline points="8 1 12 5 8 9"></polyline>
+                </svg>
+              </button>
+
+              <div class="container-glass">
+                <div data-text="Github" style="--r:-15;" class="glass">
+                  <svg viewBox="0 0 496 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+                    ></path>
+                  </svg>
+                </div>
+                <div data-text="Code" style="--r:5;" class="glass">
+                  <svg viewBox="0 0 640 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"
+                    ></path>
+                  </svg>
+                </div>
+                <div data-text="Earn" style="--r:25;" class="glass">
+                  <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M64 64C28.7 64 0 92.7 0 128V384c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V128c0-35.3-28.7-64-64-64H64zm64 320H64V320c35.3 0 64 28.7 64 64zM64 192V128h64c0 35.3-28.7 64-64 64zM448 384c0-35.3 28.7-64 64-64v64H448zm64-192c-35.3 0-64-28.7-64-64h64v64zM288 160a96 96 0 1 1 0 192 96 96 0 1 1 0-192z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+
+
+            
+
+
+                <!-- <div class="features">
+                    <div class="email-row-t">
+                        <div class="name-title">Primary</div>
+                    </div>
+                    <div class="email-row">
+                        <div class="box"></div>
+                        <div class="star"><i class="fi fi-ss-star"></i></div>
+                        <div class="name">Your Name</div>
+                        <div class="short-email">Lorem ipsum, dolor haui dgausihd h aohdoasdsd</div>
+                        <div class="date">May 24</div>
+                    </div>
+                    <div class="email-row">
+                        <div class="box"></div>
+                        <div class="star"><i class="fi fi-ss-star"></i></div>
+                        <div class="name">Your Name</div>
+                        <div class="short-email">Lorem ipsum, dolor haui dgausihd h aohdoasdsd</div>
+                        <div class="date">May 24</div>
+                    </div>
+
+                     <div class="email-row">
+                        <div class="box"></div>
+                        <div class="star"><i class="fi fi-ss-star"></i></div>
+                        <div class="name">Your Name</div>
+                        <div class="short-email">Lorem ipsum, dolor....</div>
+                        <div class="date">May 24</div>
+                    </div>
+                    <div class="email-row">
+                        <div class="box"></div>
+                        <div class="star"><i class="fi fi-ss-star"></i></div>
+                        <div class="name">Your Name</div>
+                        <div class="short-email">Lorem ipsum, dolor....</div>
+                        <div class="date">May 24</div>
+                    </div> -->
+                    <!-- <div class="feature-tag">Daily Tracking</div>
+                    <div class="feature-tag">Project Management</div>
+                    <div class="feature-tag">Rankings</div>
+                    <div class="feature-tag">Precision</div>
+                    <div class="feature-tag">AI Insights</div>
+                    <div class="feature-tag">Real-Time Data</div> -->
+                    <!-- <div class="feature-tag">Audit</div>
+                    <div class="feature-tag">Decision-Making</div>
+                    <div class="feature-tag">SEO Suite</div>
+                    <div class="feature-tag">Prioritization</div>  
+                </div> -->
+                <!-- <div class="row">
+                <div class="card two seo">
+                    <div class="h2">+120</div>
+                    <h3>UNMATCHED SEO EXCELLENCE</h3>
+                    <p>Achieve superior SEO performance with our cutting-edge technology and 120+ AI-driven insights.</p>
+                </div>
+                  
+        
+                <div class="card three">
+                    <div class="h2">+10</div>
+                    <h3>PRECISION SEO TOOLS</h3>
+                    <p>Utilize a suite of 10+ powerful SEO tools for accuracy and effectiveness.</p>
+                </div>
+            </div> -->
+        </div>
+
+
+
+
+
+        <div class="icon-3">
+            <!-- <div> -->
+            <div class="parent">
+                <div class="cardc">
+                    <div class="content-box">
+                        <span class="card-title">Ai-Powered Personalization</span>
+                        <p class="card-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        </p>
+                        <span class="see-more">Learn More</span>
+                    </div>
+                    <div class="date-box">
+                        <i class="fi fi-ss-wrench-alt"></i></i>
+                    </div>
+                </div>
+              </div>
+              <div class="parent">
+                <div class="cardc">
+                    <div class="content-box">
+                        <span class="card-title">High Open Rates</span>
+                        <p class="card-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        </p>
+                        <span class="see-more">Learn More</span>
+                    </div>
+                    <div class="date-box">
+                        <i class="fi fi-rs-chart-line-up"></i></i>
+                    </div>
+                </div>
+              </div>
+              <div class="parent">
+                <div class="cardc">
+                    <div class="content-box">
+                        <span class="card-title">Scalable</span>
+                        <p class="card-content">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        </p>
+                        <span class="see-more">Learn More</span>
+                    </div>
+                    <div class="date-box">
+                        <i class="fi fi-ss-megaphone"></i></i>
+                    </div>
+                </div>
+              <!-- </div> -->
+            </div>
+            <!-- <div class="card-container">
+                <div class="icon"><i class="fi fi-ss-megaphone"></i></i></div>
+                <div class="icon-head">Scalable</div>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo odio praesentium quibusdam l mollitia?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo odio praesentium quibusdam l mollitia?</li>
+            </div>
+            <div class="card-container">
+                <div class="icon"><i class="fi fi-ss-wrench-alt"></i></i></div>
+                <div class="icon-head">Ai-Powered Personalization</div>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo odio praesentium quibusdam l mollitia?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo odio praesentium quibusdam l mollitia?</li>
+            </div>
+            <div class="card-container">
+                <div class="icon"><i class="fi fi-rs-chart-line-up"></i></i></div>
+                <div class="icon-head">High Open Rates</div>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo odio praesentium quibusdam l mollitia?</li>
+                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo odio praesentium quibusdam l mollitia?</li>
+            </div> -->
+
+            <!-- <div class="cardc columns">
+     
+                <div class="button-container-c">
+                  <button class="btn-cc red-flag">RED FLAG</button>
+                  <p class="offer">JOB OFFER</p>
+                </div>
+                <p class="secondary-heading">
+                  "As a UX designer,you will design the entire UI."
+                </p>
+                <p class="card-description">Verify alignment of job description with proposed position.<br>
+                
+                </p>
+              </div>
+              <div class="cardc columns">
+     
+                <div class="button-container-c">
+                  <button class="btn-cc red-flag">RED FLAG</button>
+                  <p class="offer">JOB OFFER</p>
+                </div>
+                <p class="secondary-heading">
+                  "As a UX designer,you will design the entire UI."
+                </p>
+                <p class="card-description">Verify alignment of job description with proposed position.<br>
+                
+                </p>
+              </div>
+              <div class="cardc columns">
+     
+                <div class="button-container-c">
+                  <button class="btn-cc red-flag">RED FLAG</button>
+                  <p class="offer">JOB OFFER</p>
+                </div>
+                <p class="secondary-heading">
+                  "As a UX designer,you will design the entire UI."
+                </p>
+                <p class="card-description">Verify alignment of job description with proposed position.<br>
+                
+                </p>
+              </div> -->
+        </div> 
+
+          <!-- <div class="feature-cards">
+
+                <div class="cardsx">
+                    <figure class="cardx">
+                        <div class="content">
+                            <figcaption class="card_title">3D Hover</figcaption>
+                        </div>
+                    </figure>
+                </div>
+
+                <div class="col">
+                    <div class="cardsx">
+                        <figure class="cardx-gmail">
+                            <div class="content-gmail">
+                                
+                                <div class="features">
+                                    <div class="email-row-t">
+                                        <div class="name-title">Primary</div>
+                                    </div>
+                                    <div class="email-row">
+                                        <div class="box"></div>
+                                        <div class="star"><i class="fi fi-ss-star"></i></div>
+                                        <div class="name">Your Name</div>
+                                        <div class="short-email">Lorem ipsum, dolor haui dgausihd h aohdoasdsd</div>
+                                        <div class="date">May 24</div>
+                                    </div>
+                                    <div class="email-row">
+                                        <div class="box"></div>
+                                        <div class="star"><i class="fi fi-ss-star"></i></div>
+                                        <div class="name">Your Name</div>
+                                        <div class="short-email">Lorem ipsum, dolor haui dgausihd h aohdoasdsd</div>
+                                        <div class="date">May 24</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </figure>
+                    </div> -->
+        <div class="subscriptions" >
+            <h1>Our pricing is <br><b>SUPER</b> simple.</h1>
+            <h2>Choose the right plan for you. Cancel Anytime.</h2>
+            <!-- <div class="toggle-container"> -->
+                <!-- <span id="toggleLabelbuisness">Business Plans</span> -->
+                <!-- <label class="switch">
+                    <input type="checkbox" id="planToggle" onchange="togglePlans()">
+                    <span class="slider"></span>
+                </label> -->
+                <!-- <span id="toggleLabelconsumer">Consumer Plans</span> -->
+            <!-- </div> -->
+            <div class="c">
+                <div class="pack_card ">
+                    <div class="box">
+                    <div class="pack_name">Starter</div>
+                    <p class="description">Avanced feaures for Individuals and organizations</p>
+                    <div class="price_container">
+                        <span class="devise">$</span>
+                        <span class="price">0</span>
+                        <span class="date">/month</span>
+                      </div>
+                    <div class="lists">
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Unlimited file storage</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>10 GB bandwidth per month</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>10.000 tasks per month</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>Email support</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>100 Webhooks</span>
+                      </div>
+                      
+                  </div>
+                  <div class="bottom">
+        
+                    <a class="btn" href="#">
+                    <div class="btn-shine" onclick="window.location.href='/connect'">Get early access</div>
+                    </a>
+
+                  </div>
+                </div>
+                </div>
+        
+                <div class="pack_card">
+                    <div class="box large">
+                    <div class="banner">
+                      <span class="banner_tag">most popular</span>
+                    </div>
+                    <div class="pack_name l">Premium</div>
+          
+                    <p class="description">Avanced feaures for Individuals and organizations</p>
+                    <div class="price_container">
+                        <span class="devise">$</span>
+                        <span class="price">19</span>
+                        <span class="date">/month</span>
+                      </div>
+                    <div class="lists">
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Unlimited file storage</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>10 GB bandwidth per month</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>10.000 tasks per month</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>Email support</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>100 Webhooks</span>
+                      </div>
+                      
+                  </div>
+                  <div class="bottom-l">
+        
+                    <a class="btn-l" href="#" onclick="window.location.href='/connect'">Continue with Team</a>
+                  </div>
+                </div>
+                </div>
+        
+                <div class="pack_card ">
+                    <div class="box">
+                    <div class="pack_name">Enterprise</div>
+          
+                    <p class="description">Avanced feaures for Individuals and organizations</p>
+                    <div class="price_container">
+                        <!-- <span class="devise">$</span> -->
+                        <span class="price">Contact us</span>
+                        <!-- <span class="date">/month</span> -->
+                      </div>
+                    <div class="lists">
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>Unlimited file storage</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                        <span>10 GB bandwidth per month</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>10.000 tasks per month</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>Email support</span>
+                      </div>
+                      <div class="list">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+          
+                        <span>100 Webhooks</span>
+                      </div>
+                      
+                  </div>
+                  <div class="bottom">
+        
+                    <a class="btn" href="#" onclick="window.location.href='/connect'">Get in touch</a>
+                  </div>
+                </div>
+            </div>
+            </div>      
+
+            <!-- <div class="cards-container " id="plansContainer"> -->
+            <!-- </div> -->
+            <!-- </div> -->
+
+            
+        </div>
+        <div class="info">
+            <h3>Why Personalize Your Emails</h3>
+            <div class="info-container">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam minus facilis reiciendis animi ut nisi deserunt esse repudiandae quia eum nemo, assumenda quis aliquid non. Ipsa nobis ipsam voluptatem rerum.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores inventore aspernatur unde cumque aliquid. Tempora iure, repellendus aliquid nam eius culpa aspernatur magni ipsum molestias voluptas perspiciatis odit, veniam eos distinctio ut? In perspiciatis ullam doloremque asperiores. Numquam nihil, sapiente dolorem ea eaque incidunt voluptatem doloribus recusandae corporis porro ipsam quibusdam minima optio. Voluptas ipsum sequi, incidunt saepe voluptatibus beatae error blanditiis quibusdam animi. A doloribus, qui aliquid perferendis facilis aspernatur ullam dolor laboriosam numquam dolore, nemo iusto eius laudantium voluptatibus possimus porro molestiae tempore voluptatem accusamus sint. Quidem rerum at odit enim vel tenetur sed delectus numquam sequi dignissimos?</p>
+                <button class="info-container-btn">Start Free Today</button>
+            </div>
+        </div>
+        <!-- <div class="faq"></div> -->
+        <div class="container-contact">
+            <div class="row"><h1 class="title">Contact Us</h1>
+                <p class="subtitle">We'd love to hear from you! Reach out to us using the form below.</p></div>
+            
+            <!-- <form class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+    
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+    
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+    
+                <button type="submit" class="submit-button">Submit</button>
+            </form> -->
+            <!-- <form class="form">
+                <ul class="wrapper">
+                  
+                  <li style="--i:4;"><input class="input" type="text" placeholder="Name" required=""></li>
+                  <li style="--i:3;"><input class="input" placeholder="Phone number" required="" name="phone"></li>
+                  <li style="--i:2;"><input class="input" type="email" placeholder="E-mail" required="" name="email"></li>
+                  
+                  <button style="--i:1;">Submit</button>
+                </ul>
+              </form> -->
+              <div class="form-container">
+                <form class="form">
+                  <div class="form-group">
+                    <label for="email">Company Email</label>
+                    <input required="" name="email" id="email" type="text">
+                  </div>
+                  <div class="form-group">
+                    <label for="textarea">How Can We Help You?</label>
+                    <textarea required="" cols="50" rows="10" id="textarea" name="textarea">          </textarea>
+                  </div>
+                  <button class="button1">
+                    <svg
+                      height="24"
+                      width="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M0 0h24v24H0z" fill="none"></path>
+                      <path
+                        d="M5 13c0-5.088 2.903-9.436 7-11.182C16.097 3.564 19 7.912 19 13c0 .823-.076 1.626-.22 2.403l1.94 1.832a.5.5 0 0 1 .095.603l-2.495 4.575a.5.5 0 0 1-.793.114l-2.234-2.234a1 1 0 0 0-.707-.293H9.414a1 1 0 0 0-.707.293l-2.234 2.234a.5.5 0 0 1-.793-.114l-2.495-4.575a.5.5 0 0 1 .095-.603l1.94-1.832C5.077 14.626 5 13.823 5 13zm1.476 6.696l.817-.817A3 3 0 0 1 9.414 18h5.172a3 3 0 0 1 2.121.879l.817.817.982-1.8-1.1-1.04a2 2 0 0 1-.593-1.82c.124-.664.187-1.345.187-2.036 0-3.87-1.995-7.3-5-8.96C8.995 5.7 7 9.13 7 13c0 .691.063 1.372.187 2.037a2 2 0 0 1-.593 1.82l-1.1 1.039.982 1.8zM12 13a2 2 0 1 1 0-4 2 2 0 0 1 0 4z"
+                        fill="currentColor"
+                      ></path>
+                    </svg>
+                    <span>Submit</span>
+                  </button>
+                  
+                </form>
+              </div>
+        </div>
+        <div class="faq">
+            <div class="row">
+            <h1 class="title">Frequently Asked Questions</h1>
+            <div class="faq-item">
+                <h2 class="faq-question">What is the refund policy?</h2>
+                <p class="faq-answer">We offer a 30-day money-back guarantee. If you're not satisfied with your purchase, you can request a refund within 30 days of your purchase date.</p>
+            </div>
+            <div class="faq-item">
+                <h2 class="faq-question">How do I upgrade my plan?</h2>
+                <p class="faq-answer">To upgrade your plan, log into your account, navigate to the billing section, and select the plan you wish to upgrade to.</p>
+            </div>
+            <div class="faq-item">
+                <h2 class="faq-question">Is there a free trial available?</h2>
+                <p class="faq-answer">Yes, we offer a 14-day free trial for all our plans. You can sign up for the trial without providing payment information.</p>
+            </div>
+            <!-- Add more FAQ items as needed -->
+        </div>
+<div class="row-cube">
+        <div class="container-cube">
+            <div class="cube">
+              <div style="--x:-1; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+              <div style="--x:0; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+              <div style="--x:1; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+            </div>
+            <div class="cube">
+              <div style="--x:-1; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+              <div style="--x:0; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+              <div style="--x:1; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+            </div>
+            <div class="cube">
+              <div style="--x:-1; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+              <div style="--x:0; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+              <div style="--x:1; --y:0;">
+                <span style="--i:3;"></span>
+                <span style="--i:2;"></span>
+                <span style="--i:1;"></span>
+              </div>
+            </div>
+          </div>
+            
+        </div>
+        </div>
+       
+
+    </div>
+    <footer>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Volt Mail. Marketing Agency London, England. All Rights Reserved</p>
+            <a href="#">PRIVACY POLICY</a> | <a href="#">TERMS AND CONDITIONS</a>
+        </div>
+    </footer>
+</body>
+</html>

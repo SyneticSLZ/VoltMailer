@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "builds": [
+      { "src": "combinedapp.py", "use": "@vercel/python" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "combinedapp.py" }
+    ]
+  }
+  

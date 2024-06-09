@@ -1,0 +1,2439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-0N7X0pv6FGn5XqIV+4SaYbNjDkzSfb9kN+ITbszPxF5TX5o5TQw5i5V4JVG5lCe" crossorigin="anonymous"> -->
+    <style>
+        .loading{
+    display: block;
+}
+.center {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  
+  .container {
+    height: 31.25em;
+    width: 21.87em;
+    margin-top: -325px;
+  }
+  
+  .rope {
+    height: 13.62em;
+    width: 0.15em;
+    background-color: #ffffff;
+    animation: swing 2s infinite;
+  }
+  
+  @keyframes swing {
+    50% {
+      transform: translateY(-4em);
+    }
+  }
+  
+  .legs {
+    height: 1.12em;
+    width: 7.5em;
+    background-color: transparent;
+    box-shadow: 0 0 0 0.12em #140243, 0 0 0 1.06em #1b1676, 0 0 0 1.18em #140243;
+    top: 12.5em;
+    border-radius: 3.12em;
+  }
+  
+  .boot-l,
+  .boot-r {
+    height: 1.25em;
+    width: 2.5em;
+    background-color: #e32832;
+    position: absolute;
+    border: 0.12em solid #140243;
+    bottom: 1.12em;
+  }
+  
+  .boot-l {
+    left: 1em;
+  }
+  
+  .boot-r {
+    transform: rotateY(180deg);
+    left: 3.81em;
+  }
+  
+  .boot-l:before,
+  .boot-r:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 1.12em solid #140243;
+    border-left: 1.18em solid transparent;
+    bottom: 1.31em;
+    left: 1.46em;
+  }
+  
+  .boot-l:after,
+  .boot-r:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 1.12em solid #e32832;
+    border-left: 1em solid transparent;
+    right: 0;
+    top: -0.93em;
+  }
+  
+  .costume {
+    height: 6.25em;
+    width: 5.62em;
+    background: linear-gradient(
+      to right,
+      #1b1676 20%,
+      #e32832 20%,
+      #e32832 80%,
+      #1b1676 80%
+    );
+    border: 0.12em solid #140243;
+    top: 14.68em;
+  }
+  
+  .spider {
+    height: 1.87em;
+    width: 0.93em;
+    background-color: #140243;
+    border-radius: 45%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: calc(50% + 0.93em);
+    left: 50%;
+  }
+  
+  .s1,
+  .s3 {
+    height: 7.5em;
+    width: 2.5em;
+    border-radius: 0 0 1.37em 1.37em;
+    border-bottom: 0.12em solid #140243;
+    position: absolute;
+  }
+  
+  .s2,
+  .s4 {
+    height: 7.5em;
+    width: 3.12em;
+    border-radius: 0 0 1.56em 1.56em;
+    border-bottom: 0.12em solid #140243;
+    position: absolute;
+  }
+  
+  .s1,
+  .s2,
+  .s3,
+  .s4 {
+    left: 50%;
+  }
+  
+  .s1 {
+    bottom: 1.43em;
+  }
+  
+  .s2 {
+    bottom: 0.93em;
+  }
+  
+  .s3,
+  .s4 {
+    transform: translateX(-50%) rotateX(180deg);
+  }
+  
+  .s3 {
+    top: 1.43em;
+  }
+  
+  .s4 {
+    top: 0.93em;
+  }
+  
+  .belt {
+    height: 0.43em;
+    width: 5.87em;
+    background-color: #e32832;
+    border: 0.12em solid #140243;
+    top: -0.12em;
+  }
+  
+  .hand-r,
+  .hand-l {
+    height: 8.12em;
+    background: linear-gradient(
+      #e32832 4.6em,
+      #140243 4.6em,
+      #140243 4.75em,
+      #1b1676 4.75em,
+      #1b1676 8.12em
+    );
+    width: 1.12em;
+    border: 0.12em solid #140243;
+    border-radius: 1.25em;
+    position: absolute;
+    transform-origin: bottom;
+    bottom: -0.12em;
+  }
+  
+  .hand-r {
+    right: -0.75em;
+    transform: rotate(-22deg);
+  }
+  
+  .hand-l {
+    left: -0.75em;
+    transform: rotate(22deg);
+  }
+  
+  .neck {
+    height: 0.37em;
+    width: 1.25em;
+    background-color: #e32832;
+    bottom: -0.62em;
+    border: 0.12em solid #140243;
+  }
+  
+  .mask {
+    height: 4.65em;
+    width: 4.06em;
+    background-color: #e32832;
+    border-radius: 50% 50% 50% 50% / 54% 54% 46% 46%;
+    border: 0.12em solid #140243;
+    top: 6.56em;
+  }
+  
+  .eye-l,
+  .eye-r {
+    height: 0.68em;
+    width: 1.37em;
+    background-color: #ffffff;
+    border-radius: 1.37em 1.37em 0 0;
+    border: 0.12em solid #140243;
+    position: absolute;
+    top: 2.1em;
+  }
+  
+  .eye-l {
+    left: 0.3em;
+  }
+  
+  .eye-r {
+    right: 0.3em;
+  }
+  
+  .cover {
+    height: 3.12em;
+    width: 0.15em;
+    background-color: #ffffff;
+    bottom: 8.12em;
+  }
+  
+  @media screen and (min-width: 600px) {
+    .container {
+      font-size: 20px;
+    }
+  }
+
+/* ///////////////////////////////////////////////////////////////////////////////////////////////////// */
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #02021E;
+    /* color: #ffffff; */
+    overflow: hidden;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    /* background-color: #bbbbbb; */
+    /* padding: 10px 20px; */
+    /* border-bottom: 1px white solid; */
+}
+.navbar h3{
+    font-weight: 100;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo img {
+    height: 10px;
+    width: 10px;
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.google-signin-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 2em;
+    border-radius: 16px;
+    border: #ffffff20 solid 1px;
+}
+.google-signin-btn img {
+    margin-right: 10px;
+    margin: 1em;
+}
+.google-signin-btn span {
+    margin-right: 10px;
+    margin-right: 1em;
+    font-size: 20px;
+}
+.container {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 60px); /* Adjust height based on the navbar height */
+}
+
+.sidebar {
+    width: 250px;
+    background: rgba(255, 255, 255, 0.021);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 247, 255, 0.6);
+    backdrop-filter: blur(10px);
+    transition: width 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: #ffffff;
+    color: #1C1A1C;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar .sidebar-content {
+    flex-grow: 1;
+}
+
+.sidebar .collapse-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin: 10px;
+    color: #ffffff;
+    color: #1C1A1C;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li.active, .sidebar ul li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.sidebar ul li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    color: #1C1A1C;
+    width: 100%;
+}
+
+.sidebar ul li a i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.sidebar ul li a span {
+    transition: margin-left 0.3s, opacity 0.3s;
+}
+
+.sidebar.collapsed ul li a span {
+    display: none;
+}
+
+.sidebar .tools-header {
+    padding: 15px 20px;
+    font-size: 12px;
+    color: #bbbbbb;
+    color: #1C1A1C;
+    text-transform: uppercase;
+}
+
+.logout {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+#content{
+  margin-inline: 4em;
+}
+.logout a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #ffffff;
+    color: #1C1A1C;
+    font-weight: 400;
+}
+
+.main-content {
+    /* flex-grow: 1; */
+    width: 100%;
+    height: 100vh;
+    margin-left: 20px;
+    /* padding: 200px; */
+    /* background-color: #02021E; */
+    /* border: #0ff solid 4px; */
+}
+
+
+h1{
+    font-size: 55px;
+    margin-bottom: 0.3em;
+    /* color: black; */
+}
+h1 b {
+    background: linear-gradient(to bottom, #f0f, #0ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 6em;
+}
+.row-notification{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-inline: 2em;
+  }
+  
+  .switch .checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: transparent;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    box-shadow: 1px 1px 5px 0 #9917FF inset;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #9917FF;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    box-shadow: inset 1px 1px 2px 0px #ff7ca7;
+  }
+  
+  .checkbox:checked + .slider {
+    box-shadow: 1px 1px 5px 0 #2a9d8f inset;
+  }
+  
+  .checkbox:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    background-color: #2a9d8f;
+    box-shadow: inset -1px 1px 2px 0px #a3fff4;
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+  
+.row{
+    margin-top: 2em;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: top;
+    justify-content: space-between;
+
+}
+.notification {
+    display: flex;
+    flex-direction: column;
+    isolation: isolate;
+    position: relative;
+    width: 18rem;
+    height: 8rem;
+    background: #29292c00;
+    border-radius: 1rem;
+    overflow: hidden;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 16px;
+    --gradient: linear-gradient(to bottom, #2eadff, #3d83ff, #7e61ff);
+    --color: #32a6ff
+  }
+  
+  .notification:before {
+    position: absolute;
+    content: "";
+    inset: 0.0625rem;
+    border-radius: 0.9375rem;
+    background: #18181b00;
+    z-index: 2
+  }
+  
+  .notification:after {
+    position: absolute;
+    content: "";
+    width: 0.25rem;
+    inset: 0.65rem auto 0.65rem 0.5rem;
+    border-radius: 0.125rem;
+    background: var(--gradient);
+    transition: transform 300ms ease;
+    z-index: 4;
+  }
+  
+  .notification:hover:after {
+    transform: translateX(0.15rem)
+  }
+  
+  .notititle {
+    color: var(--color);
+    padding: 0.65rem 0.25rem 0.4rem 1.25rem;
+    font-weight: 500;
+    font-size: 1.1rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+  }
+  
+  .notification:hover .notititle {
+    transform: translateX(0.15rem)
+  }
+  
+  .notibody {
+    color: #99999d;
+    color: #1C1A1C;
+    padding: 0 1.25rem;
+    transition: transform 300ms ease;
+    z-index: 5;
+  }
+  
+  .notification:hover .notibody {
+    transform: translateX(0.25rem)
+  }
+  
+  .notiglow,
+  .notiborderglow {
+    position: absolute;
+    width: 20rem;
+    height: 20rem;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle closest-side at center, white, transparent);
+    opacity: 0;
+    transition: opacity 300ms ease;
+  }
+  
+  .notiglow {
+    z-index: 3;
+  }
+  
+  .notiborderglow {
+    z-index: 1;
+  }
+  
+  .notification:hover .notiglow {
+    opacity: 0.1
+  }
+  
+  .notification:hover .notiborderglow {
+    opacity: 0.1
+  }
+  
+  .note {
+    color: var(--color);
+    position: fixed;
+    top: 80%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 0.9rem;
+    width: 75%;
+  }
+.row{
+    margin-top: 5em;
+    /* border: #2eadff solid 2px; */
+    width: 90%;
+    height: 70vh;
+}
+  
+.pitch{
+
+    border: #ffffff20 solid 1px;
+    border-radius: 10px;
+    /* background: rgba(0, 0, 0, 0.2); */
+    color: #fff;
+    color: #1C1A1C;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height: 80%;
+    /* border: red 1px solid;  */
+}
+.pitch-row{
+  margin-right: 4em;
+  /* border: red 1px solid;  */
+    padding: 0;
+    /* border: #08080820 solid 1px; */
+    /* border: #cc0000 solid 1px; */
+    border-radius: 10px;
+    /* background: rgba(163, 18, 18, 0.2); */
+    color: #fff;
+    color: #1C1A1C;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height: 20%;
+    /* display: flex; */
+    /* flex-direction: row; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+/* .pitch-row button{
+  background-color: rgb(16, 10, 97);
+  color: white;
+  border-radius: 10px;
+  padding: 10px 20px;
+  border: rgb(16, 10, 97, 30) solid 1px;
+}
+.pitch-row button:hover{
+  background-color: rgb(26, 21, 90);
+  cursor: pointer;
+} */
+.pitch-row formq{
+        /* border: #cc0000 solid 1px; */
+        border-radius: 10px;
+    /* background: rgba(163, 18, 18, 0.2); */
+    color: #fff;
+    color: #1C1A1C;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
+    width: 100%;
+    height: 6em;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.wave-group {
+  /* border: red 1px solid;  */
+    position: relative;
+    margin: auto;
+  }
+  
+  .wave-group .input {
+    font-size: 16px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 200px;
+    border: none;
+    border-bottom: 1px solid #515151;
+    background: transparent;
+    color: white;
+    color: #1C1A1C;
+  }
+  
+  .wave-group .input:focus {
+    outline: none;
+  }
+  
+  .wave-group .label {
+    color: #999;
+    color: #1C1A1C;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    display: flex;
+  }
+  
+  .wave-group .label-char {
+    transition: 0.2s ease all;
+    transition-delay: calc(var(--index) * .05s);
+  }
+  
+  .wave-group .input:focus ~ label .label-char,
+  .wave-group .input:valid ~ label .label-char {
+    transform: translateY(-20px);
+    font-size: 14px;
+    color: #5264AE;
+  }
+  
+  .wave-group .bar {
+    position: relative;
+    display: block;
+    width: 200px;
+  }
+  
+  .wave-group .bar:before,.wave-group .bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264AE;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+  
+  .wave-group .bar:before {
+    left: 50%;
+  }
+  
+  .wave-group .bar:after {
+    right: 50%;
+  }
+  
+  .wave-group .input:focus ~ .bar:before,
+  .wave-group .input:focus ~ .bar:after {
+    width: 50%;
+  }
+  
+  .loading {
+            display: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #1C1A1C;
+        }
+        table, th, td {
+            border: 1px solid black;
+            color: #1C1A1C;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            color: #1C1A1C;
+        }
+        .slide{
+            width: 100%;
+    /* border: #0ff solid 2px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: row;
+        }
+.row-notification{
+    margin-top: 20px;
+    width: 100%;
+    /* border: #0ff solid 2px; */
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: column;
+}
+.pitch-col{
+    /* border: #bd1d1d solid 3px; */
+    /* box-shadow: 0 2px 10px rgba(255, 0, 255, 0.6); */
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.12), 
+        0 1px 2px rgba(0, 0, 0, 0.24), 
+        0 5px 15px rgba(0, 255, 255, 0.5), 
+        0 10px 20px rgba(255, 0, 255, 0.5);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 65%;
+    height: 30em;
+    margin-top: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+        /* Custom scrollbar styles */
+        .pitch-col::-webkit-scrollbar {
+            width: 10px;
+        }
+        .pitch-col::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            color: #1C1A1C;
+        }
+        .pitch-col::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+        .pitch-col::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+  
+
+.pitch-input {
+  width: 100%;
+  height: 100%;
+  /* padding: 1em; */
+  border-radius: 10px;
+  border: #ffffff20 solid 1px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0);
+  color: #fff;
+  color: #1C1A1C;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.12), 
+        0 1px 2px rgba(0, 0, 0, 0.24), 
+        0 5px 15px rgba(0, 255, 255, 0.5), 
+        0 10px 20px rgba(255, 0, 255, 0.5);
+}
+
+.pitch-input::placeholder {
+  color: #ffffff90;
+  color: #1C1A1C;
+}
+
+.send{
+    
+    width: 25%;
+    height: 30em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    /* border: red 1px solid;  */
+
+}
+
+.pitch-send{
+    /* border: red 1px solid; */
+    width: 100%;
+    height: 15em;
+    justify-self: start;
+    
+}
+.pitch-send textarea{
+  padding: 1em;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  
+}
+.cyberpunk-checkbox {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #9917FF;
+  border-radius: 5px;
+  background-color: transparent;
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  cursor: pointer;
+  justify-self: start;
+}
+
+.cyberpunk-checkbox:before {
+  content: "";
+  background-color: #9917FF;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+}
+
+.cyberpunk-checkbox:checked:before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.cyberpunk-checkbox-label {
+  font-size: 18px;
+  color: #fff;
+  color: #1C1A1C;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.submit{
+    justify-self: start;
+    /* border: #ffffff20 solid 1px; */
+    /* border-radius: 10px; */
+    /* background: rgba(0, 0, 0, 0.2); */
+    color: #fff;
+    color: #1C1A1C;
+    /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
+    height: 5em;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* inspired from this svgbackgrounds.com/ */
+.button {
+    width: 100%;
+    /* height: 5em; */
+    display: flex;
+    padding: 0.8em 1.1em;
+    gap: 0.4rem;
+    border: none;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    /* background: linear-gradient(
+        15deg,
+        #880088,
+        #aa2068,
+        #cc3f47,
+        #de6f3d,
+        #f09f33,
+        #de6f3d,
+        #cc3f47,
+        #aa2068,
+        #880088
+      )
+      no-repeat; */
+      background: linear-gradient(
+        15deg,
+        #880088,
+        #8320aa,
+        rgb(111, 0, 255),
+        #0ff,
+        #0ff,
+        rgb(111, 0, 255),
+        #8320aa,
+        #880088
+      )
+      no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: background 0.3s ease;
+    color: #fff;
+    color: #1C1A1C;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  
+  .button:hover {
+    background-size: 320%;
+    background-position: right center;
+  }
+  
+  .button:hover svg {
+    fill: #fff;
+  }
+  
+  .button svg {
+    width: 23px;
+    fill: #f09f33;
+    transition: 0.3s ease;
+  }
+
+  .button-g {
+    width: 100%;
+    /* height: 5em; */
+    display: flex;
+    padding: 0.8em 1.1em;
+    gap: 0.4rem;
+    border: none;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    /* background: linear-gradient(
+        15deg,
+        #880088,
+        #aa2068,
+        #cc3f47,
+        #de6f3d,
+        #f09f33,
+        #de6f3d,
+        #cc3f47,
+        #aa2068,
+        #880088
+      )
+      no-repeat; */
+      background: linear-gradient(to bottom, #f0f, #0ff);
+    background-size: 300%;
+    background-position: left center;
+    transition: background 0.3s ease;
+    color: #fff;
+    /* color: #1C1A1C; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  
+  .button-g:hover {
+    background-size: 320%;
+    background-position: right center;
+  }
+  
+  
+.btn {
+    border: none;
+    width: 100%;
+    height: 5em;
+    border-radius: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    background: #1C1A1C;
+    /* color: #1C1A1C; */
+    cursor: pointer;
+    transition: all 450ms ease-in-out;
+  }
+  
+  .sparkle {
+    fill: #AAAAAA;
+    transition: all 800ms ease;
+  }
+  
+  .text {
+    font-weight: 600;
+    color: #AAAAAA;
+    font-size: medium;
+  }
+  
+  .btn:hover {
+    background: linear-gradient(0deg,#A47CF3,#683FEA);
+    box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+    inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+    0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+    0px 0px 180px 0px #9917FF;
+    transform: translateY(-2px);
+  }
+  
+  .btn:hover .text {
+    color: white;
+
+  }
+  
+  .btn:hover .sparkle {
+    fill: white;
+    transform: scale(1.2);
+  } 
+  body {
+            display: flex;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #02021E;
+            color: #ffffff;
+            overflow: hidden;
+        }
+        .navbar, .main-content, .sidebar {
+            transition: width 0.3s;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 20px;
+            /* border-bottom: 1px white solid; */
+        }
+        .sidebar {
+            width: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .sidebar.collapsed {
+            width: 80px;
+        }
+        .sidebar .sidebar-content {
+            flex-grow: 1;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar ul li.active{
+          background-color: rgba(255, 255, 255, 0.6);
+        }
+         .sidebar .noHover:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        .sidebar ul li a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: #ffffff;
+            color: #1C1A1C;
+            width: 100%;
+        }
+        .main-content {
+            flex-grow: 1;
+            margin-left: 20em;
+            padding: 20px;
+        }
+        #content{
+          width: 97vw;
+          height: 100vh;
+        }
+        .section {
+            background-color: #14142b;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .section-header {
+            font-size: 1.5em;
+            margin-bottom: 3em;
+            text-align: center;
+        }
+        .sub-header {
+            font-size: 1.2em;
+            margin: 10px 0;
+            border-bottom: 1px solid #00000040;
+            padding-bottom: 5px;
+            margin-bottom: 2em;
+        }
+        .progress-bar {
+            height: 20px;
+            background-color: #e0e0e020;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-block: 2em;
+        }
+        .progress-bar .progress {
+            height: 100%;
+            background: linear-gradient(to bottom, #f0f, #0ff);
+        }
+        .button {
+            margin-top: 20px;
+            background-color: #f0f;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            float: right;
+        }
+        .subscription-details {
+            display: flex;
+            justify-content: start;
+            gap: 3em;
+            align-items: center;
+        }
+        .subscription-features {
+            /* margin-top: 10px; */
+        }
+        #form-container{
+            width: 100%;
+        }
+
+        .buttons{
+        /* width: 10%; */
+    /* height: 5em; */
+    display: flex;
+    padding: 0.8em 1.1em;
+    gap: 0.4rem;
+    border: none;
+    font-weight: 200;
+    border-radius: 30px;
+    cursor: pointer;
+    text-shadow: 2px 2px 3px rgb(136 0 136 / 50%);
+    /* background: linear-gradient(
+        15deg,
+        #880088,
+        #aa2068,
+        #cc3f47,
+        #de6f3d,
+        #f09f33,
+        #de6f3d,
+        #cc3f47,
+        #aa2068,
+        #880088
+      )
+      no-repeat; */
+      background: linear-gradient(
+        15deg,
+        #880088,
+        #8320aa,
+        rgb(111, 0, 255),
+        #0ff,
+        #0ff,
+        rgb(111, 0, 255),
+        #8320aa,
+        #880088
+      )
+      no-repeat;
+    background-size: 300%;
+    background-position: left center;
+    transition: background 0.3s ease;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+  
+  .buttons:hover {
+    background-size: 320%;
+    background-position: right center;
+  }
+        .loader {
+  position: relative;
+  border-style: solid;
+  box-sizing: border-box;
+  border-width: 40px 60px 30px 60px;
+  border-color: #3760C9 #96DDFC #96DDFC #36BBF7;
+  animation: envFloating 1s ease-in infinite alternate;
+}
+
+.loader:after {
+  content: "";
+  position: absolute;
+  right: 62px;
+  top: -40px;
+  height: 70px;
+  width: 50px;
+  background-image: linear-gradient(#fff 45px, transparent 0),
+            linear-gradient(#fff 45px, transparent 0),
+            linear-gradient(#fff 45px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 30px 4px;
+  background-position: 0px 11px , 8px 35px, 0px 60px;
+  animation: envDropping 0.75s linear infinite;
+} 
+
+/* .loader:after {
+  content: "";
+  position: absolute;
+  right: calc(75% * 1.33 * 0.52);
+  top: calc(-75% * 0.67);
+  height: calc(75% * 1.17);
+  width: calc(75% * 0.83);
+  background-image: linear-gradient(#fff calc(75% * 0.75), transparent 0),
+            linear-gradient(#fff calc(75% * 0.75), transparent 0),
+            linear-gradient(#fff calc(75% * 0.75), transparent 0);
+  background-repeat: no-repeat;
+  background-size: calc(75% * 0.5) calc(75% * 0.067);
+  background-position: 0px calc(75% * 0.18) , calc(75% * 0.13) calc(75% * 0.58), 0px calc(75% * 1);
+  animation: envDropping 0.75s linear infinite;
+} */
+
+@keyframes envFloating {
+  0% {
+    transform: translate(-2px, -5px)
+  }
+
+  100% {
+    transform: translate(0, 5px)
+  }
+}
+
+@keyframes envDropping {
+  0% {
+    background-position: 100px 11px , 115px 35px, 105px 60px;
+    opacity: 1;
+  }
+
+  50% {
+    background-position: 0px 11px , 20px 35px, 5px 60px;
+  }
+
+  60% {
+    background-position: -30px 11px , 0px 35px, -10px 60px;
+  }
+
+  75%, 100% {
+    background-position: -30px 11px , -30px 35px, -30px 60px;
+    opacity: 0;
+  }
+}
+      
+    </style>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-solid-straight/css/uicons-solid-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-rounded/css/uicons-bold-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-regular-straight/css/uicons-regular-straight.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <!-- <link rel="icon" href="../logo.svg" type="image/icon type"> -->
+</head>
+<body>
+
+    <div class="loading" id="loading">
+    <div class="container center ">
+        <div class="rope center">
+          <div class="legs center">
+            <div class="boot-l"></div>
+            <div class="boot-r"></div>
+          </div>
+          <div class="costume center">
+            <div class="spider">
+              <div class="s1 center"></div>
+              <div class="s2 center"></div>
+              <div class="s3"></div>
+              <div class="s4"></div>
+            </div>
+            <div class="belt center"></div>
+            <div class="hand-r"></div>
+            <div class="hand-l"></div>
+            <div class="neck center"></div>
+            <div class="mask center">
+              <div class="eye-l"></div>
+              <div class="eye-r"></div>
+            </div>
+            <div class="cover center"></div>
+          </div>
+      </div></div>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-content">
+            <!-- <div class="logo sidebarItem"> -->
+                <!-- <i class="fi fi-ss-envelope-dot"></i> -->
+                <!-- <span>Volt</span> -->
+                <!-- <button class="collapse-btn" onclick="toggleSidebar()">&#9776;</button> -->
+            <!-- </div> -->
+            
+            <ul>
+                <li onclick="toggleSidebar()" ><a href="#"><i class="fi fi-rs-burger-menu"></i><span>VoltMail</span></a></li>
+                <li class="active" onclick="loadContent('home')" class="noHover"><a href="#"><i class="fi fi-br-house-blank"></i> <span>Home</span></a></li>
+                <li onclick="loadContent('accountSettings')" class="noHover"><a href="#"><i class="fi fi-rr-user-pen"></i> <span>Account Settings</span></a></li>
+                <li onclick="loadContent('supportResources')" class="noHover"><a href="#"><i class="fi fi-rr-customer-service"></i> <span>Support and Resources</span></a></li>
+                <li class="tools-header">Tools</li>
+                <li onclick="loadContent('myAccount')" class="noHover"><a href="#"><i class="fi fi-bs-pulse"></i> <span>My Usage</span></a></li>
+                <li onclick="loadContent('myAccount')" class="noHover"><a href="#"><i class="fi fi-rr-credit-card"></i> <span>Billing</span></a></li>
+                
+            </ul>
+        </div>
+        <div class="logout sidebarItem">
+            <i class="fi fi-bs-arrow-left-from-line"></i>
+            <a href="#"><i class="fas fa-sign-out-alt"></i> <span>Log out</span></a>
+        </div>
+    </div>
+<div id="content"></div>
+<!-- <div>'{{password}}'</div> -->
+    <div class="main-content" id="main-content" style="display: none;">
+      <!-- <div id="home-content"> -->
+        <div class="navbar">
+            <h3>{{ plan }} Tier Subscriber</h3>
+            <div class="google-signin-btn" >
+                <img src="https://img.icons8.com/color/48/google-logo.png" alt="Google Logo" class="google-logo">
+                <span>{{ email }}</span>
+                <!-- <span>{{product_id }} {{total_emails}} </span> -->
+            </div>
+        </div>
+        <h1>Welcome <b>{{ name }}</b></h1>
+
+        <div class="row">
+            <div class="pitch-col">
+               <div class="pitch-row">
+
+                <div id="csvContainer" style="display: none;">
+                    <label for="csvFile">Upload CSV file:</label>
+                    <input type="file" id="csvFile" accept=".csv"><br><br>
+                    <div class="loading" id="loadingIcon">Loading...</div>
+                </div>
+                <div id="form-Container">
+                <formq class="pitch-row" id="inputForm">
+                    <div class="wave-group">
+                        <input required="" type="text" class="input" id="email">
+                        <span class="bar"></span>
+                        <label class="label">
+                          <span class="label-char" style="--index: 0">E</span>
+                          <span class="label-char" style="--index: 0">n</span>
+                          <span class="label-char" style="--index: 0">t</span>
+                          <span class="label-char" style="--index: 0">e</span>
+                          <span class="label-char" style="--index: 0">r E</span>
+                          <!-- <span class="label-char" style="--index: 0"></span> -->
+                          <!-- <span class="label-char" style="--index: 0">E</span> -->
+                          <span class="label-char" style="--index: 1">m</span>
+                          <span class="label-char" style="--index: 2">a</span>
+                          <span class="label-char" style="--index: 3">i</span>
+                          <span class="label-char" style="--index: 3">l</span>
+                        </label>
+                      </div>
+                      <div class="wave-group">
+                        <input required="" type="text" class="input" id="website">
+                        <span class="bar"></span>
+                        <label class="label">
+                          <span class="label-char" style="--index: 0">E</span>
+                          <span class="label-char" style="--index: 0">n</span>
+                          <span class="label-char" style="--index: 0">t</span>
+                          <span class="label-char" style="--index: 0">e</span>
+                          <span class="label-char" style="--index: 0">r W</span>
+                          <span class="label-char" style="--index: 1">e</span>
+                          <span class="label-char" style="--index: 2">b</span>
+                          <span class="label-char" style="--index: 3">s</span>
+                          <span class="label-char" style="--index: 3">i</span>
+                          <span class="label-char" style="--index: 3">t</span>
+                          <span class="label-char" style="--index: 3">e</span>
+                        </label>
+                      </div>
+                      <div class="wave-group">
+                        <input required="" type="text" class="input" id="name">
+                        <span class="bar"></span>
+                        <label class="label">
+                          <span class="label-char" style="--index: 0">E</span>
+                          <span class="label-char" style="--index: 0">n</span>
+                          <span class="label-char" style="--index: 0">t</span>
+                          <span class="label-char" style="--index: 0">e</span>
+                          <span class="label-char" style="--index: 0">r N</span>
+                          <span class="label-char" style="--index: 1">a</span>
+                          <span class="label-char" style="--index: 2">m</span>
+                          <span class="label-char" style="--index: 3">e</span>
+                        </label>
+                      </div> 
+
+                      <button  onclick="a()">Submit</button>
+                    
+                      
+                 </formq>
+                 <div id="manualError" class="error"></div>
+                 </div>
+                </div>
+                <div class="pitch">
+                    <table id="dataTable">
+                        <!-- <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Website</th>
+                                <th>Recipient Name</th>
+                            </tr>
+                        </thead> -->
+                        <tbody>
+                            <!-- Rows will be added here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="send">
+                <div class="pitch-send">
+                    <!-- <div class="wave-group"> -->
+                        <!-- <input required="" type="text" class="input"> -->
+                        <textarea id="userPitch" class="pitch-input" name="user_pitch" placeholder="Enter your pitch here..." required></textarea>
+                        <!-- <span class="bar"></span>
+                        <label class="label">
+                          <span class="label-char" style="--index: 0">E</span>
+                          <span class="label-char" style="--index: 1">m</span>
+                          <span class="label-char" style="--index: 2">a</span>
+                          <span class="label-char" style="--index: 3">i</span>
+                          <span class="label-char" style="--index: 3">l</span>
+                        </label>
+                      </div> -->
+                </div>
+                <div class="row-notification">
+                    <!-- <div class="notification">
+                        <div class="notiglow"></div>
+                        <div class="notiborderglow"></div>
+                        <div class="notititle">Welcome To Volt.</div>
+                        <div class="notibody">Contribute to Open Source UI Elements</div>
+                      </div> -->
+                      <div class="slide">
+                      <div class="manual">Enter Manually</div>
+                      <label class="switch">
+                        <input class="checkbox" type="checkbox" />
+                        <span class="slider round"></span>
+                      </label> 
+                      <div class="csv">Upload CSV</div>
+                    </div>
+                    <label class="cyberpunk-checkbox-label">
+                      <input type="checkbox" id="cyberpunkCheckbox" class="cyberpunk-checkbox">
+                      AutoSend Emails
+                  </label>
+                  
+                <div class="submit" id="submit">
+                    <!-- <button class="btn">
+                        <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+                            <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                        </svg>
+                    
+                        <span class="text">Generate</span>
+                    </button> -->
+
+                    <button class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                          <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                        </svg>
+                        Unlock Pro
+                      </button>
+                </div>
+            </div>
+        </div>
+    </div>
+  <!-- </div> -->
+</div>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script>
+// document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('submit');
+    const inputForm = document.getElementById('inputForm');
+    // const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const toggleCheckbox = document.querySelector('.checkbox');
+    const formContainer = document.getElementById('form-Container');
+    const csvContainer = document.getElementById('csvContainer');
+    const csvFileInput = document.getElementById('csvFile');
+    const loadingIcon = document.getElementById('loadingIcon');
+    const manualError = document.getElementById('manualError');
+    const csvError = document.getElementById('csvError');
+
+        let submittedData = [];
+        let OutputsData = [];
+
+        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+        const websiteRegex = /^https:\/\/[\w.-]+(?:\.[\w\.-]+)+$/;
+
+
+          // function a(){
+          //   console.log('h')
+          //   const email = document.getElementById('email').value;
+          //   const website = document.getElementById('website').value;
+          //   const name = document.getElementById('name').value;
+          //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          //   const websiteRegex = /^https:\/\/.+$/;
+          //   if (!emailRegex.test(email)) {
+          //       manualError.textContent = "Invalid email format.";
+          //       return;
+          //   } else if (!websiteRegex.test(website)) {
+          //       manualError.textContent = "Invalid website format. Must start with https://";
+          //        return;
+          //   } else {
+          //       manualError.textContent = "";
+          //   }
+
+          //   const formData = {
+          //       email: email,
+          //       website: website,
+          //       name: name
+          //   };
+
+          //   submittedData.push(formData);
+          //   updateTable();
+          //   inputForm.reset(); // Clear the input fields after submission
+          //   console.log(formData)
+          //   }
+
+
+        toggleSidebar()
+        initialize()
+        toggleCheckbox.addEventListener('change', function() {
+            if (toggleCheckbox.checked) {
+                formContainer.style.display = "none";
+                csvContainer.style.display = "block";
+            } else {
+                formContainer.style.display = "block";
+                csvContainer.style.display = "none";
+            }
+        });
+        const Submitbutton = document.getElementById('myButton');
+
+// Add an event listener to the button
+// inputForm.addEventListener('submit', function(event) {
+  // event.preventDefault();
+
+            // const email = document.getElementById('email').value;
+            // const website = document.getElementById('website').value;
+            // const name = document.getElementById('name').value;
+            // const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            // const websiteRegex = /^https:\/\/.+$/;
+            // if (!emailRegex.test(email)) {
+            //     manualError.textContent = "Invalid email format.";
+            //     return;
+            // } else if (!websiteRegex.test(website)) {
+            //     manualError.textContent = "Invalid website format. Must start with https://";
+            //      return;
+            // } else {
+            //     manualError.textContent = "";
+            // }
+
+            // const formData = {
+            //     email: email,
+            //     website: website,
+            //     name: name
+            // };
+
+            // submittedData.push(formData);
+            // updateTable();
+            // inputForm.reset(); // Clear the input fields after submission
+            // console.log("hi", formData)
+        // });
+
+        csvFileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                loadingIcon.style.display = "block";
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const text = e.target.result;
+                    const isValid = parseCSV(text);
+                    loadingIcon.style.display = "none";
+                    if (isValid) {
+                        csvError.textContent = "";
+                    } else {
+                        csvError.textContent = "CSV contains invalid data.";
+                    }
+                };
+                reader.readAsText(file);
+            }
+        });
+
+        function parseCSV(text) {
+            const rows = text.split('\n');
+            let isValid = true;
+            rows.forEach(row => {
+                const columns = row.split(',');
+                if (columns.length >= 2) {
+                    const email = columns[0].trim();
+                    const website = columns[1].trim();
+                    const name = columns[2] ? columns[2].trim() : "";
+
+                    if (!emailRegex.test(email) || !websiteRegex.test(website)) {
+                        isValid = false;
+                    } else {
+                        const formData = {
+                            email: email,
+                            website: website,
+                            name: name
+                        };
+                        submittedData.push(formData);
+                    }
+                }
+            });
+            if (isValid) {
+                updateTable();
+            }
+            return isValid;
+        }
+
+        function a() {
+          const emailInput = document.getElementById('email');
+        const websiteInput = document.getElementById('website');
+        const nameInput = document.getElementById('name');
+        
+        const email = emailInput.value;
+        const website = websiteInput.value;
+        const name = nameInput.value;
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const websiteRegex = /^https:\/\/.+$/;
+
+        if (!emailRegex.test(email)) {
+            manualError.textContent = "Invalid email format.";
+            return;
+        } else if (!websiteRegex.test(website)) {
+            manualError.textContent = "Invalid website format. Must start with https://";
+            return;
+        } else {
+            manualError.textContent = "";
+        }
+
+        const formData = {
+            email: email,
+            website: website,
+            name: name
+        };
+
+        submittedData.push(formData);
+        console.log(updateTable());
+         // Clear input fields manually
+        emailInput.value = "";
+        websiteInput.value = "";
+        nameInput.value = "";
+        console.log("cleared")
+    }
+
+    function updateTable() {
+      const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+        dataTable.innerHTML = ''; // Clear the existing table rows
+console.log("working: ", submittedData)
+        submittedData.forEach((data, index) => {
+            const row = dataTable.insertRow();
+            const emailCell = row.insertCell(0);
+            const websiteCell = row.insertCell(1);
+            const nameCell = row.insertCell(2);
+            const statusCell = row.insertCell(3);
+
+            emailCell.textContent = data.email;
+            websiteCell.textContent = data.website;
+            nameCell.textContent = data.name;
+            statusCell.textContent = ''; // Initialize as empty
+
+            // Add a data attribute to keep track of the row index
+            row.setAttribute('data-index', index);
+        });
+        return true 
+    }
+// // Function to update the table
+// function updateTable() {
+//   console.log('updating table with: ', submittedData)
+//     // Clear the existing table rows
+//     dataTable.innerHTML = '';
+
+//     // Populate table with updated data
+//     submittedData.forEach((data, index) => {
+//         const row = dataTable.insertRow();
+//         const emailCell = row.insertCell(0);
+//         const websiteCell = row.insertCell(1);
+//         const nameCell = row.insertCell(2);
+//         const statusCell = row.insertCell(3);
+
+//         emailCell.textContent = data.email;
+//         websiteCell.textContent = data.website;
+//         nameCell.textContent = data.name;
+//         statusCell.textContent = ''; // Initialize as empty
+
+//         // Add a data attribute to keep track of the row index
+//         row.setAttribute('data-index', index);
+//     });
+// }
+
+// Function to update the status of a specific row
+function updateRowStatus(index, status) {
+  const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const row = dataTable.querySelector(`tr[data-index="${index}"]`);
+    if (row) {
+        const emailCell = row.cells[0];
+        const websiteCell = row.cells[1];
+        const nameCell = row.cells[2];
+        const statusCell = row.cells[3];
+
+        emailCell.colSpan = 4;
+        websiteCell.style.display = 'none';
+        nameCell.style.display = 'none';
+
+        statusCell.textContent = status;
+        statusCell.style.textAlign = 'center';
+        statusCell.style.verticalAlign = 'middle';
+    } else {
+        console.error(`Row with index ${index} not found`);
+    }
+}
+
+        function updateTableOutputs() {
+          const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+          dataTable.innerHTML = '';
+                      // Populate table with updated data
+                      submittedData.forEach(data => {
+                const row = dataTable.insertRow();
+                const name = row.insertCell(0);
+                const subj = row.insertCell(1);
+                const content = row.insertCell(2);
+
+                name.textContent = data.email;
+                subj.textContent = data.subject;
+                content.textContent = data.content;
+            });
+
+        }
+
+        function IsAutoSend() {
+            const checkbox = document.getElementById('cyberpunkCheckbox');
+            return checkbox.checked;
+        }
+
+        // function 
+async function CallThisWhenAutosendIsOff() {
+  const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+  // get the pitch and create a thread
+  const userPitch = document.getElementById('userPitch').value; // Get user pitch from textarea
+  button.innerHTML=`<button class="btn"><div class="loader"></div> </button>`
+  const threadResponse = await fetch('/create-thread', { method: 'POST' });
+
+  const threadData = await threadResponse.json();
+  const threadID = threadData.thread_id;
+  console.log(threadID)
+  SENT_EMAILS = 0
+  // iterate through each item in the submitted data and send to its respective email address 
+  for (let index = 0; index < submittedData.length; index++) {
+        const data = submittedData[index];
+        console.log('starting send to ', data.email);
+
+        try {
+          updateRowStatus(index, 'Retrieving message');
+            // Get the website content
+            const descriptionResponse = await fetch('/get-site-description', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: data.website })
+            });
+
+            const descriptionData = await descriptionResponse.json();
+            const website_content = descriptionData.description;
+            const Uname = '{{ name }}'
+            const To = data.name
+            console.log(data.email, website_content,Uname, To );
+
+            updateRowStatus(index, 'Personalizing message');
+            // Add messages to the thread
+            const emailContentResponse = await fetch('/add-messages-to-thread', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    thread_id: threadID,
+                    website_content: website_content,
+                    user_pitch: userPitch,
+                    To: To,
+                    Me: Uname
+                })
+            });
+
+            const emailContentData = await emailContentResponse.json();
+            const email_content = emailContentData.email_content;
+            const lines = email_content.split('\n');
+            const subject_line = lines[0].replace('Subject: ', '');
+            const main_message = lines.slice(1).join('\n').trim();
+            console.log(data.email, "returned email sub : ", subject_line);
+            console.log(data.email, " email content : ", main_message);
+
+            updateRowStatus(index, 'Sending');
+            // Send the emails
+            const result = await sendMessage('me', data.email, subject_line, main_message);
+            console.log('Message to ', data.email, ' successfully sent:', result);
+            updateRowStatus(index, 'Sent');
+            SENT_EMAILS = SENT_EMAILS + 1;
+        } catch (error) {
+            console.error('Error processing email for', data.email, ':', error);
+            updateRowStatus(index, 'Error');
+            // add to error row data, give user option to attempt to resend all error data at the end.
+            // Optionally handle resend logic here
+        }
+    }
+  console.log('all emails sent');
+  button.innerHTML=`<button class="button" onclick="Restart()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                          <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                        </svg>
+                       Send More
+                      </button>
+                      <h3>Sent!</h3>`
+  useEmails(SENT_EMAILS);
+
+
+}
+async function Restart() {
+  submittedData = [];
+  dataTable.innerHTML=``;
+  button.innerHTML=`<button class="button" onclick="SendEmails()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                          <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                        </svg>
+                       Generate
+                      </button>`
+}
+    //   async function Send_Emails() {
+    //       if(true) {
+    //         var SENT_EMAILS = 0;
+    //         dataTable.innerHTML = '';
+    //         const userPitch = document.getElementById('userPitch').value; // Get user pitch from textarea
+    //         button.innerHTML=`<button class="btn"><div class="loader"></div> </button>`
+    //     const threadResponse = await fetch('/create-thread', {
+    //         method: 'POST',
+    //     });
+    //     const threadData = await threadResponse.json();
+    //     const threadID = threadData.thread_id;
+    //     console.log(threadID)
+    //       submittedData.forEach(async data => {
+
+    //         const descriptionResponse = await fetch('/get-site-description', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({ url: data.website })
+    //         });
+
+    //         const descriptionData = await descriptionResponse.json();
+    //         const website_content = descriptionData.description;
+    //         console.log(website_content)
+    //         // Add messages to thread
+    //         const emailContentResponse = await fetch('/add-messages-to-thread', {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/json'
+    //             },
+    //             body: JSON.stringify({
+    //                 thread_id: threadID,
+    //                 website_content: website_content,
+    //                 user_pitch: userPitch
+    //             })
+    //         });
+    //         const emailContentData = await emailContentResponse.json();
+    //         const email_content = emailContentData.email_content;
+    //         console.log("returned email : ", email_content)
+    //         const lines = email_content.split('\n')
+    //         console.log("lines: ", lines)
+
+    //         const subject_line = lines[0].replace('Subject: ', '');
+    //         /// The rest is the main message
+    //         const main_message = lines.slice(1).join('\n').trim();
+    //         console.log("returned email sub : ", subject_line)
+    //         console.log("returned email content : ", main_message)
+    //           // subj_line = format for subject line
+    //           // email_content = format for email
+    //           if(IsAutoSend()){
+    //             //CREATE MESSAGE
+    //             //SEND MESSAGE
+                
+    //             // output remai sent to ____ 
+    //             // const service = '{{ service }}'
+    //             // const response = await fetch('/create-message', {
+    //             //   method: 'POST',
+    //             //   headers: {
+    //             //     ' Content-Type': 'application/json'
+    //             //   },
+    //             //   body: JSON.stringify({ 
+    //             //     sender: 'me', 
+    //             //     to: data.email, 
+    //             //     subject: subject_line, 
+    //             //     message_text: main_message })
+    //             //   });
+
+    //             //   const message = await response.json();
+    //             sendMessage('me', data.email, subject_line, main_message)
+    // .then(result => {
+    //     console.log('Message successfully sent:', result);
+    // })
+    // .catch(error => {
+    //     console.error('Error sending message:', error);
+    // });
+
+    //             // send_message(service, 'me', message)
+    //             console.log('Email sent successfully!')
+    //             SENT_EMAILS = SENT_EMAILS + 1
+    //             ///////////////////////////////////////////////////////////////////////////////// got to here
+    //           }
+    //           else{
+    //             const OutputData = {
+    //             email: data.email,
+    //             subject: subj_line,
+    //             content: email_content
+    //             };
+    //             OutputsData.push(OutputData);
+    //             updateTableOutputs();
+    //           }
+    //         if(IsAutoSend()){
+    //           button.innerHTML=`Sent`
+    //           useEmails(SENT_EMAILS);
+    //             //when they are sent, render the button with sent and stop loading
+    //             //remove emails from user in database
+    //         }
+    //         else{
+    //           button.innerHTML=`<button onclick="sendEmails(SENT_EMAILS)">Send Now </button>`
+    //         }
+    //       })
+    //     }
+    //   }
+async function sendMessage(sender, to, subject, messageText) {
+    const response = await fetch('/snd_msg', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sender: sender, to: to, subject: subject, message_text: messageText })
+    });
+
+    if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+    }
+
+    const result = await response.json();
+    console.log('Message sent, ID:', result.id);
+    return result;
+}
+
+      async function useEmails(numUsedUp) {
+            // const email = document.getElementById('emailInput').value;
+            // const emailsToUse = parseInt(document.getElementById('emailsToUseInput').value);
+
+            const response = await fetch('/use_email', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email: '{{email}}', emails_to_use: numUsedUp })
+            });
+
+            const result = await response.json();
+            alert(result.message);
+        }
+
+      function sendEmails(SENT_EMAILS) {
+        OutputsData.forEach(data => {
+          const service = '{{ service }}'
+          const message = create_message('me', data.email, data.subject, data.content)
+          send_message(service, 'me', message)
+          console.log('Email sent successfully!')
+        })
+        console.log('Emails sent successfully!')
+        button.innerHTML=`Sent`
+        useEmails(SENT_EMAILS);
+      }
+
+        function toggleSidebar() {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarItems = document.querySelectorAll('.sidebarItem span');
+            sidebar.classList.toggle('collapsed');
+            sidebarItems.forEach(item => {
+                if (sidebar.classList.contains('collapsed')) {
+                    item.style.display = 'none';
+                } else {
+                    item.style.display = 'inline';
+                }
+            });
+        }
+
+        loadContent('home');
+        // Load content based on sidebar selection
+        function loadContent(page) {
+            const mainContent = document.getElementById('content');
+            const home = document.getElementById('main-content');
+            switch (page) {
+                case 'home':
+                    mainContent.innerHTML = document.getElementById('main-content').innerHTML;
+                    // home.syle.display = 'block';
+                    break;
+                case 'analytics':
+                    mainContent.innerHTML = document.getElementById('analytics-content').innerHTML;
+                    // home.syle.display = none;
+                    loadAnalyticsChart();
+                    break;
+                case 'settings':
+                    mainContent.innerHTML = document.getElementById('settings-content').innerHTML;
+                    // home.syle.display = none;
+                    break;
+                case 'help':
+                    mainContent.innerHTML = document.getElementById('help-content').innerHTML;
+                    // home.syle.display = none;
+                    break;
+                case 'manageUser':
+                    mainContent.innerHTML = document.getElementById('manageUser-content').innerHTML;
+                    // home.syle.display = none;
+                    break;
+                    case 'myAccount':
+                    mainContent.innerHTML = document.getElementById('myAccount-content').innerHTML;
+                    // home.syle.display = none;
+                    break;
+                case 'accountSettings':
+                    mainContent.innerHTML = document.getElementById('accountSettings-content').innerHTML;
+                    // home.syle.display = none;
+                    break;
+                case 'supportResources':
+                    mainContent.innerHTML = document.getElementById('supportResources-content').innerHTML;
+                    // home.syle.display = none;
+                    break;
+                // Add more cases as needed
+                default:
+                    mainContent.innerHTML = '<h1>Page not found</h1>';
+            }
+        }
+
+                // Remove loading spinner when the page has fully loaded
+                window.addEventListener('load', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
+
+        // Example function to load analytics chart
+        // function loadAnalyticsChart() {
+        //     const ctx = document.getElementById('myChart').getContext('2d');
+        //     new Chart(ctx, {
+        //         type: 'bar',
+        //         data: {
+        //             labels: ['Emails Sent', 'Emails Opened', 'Response Rate'],
+        //             datasets: [{
+        //                 label: 'Email Analytics',
+        //                 data: [120, 90, 75],
+        //                 backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+        //                 borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+        //                 borderWidth: 1
+        //             }]
+        //         },
+        //         options: {
+        //             scales: {
+        //                 y: {
+        //                     beginAtZero: true
+        //                 }
+        //             }
+        //         }
+        //     });
+        // }
+
+        function initialize() {
+            total_emails = '{{ total_emails }}'
+            plan = '{{ plan_emails}}'
+
+            console.log(total_emails, '{{ name }}')
+
+            if (total_emails == 0) {
+                button.innerHTML=`                    <button class="button">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                          <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                        </svg>
+                        Unlock Pro
+                      </button>`
+            }
+            else {
+                button.innerHTML=`<!-- <button class="btn">
+                        <svg height="24" width="24" fill="#FFFFFF" viewBox="0 0 24 24" data-name="Layer 1" id="Layer_1" class="sparkle">
+                            <path d="M10,21.236,6.755,14.745.264,11.5,6.755,8.255,10,1.764l3.245,6.491L19.736,11.5l-6.491,3.245ZM18,21l1.5,3L21,21l3-1.5L21,18l-1.5-3L18,18l-3,1.5ZM19.333,4.667,20.5,7l1.167-2.333L24,3.5,21.667,2.333,20.5,0,19.333,2.333,17,3.5Z"></path>
+                        </svg>
+                    
+                        <span class="text">Generate</span>
+                    </button> -->
+                    
+                    <button class="button" onclick="CallThisWhenAutosendIsOff()">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
+                          <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
+                        </svg>
+                        Generate
+                      </button>`
+            }
+        }
+        initialize();
+      // })
+    </script>
+
+<!-- 
+    <div id="myAccount-content" style="display: none;">
+        <div class="my-account">
+            <div class="email-usage">
+                <div>
+                    <h2>Email Credit Usage</h2>
+                    <p>573 of 1,000 emails / mo</p>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                </div>
+                <button style="margin-top: 20px; background-color: #4caf50; color: white; border: none; padding: 10px; border-radius: 5px;">Upgrade</button>
+            </div>
+            <div class="subscription-info">
+                <h2>Subscription</h2>
+                <div class="subscription-details">
+                    <p>Paid $19.99 / mo</p>
+                    <button style="background-color: #4caf50; color: white; border: none; padding: 10px; border-radius: 5px;">Change Plan</button>
+                </div>
+                <div class="subscription-features">
+                    <p>1000 emails / mo</p>
+                    <p>Personalisation</p>
+                    <p>Automated Emails</p>
+                </div>
+            </div> -->
+        <!-- </div>
+    </div> -->
+
+
+    <!-- Hidden Content Divs -->
+    <div id="settings-content" style="display: none;">
+        <h1>Settings</h1>
+        <form>
+            <!-- Settings form content -->
+            <label for="theme">Theme:</label>
+            <select id="theme" name="theme">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+            </select>
+            <br><br>
+            <label for="notifications">Notifications:</label>
+            <input type="checkbox" id="notifications" name="notifications" checked>
+            <br><br>
+            <button type="submit" class="buttons">Save</button>
+        </form>
+    </div>
+
+    <div id="manageUser-content" style="display: none;">
+        <h1>Manage User</h1>
+        <form>
+            <!-- Manage User form content -->
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" value="{{ name }}">
+            <br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value='{{ email }}'>
+            <br><br>
+            <button type="submit" class="buttons">Save</button>
+        </form>
+    </div>
+
+    <div id="help-content" style="display: none;">
+        <h1>Help</h1>
+        <p>If you need help, please contact our support team at <a href="mailto:support@example.com">support@example.com</a>.</p>
+    </div>
+
+    <div id="analytics-content" style="display: none;">
+        <h1>Analytics Dashboard</h1>
+        <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+
+    <div id="myAccount-content" style="display: none;">
+      <div class="dashboard">
+          <h1 class="section-header">Dashboard</h1>
+          <div class="metrics">
+              <div class="metric">
+                  <h2 class="metric-value">11</h2>
+                  <p class="metric-label">Potential Clients</p>
+              </div>
+              <div class="metric">
+                  <h2 class="metric-value">$847</h2>
+                  <p class="metric-label">Pipeline Value</p>
+              </div>
+              <div class="metric">
+                  <h2 class="metric-value">5</h2>
+                  <p class="metric-label">Appointments</p>
+              </div>
+              <div class="metric">
+                  <h2 class="metric-value">$148.94</h2>
+                  <p class="metric-label">Total Sales</p>
+              </div>
+          </div>
+          <div class="plan-usage">
+              <h2 class="sub-header">Plan Usage</h2>
+              <p class="plan-usage-detail">{{ total_emails }} of {{plan_emails}} emails / mo</p>
+              <div class="progress-bar">
+                  <div class="progress" style="width: 57.3%;"></div>
+              </div>
+              <button class="buttons">Upgrade</button>
+          </div>
+          <div class="subscription">
+              <h2 class="sub-header">Subscription</h2>
+              <p>Paid $19.99 / mo</p>
+              <div class="subscription-features">
+                  <p>Features:</p>
+                  <ul>
+                      <li>1000 emails / mo</li>
+                      <li>Personalisation</li>
+                      <li>Automated Emails</li>
+                  </ul>
+              </div>
+              <button class="buttons">Change Plan</button>
+          </div>
+          <div class="recent-transactions">
+              <h2 class="sub-header">Recent Transactions</h2>
+              <div class="transaction">
+                  <p>BESTCOOKIECO.COM</p>
+                  <p>$77</p>
+              </div>
+              <div class="transaction">
+                  <p>BESTCOOKIECO.COM</p>
+                  <p>$77</p>
+              </div>
+          </div>
+      </div>
+  </div>
+            
+    <!-- Account Settings Section -->
+    <div id="accountSettings-content" style="display: none;">
+        <div class="account-settings">
+            <h1 class="section-header">Account Settings</h1>
+            <div class="section">
+                <div class="profile-section">
+                    <img src="https://via.placeholder.com/100" alt="Profile Picture">
+                    <div class="profile-details">
+                        <p><strong>Name:</strong> {{ name }}</p>
+                        <p><strong>Email:</strong> {{ email }}</p>
+                    </div>
+                </div>
+                <button class="buttons">Edit Profile</button>
+            </div>
+            <div class="section">
+                <h2 class="sub-header">Account Settings</h2>
+                <p><strong>Password:</strong> ••••••••</p>
+                <p><strong>Two-Factor Authentication:</strong> Enabled</p>
+                <p><strong>Notification Preferences:</strong> Email, SMS</p>
+                <button class="buttons">Edit Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support and Resources Section -->
+    <div id="supportResources-content" style="display: none;">
+        <div class="support-resources">
+            <h1 class="section-header">Support and Resources</h1>
+            <div class="section">
+                <h2 class="sub-header">Help Center</h2>
+                <p>Find answers to common questions in our <a href="#">Help Center</a>.</p>
+            </div>
+            <div class="section">
+                <h2 class="sub-header">Contact Support</h2>
+                <p>If you need further assistance, you can contact our support team via:</p>
+                <ul>
+                    <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
+                    <li>Phone: +123456789</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2 class="sub-header">FAQs</h2>
+                <p>Check out our <a href="#">Frequently Asked Questions</a> for more information.</p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+      body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #1C1A1C;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+}
+
+.dashboard {
+  align-self: center;
+  justify-self: center;
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 2em;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    width: 100%;
+    /* max-width: 1000px; */
+}
+
+.section-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.metric {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.metric-value {
+    font-size: 32px;
+    margin: 0;
+    color: #333;
+}
+
+.metric-label {
+    font-size: 14px;
+    color: #666;
+}
+
+.plan-usage, .subscription, .recent-transactions {
+    margin-bottom: 20px;
+}
+
+.sub-header {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.plan-usage-detail {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 10px;
+    margin-bottom: 10px;
+}
+
+.progress {
+    background-color: #4caf50;
+    height: 10px;
+}
+
+.buttons {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    background-color: #0056b3;
+}
+
+.subscription-features ul {
+    padding-left: 20px;
+}
+
+.recent-transactions .transaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+    </style>
+</body>
+</html>
