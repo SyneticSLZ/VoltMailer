@@ -624,7 +624,8 @@ h1 b {
     /* border: red 1px solid;  */
 }
 .pitch-row{
-  margin-right: 4em;
+  /* margin-inline: 4em; */
+  gap: 5em;
   /* border: red 1px solid;  */
     padding: 0;
     /* border: #08080820 solid 1px; */
@@ -636,10 +637,10 @@ h1 b {
     /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
     width: 100%;
     height: 20%;
-    /* display: flex; */
-    /* flex-direction: row; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 /* .pitch-row button{
   background-color: rgb(16, 10, 97);
@@ -1665,7 +1666,58 @@ body {
         transform: translateY(0);
     }
 }
-
+.container-btn-file {
+  align-self: center;
+  justify-self: center;
+  /* margin-left: 7em; */
+  /* margin-bottom: 3em; */
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  background-color: #8320aa;
+  color: #fff;
+  border-style: none;
+  padding: 1em 2em;
+  border-radius: 0.5em;
+  overflow: hidden;
+  z-index: 1;
+  box-shadow: 4px 8px 10px -3px rgba(0, 0, 0, 0.356);
+  transition: all 250ms;
+}
+.container-btn-file input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+.container-btn-file > svg {
+  margin-right: 1em;
+}
+.container-btn-file::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 0;
+  border-radius: 0.5em;
+  background-color: #880088;
+  z-index: -1;
+  transition: all 350ms;
+}
+.container-btn-file:hover::before {
+  width: 100%;
+}
+#csvContainer{
+  padding: auto;
+  display: flex;
+  /* border: #0056b3 solid 1px; */
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  align-self: center;
+  justify-self: center;
+}
       
     </style>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -1750,10 +1802,46 @@ body {
                <div class="pitch-row">
 
                 <div id="csvContainer" style="display: none;">
-                    <label for="csvFile">Upload CSV file:</label>
-                    <input type="file" id="csvFile" accept=".csv"><br><br>
+                    <!-- <label for="csvFile">Upload CSV file:</label> -->
+                    <!-- <input type="file" id="csvFile" accept=".csv"><br><br> -->
+                    <button class="container-btn-file">
+                      <svg
+                        fill="#fff"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 50 50"
+                      >
+                        <path
+                          d="M28.8125 .03125L.8125 5.34375C.339844 
+                        5.433594 0 5.863281 0 6.34375L0 43.65625C0 
+                        44.136719 .339844 44.566406 .8125 44.65625L28.8125 
+                        49.96875C28.875 49.980469 28.9375 50 29 50C29.230469 
+                        50 29.445313 49.929688 29.625 49.78125C29.855469 49.589844 
+                        30 49.296875 30 49L30 1C30 .703125 29.855469 .410156 29.625 
+                        .21875C29.394531 .0273438 29.105469 -.0234375 28.8125 .03125ZM32 
+                        6L32 13L34 13L34 15L32 15L32 20L34 20L34 22L32 22L32 27L34 27L34 
+                        29L32 29L32 35L34 35L34 37L32 37L32 44L47 44C48.101563 44 49 
+                        43.101563 49 42L49 8C49 6.898438 48.101563 6 47 6ZM36 13L44 
+                        13L44 15L36 15ZM6.6875 15.6875L11.8125 15.6875L14.5 21.28125C14.710938 
+                        21.722656 14.898438 22.265625 15.0625 22.875L15.09375 22.875C15.199219 
+                        22.511719 15.402344 21.941406 15.6875 21.21875L18.65625 15.6875L23.34375 
+                        15.6875L17.75 24.9375L23.5 34.375L18.53125 34.375L15.28125 
+                        28.28125C15.160156 28.054688 15.035156 27.636719 14.90625 
+                        27.03125L14.875 27.03125C14.8125 27.316406 14.664063 27.761719 
+                        14.4375 28.34375L11.1875 34.375L6.1875 34.375L12.15625 25.03125ZM36 
+                        20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
+                        ></path>
+                      </svg>
+                      Upload CSV File
+                      <input class="file" name="text" type="file" id="csvFile" accept=".csv" />
+                    </button>
+                    
                     <div class="loading" id="loadingIcon">Loading...</div>
+
+
                 </div>
+
                 <div id="form-Container">
                 <formq class="pitch-row" id="inputForm">
                     <div class="wave-group">
@@ -1852,7 +1940,7 @@ body {
                       <div class="slide">
                       <div class="manual">Enter Manually</div>
                       <label class="switch">
-                        <input class="checkbox" type="checkbox" />
+                        <input class="checkbox" type="checkbox" id="toggleCheckbox" />
                         <span class="slider round"></span>
                       </label> 
                       <div class="csv">Upload CSV</div>
@@ -2179,48 +2267,39 @@ body {
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
         const websiteRegex = /^https:\/\/[\w.-]+(?:\.[\w\.-]+)+$/;
 
-
-          // function a(){
-          //   console.log('h')
-          //   const email = document.getElementById('email').value;
-          //   const website = document.getElementById('website').value;
-          //   const name = document.getElementById('name').value;
-          //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          //   const websiteRegex = /^https:\/\/.+$/;
-          //   if (!emailRegex.test(email)) {
-          //       manualError.textContent = "Invalid email format.";
-          //       return;
-          //   } else if (!websiteRegex.test(website)) {
-          //       manualError.textContent = "Invalid website format. Must start with https://";
-          //        return;
-          //   } else {
-          //       manualError.textContent = "";
-          //   }
-
-          //   const formData = {
-          //       email: email,
-          //       website: website,
-          //       name: name
-          //   };
-
-          //   submittedData.push(formData);
-          //   updateTable();
-          //   inputForm.reset(); // Clear the input fields after submission
-          //   console.log(formData)
-          //   }
-
-
         toggleSidebar()
         initialize()
-        toggleCheckbox.addEventListener('change', function() {
-            if (toggleCheckbox.checked) {
-                formContainer.style.display = "none";
-                csvContainer.style.display = "block";
-            } else {
-                formContainer.style.display = "block";
-                csvContainer.style.display = "none";
-            }
-        });
+
+        // toggleCheckbox.addEventListener('change', function() {
+        //     if (toggleCheckbox.checked) {
+        //         formContainer.style.display = "none";
+        //         csvContainer.style.display = "block";
+        //     } else {
+        //         formContainer.style.display = "block";
+        //         csvContainer.style.display = "none";
+        //     }
+        // });
+
+        // Add this in your static/scripts.js
+document.addEventListener('DOMContentLoaded', (event) => {
+    const checkbox = document.getElementById('toggleCheckbox');
+    const csvContainer = document.getElementById('csvContainer');
+    const formContainer = document.getElementById('form-Container');
+
+    checkbox.addEventListener('change', function() {
+      console.log("state changed")
+        if (this.checked) {
+            csvContainer.style.display = 'block';
+            formContainer.style.display = 'none';
+        } else {
+            csvContainer.style.display = 'none';
+            formContainer.style.display = 'block';
+        }
+    });
+});
+
+
+
         const Submitbutton = document.getElementById('myButton');
 
 // Add an event listener to the button
@@ -2747,31 +2826,6 @@ function removeActive(){
                 window.addEventListener('load', function() {
             document.getElementById('loading').style.display = 'none';
         });
-
-        // Example function to load analytics chart
-        // function loadAnalyticsChart() {
-        //     const ctx = document.getElementById('myChart').getContext('2d');
-        //     new Chart(ctx, {
-        //         type: 'bar',
-        //         data: {
-        //             labels: ['Emails Sent', 'Emails Opened', 'Response Rate'],
-        //             datasets: [{
-        //                 label: 'Email Analytics',
-        //                 data: [120, 90, 75],
-        //                 backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
-        //                 borderColor: ['rgba(75, 192, 192, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
-        //                 borderWidth: 1
-        //             }]
-        //         },
-        //         options: {
-        //             scales: {
-        //                 y: {
-        //                     beginAtZero: true
-        //                 }
-        //             }
-        //         }
-        //     });
-        // }
 
         function initialize() {
             total_emails = '{{ total_emails }}'
