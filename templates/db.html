@@ -2812,9 +2812,7 @@ function removeActive(){
                     supporttab.classList.add("active");
                     break;
                 case 'billing':
-                    // mainContent.innerHTML = document.getElementById('billing').innerHTML;
-                    const url = 'https://billing.stripe.com/p/login/bIY15e8DBdSv8SY6oo';
-                    window.open(url, '_blank'); 
+                    billing()
                     break;
                 // Add more cases as needed
                 default:
@@ -2827,6 +2825,11 @@ function removeActive(){
             document.getElementById('loading').style.display = 'none';
         });
 
+        function billing(){
+// mainContent.innerHTML = document.getElementById('billing').innerHTML;
+const url = 'https://billing.stripe.com/p/login/bIY15e8DBdSv8SY6oo';
+                    window.open(url, '_blank'); 
+        }
         function initialize() {
             total_emails = '{{ total_emails }}'
             plan = '{{ plan_emails}}'
@@ -2834,7 +2837,7 @@ function removeActive(){
             console.log(total_emails, '{{ name }}')
 
             if (total_emails == 0) {
-                button.innerHTML=`                    <button class="button">
+                button.innerHTML=`                    <button class="button" onClick="billing()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                           <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
                         </svg>

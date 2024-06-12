@@ -534,7 +534,12 @@ def payment_status():
 
 @app.route('/pricing')
 def pricing():
-    return render_template('pricing.html')
+    email = request.args.get('email')
+    password = request.args.get('password')
+    # Assuming session_id might be part of the query parameters
+    # session_id = request.args.get('session_id')
+    return render_template('pricing.html', email=email, password=password)
+    # return render_template('pricing.html')
 
 @app.route('/success')
 def success():

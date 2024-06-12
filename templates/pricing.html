@@ -355,10 +355,10 @@ input:checked + .slider:before {
 <script>
 
             // Embed the email in a JavaScript variable
-            var email = "{{ email }}";
+            var email = '{{ email }}';
 
 // Now you can use the email variable in your JavaScript code
-console.log("Customer email:", email);
+console.log("Customer email:", '{{ email }}');
 // Initialize Stripe.js
 // var email = "{{ email }}";
 
@@ -381,6 +381,10 @@ console.log("Customer email:", email);
         //     }
         // }
         async function startFreeTrial() {
+          const email = '{{ email }}';
+                const sessionId = '{{ session_id }}';
+                const password = '{{ password }}';
+                console.log(`email is ${email}, password is ${password} stripe id is ${sessionId}`)
                 // const response = await fetch('/payment-status-free', {
                 //     method: 'POST',
                 //     headers: {
@@ -578,7 +582,7 @@ console.log("Customer email:", email);
   margin: 20px 0 0 0;
   font-size: 0.8em;
   border-radius: 100px;
-  background: #131212;
+  background: rgb(5, 1, 24);
   color: #fff;
 }
 
@@ -736,10 +740,11 @@ console.log("Customer email:", email);
             document.getElementById('welcome').classList.remove('hidden');
             document.getElementById('welcome').classList.add('active');
 
-            setTimeout(() => {
+            // setTimeout(() => {
                 const email = '{{ email }}';
                 const sessionId = '{{ session_id }}';
-                const password = '{{ password }}'
+                const password = '{{ password }}';
+                console.log(email,sessionId,password)
                 const 
                       customerData = {
                       stripeID: sessionId,
@@ -751,7 +756,7 @@ console.log("Customer email:", email);
                       priceID: 'price_1PJsseKJeZAyw8f4UVbMQfRa',
                       service: '{{ service }}'
                   };
-
+                  // alert(customerData)
                 fetch('/add_and_redirect', {
                     method: 'POST',
                     headers: {
@@ -767,7 +772,7 @@ console.log("Customer email:", email);
                         }, 3000);
                     }
                 });
-            }, 3000);
+            // }, 3000);
         }
         function getQueryParameter(name) {
             const urlParams = new URLSearchParams(window.location.search);

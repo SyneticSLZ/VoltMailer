@@ -7,6 +7,8 @@
     <style>
         body {
             background-color: #ffffff;
+            background: rgb(5, 1, 24);
+            background: linear-gradient(to bottom right, #011831, #1e021d);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -19,7 +21,10 @@
             width: 90vw;
             height: 90vh;
             border-radius: 10px;
+            background-color: #02021E;
+            background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* color: white; */
         }
         .form-container {
             width: 50%;
@@ -27,7 +32,7 @@
         }
         .right-container {
             width: 50%;
-            background: linear-gradient(to bottom right, rgb(255, 184, 255), rgb(147, 241, 241));
+            background-color: #02021E;
             border-radius: 10px;
             display: flex;
             flex-direction: column;
@@ -38,7 +43,7 @@
         .nav {
             font-weight: 800;
             font-size: 20px;
-            color: rgba(0, 0, 0, 0.829);
+            color: rgba(2, 0, 27, 0.562);
             margin-bottom: 2em;
         }
         .login-form, .signup-form, .forgot-form {
@@ -71,7 +76,8 @@
         button {
             padding: 1em;
             font-size: 1em;
-            background-color: #000;
+            /* background-color: #000; */
+            background-color: rgb(5, 1, 24);
             color: #fff;
             border: none;
             border-radius: 10px;
@@ -85,8 +91,9 @@
         }
         a {
             text-decoration: none;
-            color: #000;
-            font-weight: bold;
+            color: #a70dcead;
+            font-weight: 200;
+            text-decoration: underline;
             cursor: pointer;
         }
         .right-container img {
@@ -100,8 +107,10 @@
             margin: 0.5em 0;
             margin-left: 2.25em;
             align-self: start;
+            color: white;
         }
         .right-container h4 {
+            color: white;
             margin: 0.5em 0;
             margin-left: 4.5em;
             align-self: start;
@@ -117,8 +126,9 @@
         border-radius: 20px;
   /* box-sizing: border-box; */
   /* padding: 10px 15px; */
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  border: solid 1px rgb(5, 1, 24);
+  /* box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+        rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; */
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -126,20 +136,23 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   /* font-size: 11px; */
-  gap: 5px;
+  gap: 15px;
+  font-weight: 400;
   /* margin-right: 10em; */
 }
 
 .google-login-button {
   border: 2px solid #747474;
   background-color: #fff;
-  color: #000;
+  color: rgb(5, 1, 24);
   margin-right: 10em;
+  
 }
 
 .apple-icon,
     .google-icon {
   font-size: 18px;
+  font-weight:700;
   /* margin-bottom: 1px; */
 
 }
@@ -194,7 +207,9 @@
         <div class="right-container">
             <h1>Hi, I'm your AI powered sales assistant, Volt!</h1>
             <h4>Volt can automate and personalize all of your cold email outreach for you... Crafting unique emails for all your potential clients.</h4>
-            <img src="ss.png" alt="Dashboard Screenshot">
+            <!-- <img src="volt.png" alt="Dashboard Screenshot"> -->
+            <!-- <img src="{{ url_for('static', filename='./volt.png') }}" alt="Volt Image"> -->
+
         </div>
     </div>
 
