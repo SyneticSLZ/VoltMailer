@@ -2684,17 +2684,17 @@ async function sendMessage(sender, to, subject, messageText) {
             });
         }
 function removeActive(){
-          //   const hometab = document.getElementById('1');
-          //   const usagetab = document.getElementById('2');
-          //   const billingtab = document.getElementById('3');
-          //   const accounttab = document.getElementById('4');
-          //   const supporttab = document.getElementById('5');
+            const hometab = document.getElementById('1');
+            const usagetab = document.getElementById('2');
+            const billingtab = document.getElementById('3');
+            const accounttab = document.getElementById('4');
+            const supporttab = document.getElementById('5');
 
-          //   usagetab.classList.remove("active");
-          //   billingtab.classList.remove("active");
-          //   accounttab.classList.remove("active");
-          //   supporttab.classList.remove("active");
-          // hometab.classList.remove("active");
+            usagetab.classList.remove("active");
+            billingtab.classList.remove("active");
+            accounttab.classList.remove("active");
+            supporttab.classList.remove("active");
+          hometab.classList.remove("active");
 
 }
         loadContent('home');
@@ -2807,12 +2807,12 @@ function removeActive(){
         }
         initialize();
 
-        document.addEventListener('DOMContentLoaded', (event) => {
-            const name = "{{ name }}";
-            window.showNotification = function(message) {
-                const container = document.getElementById('notification-container');
+            
+            function showNotification(message) {
+              const name = "{{ name }}";
+                const container = document.getElementById('notification-container-pop');
                 const notification = document.createElement('div');
-                notification.className = 'notification';
+                notification.className = 'notification-pop';
                 
                 const closeButton = document.createElement('span');
                 closeButton.className = 'close-button';
@@ -2830,7 +2830,6 @@ function removeActive(){
                     notification.addEventListener('transitionend', () => notification.remove());
                 }, 5000);
             };
-        });
 
       // })
     </script>
