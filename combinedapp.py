@@ -64,6 +64,13 @@ SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
 
 stripe.api_key = os.getenv('STRIPE_API_KEY')
+stripe.billing_portal.Configuration.create(
+  business_profile={
+    "headline": "Your VoltMailer billing Info",
+  },
+  features={"invoice_history": {"enabled": True}},
+)
+
 from pymongo.mongo_client import MongoClient
 from pymongo.server_api import ServerApi
 uri = os.getenv('MONGO_URI')

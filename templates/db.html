@@ -1129,7 +1129,7 @@ h1 b {
             display: flex;
             align-items: center;
         }
-        .sidebar ul li.active{
+        .active{
           background-color: rgb(144, 21, 201);
         }
          .sidebar .noHover:hover {
@@ -1324,6 +1324,348 @@ h1 b {
     opacity: 0;
   }
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #040120;
+    color: #dad5da;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    height: 100vh;
+}
+
+.dashboard {
+  align-self: center;
+  justify-self: start;
+    background-color: #fff;
+    background-color: #040120;
+    padding: 20px;
+    margin-top: 2em;
+    border-radius: 10px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    width: 100%;
+    /* max-width: 1000px; */
+}
+
+.section-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+    justify-self: start;
+}
+.dashboard h4{
+  font-weight: 200;
+}
+
+.metrics {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    justify-items: space-between;
+    flex-direction: row;
+    margin-bottom: 20px;
+    width: 100%;
+    /* border:  red 1px solid; */
+}
+
+.metric {
+  background: rgb(5, 1, 24);
+    padding-block: 25px;
+    padding-inline-start: 20px;
+    border-radius: 10px;
+    text-align: start;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.metric-value {
+    font-size: 45px;
+    margin: 0;
+    color: #f3ecec;
+}
+
+.metric-label {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ece6e6;
+    
+}
+
+.metric-label i{
+  margin-right : 15px;
+}
+.row-2{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  gap: 10px;
+}
+
+.plan-usage, .subscription, .recent-transactions {
+    margin-bottom: 20px;
+    background: rgb(5, 1, 24);
+    /* padding-block: 25px;
+    padding-inline-start: 20px; */
+    border-radius: 10px;
+
+    /* width: 50%; */
+    /* padding: 50px; */
+}
+.as{
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 50%;
+}
+.as button{
+  margin-top: 2em;
+}
+.pwrd input{
+  margin-block: 2em;
+}
+.sub-header {
+
+  margin-top: 30px;
+    margin-bottom: 10px;
+    font-size: 30px;
+    color: #fff;
+}
+.plan-usage{
+  /* width: 100%; */
+  padding: 20px ;
+  color: #fff;
+}
+.plan-usage-detail {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+    margin-top: 0;
+}
+
+.progress-bar {
+  margin-top: 0;
+  padding-top: 0;
+    background-color: #08022b77;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 20px;
+    margin-bottom: 2em;
+}
+.progress-text{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+#progress {
+    background-color: #150552;
+    border-radius: 5px;
+    height: 100%;
+}
+
+#subscription{
+  background-color: #150552;
+}
+.actual-buttons {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    /* padding: 10px 20px; */
+    padding: 0.6em 0.5em;
+    margin-right: 12em;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actual-buttons:hover {
+    background-color: #0056b3;
+}
+
+.subscription-features ul {
+    padding-left: 20px;
+}
+
+.recent-transactions .transaction {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.plan-usage input {
+            margin-bottom: 0.5em;
+            padding: 0.6em 0.5em;
+            margin-right: 10em;
+            font-size: 1em;
+            border: 1px solid #ffffff60;
+            background-color: #02021E00;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+            color: #fff;
+        }
+    .plan-usage input::placeholder{
+          color: white;
+        }
+
+.support-resources{
+  background-color: #02021E;
+}
+
+.line{
+  width: 100%;
+  height: 1px;
+  background-color: white;
+}
+/* billing page */
+
+.pack-container {
+  position: relative;
+  display: flex;
+  max-width: 500px;
+  flex-direction: column;
+  border-radius: 12px;
+  background-color: #02021E;
+  border: 1px solid #fff;
+  padding: 1.6rem;
+  color: #fff;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.header {
+  position: relative;
+  margin: 0;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border-radius: 0;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.title {
+  display: block;
+  font-family: sans-serif;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  color: #fff
+}
+
+.price-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4px;
+  font-family: sans-serif;
+  font-size: 4.5rem;
+  line-height: 1;
+}
+
+.price-container span:first-child {
+  margin-top: 10px;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.price-container span:last-child {
+  align-self: flex-end;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+
+.lists {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.list span {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background-color: rgba(255, 255, 255, 0.185);
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list span svg {
+  height: 12px;
+  width: 12px;
+}
+
+.list p {
+  display: block;
+  font-family: sans-serif;
+}
+
+.button-container {
+  margin-top: 20px;
+  padding: 0;
+}
+
+.button-container button {
+  display: block;
+  width: 100%;
+  background-color: #150552;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: white;
+  outline: 0;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* popup */
+#notification-container-pop {
+    position: fixed;
+    bottom: 40px;
+    right: 60px;
+    z-index: 1000;
+}
+
+.notification-pop {
+    background-color: #01010f;
+    color: #fff;
+    padding-inline: 60px;
+    padding-block: 20PX ;
+    margin-top: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 0.5s forwards;
+}
+.notification-pop .close-button {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #fff;
+}
+
+@keyframes slideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
       
     </style>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -1376,12 +1718,12 @@ h1 b {
             <ul>
                 <li onclick="toggleSidebar()" ><a href="#"><i class="fi fi-rs-burger-menu"></i><span>VoltMail</span></a></li>
                 <li class="tools-header">Menu</li>
-                <li class="active" onclick="loadContent('home')" class="noHover"><a href="#"><i class="fi fi-br-house-blank"></i> <span>Home</span></a></li>
-                <li onclick="loadContent('myAccount')" class="noHover"><a href="#"><i class="fi fi-bs-pulse"></i> <span>My Usage</span></a></li>
-                <li onclick="loadContent('myAccount')" class="noHover"><a href="#"><i class="fi fi-rr-credit-card"></i> <span>Billing</span></a></li>
+                <li onclick="loadContent('home')" class="noHover" id="1"><a href="#"><i class="fi fi-br-house-blank"></i> <span>Home</span></a></li>
+                <li onclick="loadContent('myAccount')" class="noHover" id="2"><a href="#"><i class="fi fi-bs-pulse"></i> <span>My Usage</span></a></li>
+                <li onclick="loadContent('billing')" class="noHover" id="2"><a href="#"><i class="fi fi-rr-credit-card"></i> <span>Billing</span></a></li>
                 <li class="tools-header">Tools</li>
-                <li onclick="loadContent('accountSettings')" class="noHover"><a href="#"><i class="fi fi-rr-user-pen"></i> <span>Account Settings</span></a></li>
-                <li onclick="loadContent('supportResources')" class="noHover"><a href="#"><i class="fi fi-rr-customer-service"></i> <span>Support and Resources</span></a></li>
+                <li onclick="loadContent('accountSettings')" class="noHover" id="4"><a href="#"><i class="fi fi-rr-user-pen"></i> <span>Account Settings</span></a></li>
+                <li onclick="loadContent('supportResources')" class="noHover" id="5"><a href="#"><i class="fi fi-rr-customer-service"></i> <span>Support and Resources</span></a></li>
             </ul>
         </div>
         <div class="logout sidebarItem">
@@ -1542,6 +1884,282 @@ h1 b {
   <!-- </div> -->
 </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+
+    <div id="myAccount-content" style="display: none;">
+      <div class="dashboard">
+          <h1>Dashboard</h1>
+          <h4>A detailed overview of your metrics, usage, plan and more</h4>
+          <div class="metrics">
+              <div class="metric">
+
+                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Potential Clients</p>
+                  <h2 class="metric-value">11</h2>
+              </div>
+              <div class="metric">
+
+                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Pipeline Value</p>
+                  <h2 class="metric-value">$847</h2>
+              </div>
+              <div class="metric">
+
+                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Appointments</p>
+                  <h2 class="metric-value">5</h2>
+              </div>
+              <div class="metric">
+                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Total Sales</p>
+                  <h2 class="metric-value">$148.94</h2>
+              </div>
+          </div>
+          <!-- <div class="row-2"> -->
+          <div class="plan-usage">
+              <h2 class="sub-header">Plan Usage</h2>
+              <p class="plan-usage-detail">{{ total_emails }} of {{plan_emails}} emails / mo</p>
+              <div class="progress-text">
+                <p>Current: 2</p>
+                <p>Total: 1000</p>
+              </div>
+              <div class="progress-bar">
+                  <div id="progress" style="width: 57.3%;"></div>
+              </div>
+              <button class="actual-buttons" id="subscription">Upgrade</button>
+          </div>
+
+          <!-- <div class="subscription">
+              <h2 class="sub-header">Subscription</h2>
+              <p>Paid $19.99 / mo</p>
+              <div class="subscription-features">
+                  <p>Features:</p>
+                  <ul>
+                      <li>1000 emails / mo</li>
+                      <li>Personalisation</li>
+                      <li>Automated Emails</li>
+                  </ul>
+              </div>
+              <button class="buttons">Change Plan</button> -->
+          <!-- </div> -->
+        </div>
+          <!-- <div class="recent-transactions">
+              <h2 class="sub-header">Recent Transactions</h2>
+              <div class="transaction">
+                  <p>BESTCOOKIECO.COM</p>
+                  <p>$77</p>
+              </div>
+              <div class="transaction">
+                  <p>BESTCOOKIECO.COM</p>
+                  <p>$77</p>
+              </div>
+          </div> -->
+      </div>
+  </div>
+
+    <div id="accountSettings-content" style="display: none;">
+      <div class="dashboard">
+          <h1>Account Settings</h1>
+          <h4>Here you can edit your account settings, such as the name your email is sent from.</h4>
+          <div class="row-2">
+          <div class="plan-usage as">
+              <h2 class="sub-header">Profile Details</h2>
+              <p class="plan-usage-detail">Add or Update your information</p>
+              <h4>User Name (used as the sender name in email)</h4>
+              <input type="text" id="name" placeholder="{{ name }}">
+              <h4>Login Email</h4>
+              <input type="text" id="forgotEmail" placeholder="{{ email }}">
+              <button class="actual-buttons" id="subscription">Save User Details</button>
+          </div>
+          <div class="plan-usage as pwrd">
+            <h2 class="sub-header">Password</h2>
+            <p class="plan-usage-detail">Update your password</p>
+            <input type="text" id="password" placeholder="New Password">
+            <input type="text" id="confirmpassword" placeholder="Confirm Password">
+            <button class="actual-buttons" id="subscription">Change Password</button>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="billing" style="display: none;">
+        <div class="dashboard">
+            <h1>Billing</h1>
+            <h4>View your plan, payment history and when your next payment is due</h4>
+            <div class="line"></div>
+            <h3>Current Plan</h3>
+            <div class="row-2">
+              <div class="pack-container">
+                <div class="header">
+                  <p class="title">
+                    Starter
+                  </p>
+                  <div class="price-container">
+                    <span>$</span>24
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div>
+                  <ul class="lists">
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        2 team members
+                      </p>
+                    </li>
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        100+ components
+                      </p>
+                    </li>
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        2 month free updates
+                      </p>
+                    </li>
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        Life time technical support
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="button-container">
+                  <button type="button">
+                    Buy Now
+                  </button>
+                </div>
+              </div>
+              <div class="pack-container">
+                <div class="header">
+                  <p class="title">
+                    Starter
+                  </p>
+                  <div class="price-container">
+                    <span>$</span>24
+                    <span>/mo</span>
+                  </div>
+                </div>
+                <div>
+                  <ul class="lists">
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        2 team members
+                      </p>
+                    </li>
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        100+ components
+                      </p>
+                    </li>
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        2 month free updates
+                      </p>
+                    </li>
+                    <li class="list">
+                      <span>
+                        <svg aria-hidden="true" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M4.5 12.75l6 6 9-13.5" stroke-linejoin="round" stroke-linecap="round"></path>
+                        </svg>
+                      </span>
+                      <p>
+                        Life time technical support
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+                <div class="button-container">
+                  <button type="button">
+                    Buy Now
+                  </button>
+                </div>
+              </div>
+              </div>
+            </div>
+        
+            </div>
+          </div>
+        </div>
+
+
+    <!-- Support and Resources Section -->
+    <div id="supportResourcess-content" style="display: none;">
+        <div class="support-resources">
+            <h1 class="section-header">Support and Resources</h1>
+            <div class="section">
+                <h2 class="sub-header">Help Center</h2>
+                <p>Find answers to common questions in our <a href="#">Help Center</a>.</p>
+            </div>
+            <div class="section">
+                <h2 class="sub-header">Contact Support</h2>
+                <p>If you need further assistance, you can contact our support team via:</p>
+                <ul>
+                    <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
+                    <li>Phone: +123456789</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h2 class="sub-header">FAQs</h2>
+                <p>Check out our <a href="#">Frequently Asked Questions</a> for more information.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Support and Resources Section -->
+    <div id="supportResources-content" style="display: none;">
+      <div class="dashboard">
+          <h1>Support and Resources</h1>
+          <!-- <h4>Here you can edit your account settings, such as the name your email is sent from.</h4> -->
+          <div class="plan-usage">
+            <h2 class="sub-header">Help Center</h2>
+            <p>Find answers to common questions in our <a href="#">Help Center</a>.</p>
+        </div>
+        <div class="plan-usage">
+            <h2 class="sub-header">Contact Support</h2>
+            <p>If you need further assistance, you can contact our support team via:</p>
+            <ul>
+                <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
+                <li>Phone: +123456789</li>
+            </ul>
+        </div>
+        <div class="plan-usage">
+            <h2 class="sub-header">FAQs</h2>
+            <p>Check out our <a href="#">Frequently Asked Questions</a> for more information.</p>
+        </div>
+        </div>
+      </div>
+      <div id="notification-container-pop"></div>
+
     <script>
 // document.addEventListener('DOMContentLoaded', () => {
   const button = document.getElementById('submit');
@@ -1869,16 +2487,19 @@ async function CallThisWhenAutosendIsOff() {
             // Send the emails
             const result = await sendMessage('me', data.email, subject_line, main_message);
             console.log('Message to ', data.email, ' successfully sent:', result);
+            showNotification(`Message to ${data.email} successfully sent`)
             updateRowStatus(index, 'Sent');
             SENT_EMAILS = SENT_EMAILS + 1;
         } catch (error) {
             console.error('Error processing email for', data.email, ':', error);
+            showNotification(`Error processing email for ${data.email}`)
             updateRowStatus(index, 'Error');
             // add to error row data, give user option to attempt to resend all error data at the end.
             // Optionally handle resend logic here
         }
     }
   console.log('all emails sent');
+  showNotification('All Emails Sent !')
   button.innerHTML=`<button class="button" onclick="Restart()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                           <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
@@ -2034,7 +2655,8 @@ async function sendMessage(sender, to, subject, messageText) {
             });
 
             const result = await response.json();
-            alert(result.message);
+            // alert(result.message);
+            showNotification(`${result.message}`)
         }
 
       function sendEmails(SENT_EMAILS) {
@@ -2061,45 +2683,59 @@ async function sendMessage(sender, to, subject, messageText) {
                 }
             });
         }
+function removeActive(){
+          //   const hometab = document.getElementById('1');
+          //   const usagetab = document.getElementById('2');
+          //   const billingtab = document.getElementById('3');
+          //   const accounttab = document.getElementById('4');
+          //   const supporttab = document.getElementById('5');
 
+          //   usagetab.classList.remove("active");
+          //   billingtab.classList.remove("active");
+          //   accounttab.classList.remove("active");
+          //   supporttab.classList.remove("active");
+          // hometab.classList.remove("active");
+
+}
         loadContent('home');
         // Load content based on sidebar selection
         function loadContent(page) {
             const mainContent = document.getElementById('content');
             const home = document.getElementById('main-content');
+            const hometab = document.getElementById('1');
+            const usagetab = document.getElementById('2');
+            const billingtab = document.getElementById('3');
+            const accounttab = document.getElementById('4');
+            const supporttab = document.getElementById('5');
             switch (page) {
                 case 'home':
                     mainContent.innerHTML = document.getElementById('main-content').innerHTML;
+                    removeActive()
+                    hometab.classList.add("active");
                     // home.syle.display = 'block';
-                    break;
-                case 'analytics':
-                    mainContent.innerHTML = document.getElementById('analytics-content').innerHTML;
-                    // home.syle.display = none;
-                    loadAnalyticsChart();
-                    break;
-                case 'settings':
-                    mainContent.innerHTML = document.getElementById('settings-content').innerHTML;
-                    // home.syle.display = none;
-                    break;
-                case 'help':
-                    mainContent.innerHTML = document.getElementById('help-content').innerHTML;
-                    // home.syle.display = none;
-                    break;
-                case 'manageUser':
-                    mainContent.innerHTML = document.getElementById('manageUser-content').innerHTML;
-                    // home.syle.display = none;
                     break;
                     case 'myAccount':
                     mainContent.innerHTML = document.getElementById('myAccount-content').innerHTML;
                     // home.syle.display = none;
+                    removeActive()
+                    usagetab.classList.add("active");
                     break;
                 case 'accountSettings':
                     mainContent.innerHTML = document.getElementById('accountSettings-content').innerHTML;
                     // home.syle.display = none;
+                    removeActive()
+                    accounttab.classList.add("active");
                     break;
                 case 'supportResources':
                     mainContent.innerHTML = document.getElementById('supportResources-content').innerHTML;
                     // home.syle.display = none;
+                    removeActive()
+                    supporttab.classList.add("active");
+                    break;
+                case 'billing':
+                    // mainContent.innerHTML = document.getElementById('billing').innerHTML;
+                    const url = 'https://billing.stripe.com/p/login/bIY15e8DBdSv8SY6oo';
+                    window.open(url, '_blank'); 
                     break;
                 // Add more cases as needed
                 default:
@@ -2140,7 +2776,7 @@ async function sendMessage(sender, to, subject, messageText) {
         function initialize() {
             total_emails = '{{ total_emails }}'
             plan = '{{ plan_emails}}'
-
+            name = '{{ name }}'
             console.log(total_emails, '{{ name }}')
 
             if (total_emails == 0) {
@@ -2167,8 +2803,35 @@ async function sendMessage(sender, to, subject, messageText) {
                         Generate
                       </button>`
             }
+            showNotification(`Welcome, ${name}`)
         }
         initialize();
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const name = "{{ name }}";
+            window.showNotification = function(message) {
+                const container = document.getElementById('notification-container');
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                
+                const closeButton = document.createElement('span');
+                closeButton.className = 'close-button';
+                closeButton.textContent = '×';
+                closeButton.onclick = () => notification.remove();
+
+                notification.appendChild(closeButton);
+                notification.appendChild(document.createTextNode(message));
+
+                container.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = 0;
+                    notification.style.transform = 'translateY(-20px)';
+                    notification.addEventListener('transitionend', () => notification.remove());
+                }, 5000);
+            };
+        });
+
       // })
     </script>
 
@@ -2200,360 +2863,9 @@ async function sendMessage(sender, to, subject, messageText) {
         <!-- </div>
     </div> -->
 
-    <div id="myAccount-content" style="display: none;">
-      <div class="dashboard">
-          <h1>Dashboard</h1>
-          <h4>A detailed overview of your metrics, usage, plan and more</h4>
-          <div class="metrics">
-              <div class="metric">
-
-                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Potential Clients</p>
-                  <h2 class="metric-value">11</h2>
-              </div>
-              <div class="metric">
-
-                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Pipeline Value</p>
-                  <h2 class="metric-value">$847</h2>
-              </div>
-              <div class="metric">
-
-                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Appointments</p>
-                  <h2 class="metric-value">5</h2>
-              </div>
-              <div class="metric">
-                  <p class="metric-label"><i class="fi fi-rr-credit-card"></i>Total Sales</p>
-                  <h2 class="metric-value">$148.94</h2>
-              </div>
-          </div>
-          <!-- <div class="row-2"> -->
-          <div class="plan-usage">
-              <h2 class="sub-header">Plan Usage</h2>
-              <p class="plan-usage-detail">{{ total_emails }} of {{plan_emails}} emails / mo</p>
-              <div class="progress-text">
-                <p>Current: 2</p>
-                <p>Total: 1000</p>
-              </div>
-              <div class="progress-bar">
-                  <div id="progress" style="width: 57.3%;"></div>
-              </div>
-              <button class="actual-buttons" id="subscription">Upgrade</button>
-          </div>
-
-          <!-- <div class="subscription">
-              <h2 class="sub-header">Subscription</h2>
-              <p>Paid $19.99 / mo</p>
-              <div class="subscription-features">
-                  <p>Features:</p>
-                  <ul>
-                      <li>1000 emails / mo</li>
-                      <li>Personalisation</li>
-                      <li>Automated Emails</li>
-                  </ul>
-              </div>
-              <button class="buttons">Change Plan</button> -->
-          <!-- </div> -->
-        </div>
-          <!-- <div class="recent-transactions">
-              <h2 class="sub-header">Recent Transactions</h2>
-              <div class="transaction">
-                  <p>BESTCOOKIECO.COM</p>
-                  <p>$77</p>
-              </div>
-              <div class="transaction">
-                  <p>BESTCOOKIECO.COM</p>
-                  <p>$77</p>
-              </div>
-          </div> -->
-      </div>
-  </div>
-            
-    <!-- Account Settings Section -->
-    <!-- <div id="accountSettings-contents" style="display: none;">
-        <div class="account-settings">
-            <h1 class="section-header">Account Settings</h1>
-            <div class="section">
-                <div class="profile-section">
-                    <img src="https://via.placeholder.com/100" alt="Profile Picture">
-                    <div class="profile-details">
-                        <p><strong>Name:</strong> {{ name }}</p>
-                        <p><strong>Email:</strong> {{ email }}</p>
-                    </div>
-                </div>
-                <button class="buttons">Edit Profile</button>
-            </div>
-            <div class="section">
-                <h2 class="sub-header">Account Settings</h2>
-                <p><strong>Password:</strong> ••••••••</p>
-                <p><strong>Two-Factor Authentication:</strong> Enabled</p>
-                <p><strong>Notification Preferences:</strong> Email, SMS</p>
-                <button class="buttons">Edit Settings</button>
-            </div>
-        </div>
-    </div> -->
-
-    <div id="accountSettings-content" style="display: none;">
-      <div class="dashboard">
-          <h1>Account Settings</h1>
-          <h4>Here you can edit your account settings, such as the name your email is sent from.</h4>
-          <div class="row-2">
-          <div class="plan-usage as">
-              <h2 class="sub-header">Profile Details</h2>
-              <p class="plan-usage-detail">Add or Update your information</p>
-              <h4>User Name (used as the sender name in email)</h4>
-              <input type="text" id="name" placeholder="{{ name }}">
-              <h4>Login Email</h4>
-              <input type="text" id="forgotEmail" placeholder="{{ email }}">
-              <button class="actual-buttons" id="subscription">Save User Details</button>
-          </div>
-          <div class="plan-usage as pwrd">
-            <h2 class="sub-header">Password</h2>
-            <input type="text" id="password" placeholder="New Password">
-            <input type="text" id="confirmpassword" placeholder="Confirm Password">
-            <button class="actual-buttons" id="subscription">Change Password</button>
-          </div>
-          </div>
-        </div>
-      </div>
-
-    <!-- Support and Resources Section -->
-    <div id="supportResourcess-content" style="display: none;">
-        <div class="support-resources">
-            <h1 class="section-header">Support and Resources</h1>
-            <div class="section">
-                <h2 class="sub-header">Help Center</h2>
-                <p>Find answers to common questions in our <a href="#">Help Center</a>.</p>
-            </div>
-            <div class="section">
-                <h2 class="sub-header">Contact Support</h2>
-                <p>If you need further assistance, you can contact our support team via:</p>
-                <ul>
-                    <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
-                    <li>Phone: +123456789</li>
-                </ul>
-            </div>
-            <div class="section">
-                <h2 class="sub-header">FAQs</h2>
-                <p>Check out our <a href="#">Frequently Asked Questions</a> for more information.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Support and Resources Section -->
-    <div id="supportResources-content" style="display: none;">
-      <div class="dashboard">
-          <h1>Support and Resources</h1>
-          <!-- <h4>Here you can edit your account settings, such as the name your email is sent from.</h4> -->
-          <div class="plan-usage">
-            <h2 class="sub-header">Help Center</h2>
-            <p>Find answers to common questions in our <a href="#">Help Center</a>.</p>
-        </div>
-        <div class="plan-usage">
-            <h2 class="sub-header">Contact Support</h2>
-            <p>If you need further assistance, you can contact our support team via:</p>
-            <ul>
-                <li>Email: <a href="mailto:support@example.com">support@example.com</a></li>
-                <li>Phone: +123456789</li>
-            </ul>
-        </div>
-        <div class="plan-usage">
-            <h2 class="sub-header">FAQs</h2>
-            <p>Check out our <a href="#">Frequently Asked Questions</a> for more information.</p>
-        </div>
-        </div>
-      </div>
 
     <style>
-      body {
-    font-family: Arial, sans-serif;
-    background-color: #040120;
-    color: #dad5da;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
-    height: 100vh;
-}
-
-.dashboard {
-  align-self: center;
-  justify-self: start;
-    background-color: #fff;
-    background-color: #040120;
-    padding: 20px;
-    margin-top: 2em;
-    border-radius: 10px;
-    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
-    width: 100%;
-    /* max-width: 1000px; */
-}
-
-.section-header {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ffffff;
-    justify-self: start;
-}
-.dashboard h4{
-  font-weight: 200;
-}
-
-.metrics {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    justify-items: space-between;
-    flex-direction: row;
-    margin-bottom: 20px;
-    width: 100%;
-    /* border:  red 1px solid; */
-}
-
-.metric {
-  background: rgb(5, 1, 24);
-    padding-block: 25px;
-    padding-inline-start: 20px;
-    border-radius: 10px;
-    text-align: start;
-    flex: 1;
-    margin-right: 10px;
-}
-
-.metric-value {
-    font-size: 45px;
-    margin: 0;
-    color: #f3ecec;
-}
-
-.metric-label {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ece6e6;
-    
-}
-
-.metric-label i{
-  margin-right : 15px;
-}
-.row-2{
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  flex-direction: row;
-  width: 100%;
-  gap: 10px;
-}
-
-.plan-usage, .subscription, .recent-transactions {
-    margin-bottom: 20px;
-    background: rgb(5, 1, 24);
-    /* padding-block: 25px;
-    padding-inline-start: 20px; */
-    border-radius: 10px;
-
-    /* width: 50%; */
-    /* padding: 50px; */
-}
-.as{
-  display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  width: 50%;
-}
-.as button{
-  margin-top: 2em;
-}
-.pwrd input{
-  margin-block: 2em;
-}
-.sub-header {
-
-  margin-top: 30px;
-    margin-bottom: 10px;
-    font-size: 30px;
-    color: #fff;
-}
-.plan-usage{
-  /* width: 100%; */
-  padding: 20px ;
-  color: #fff;
-}
-.plan-usage-detail {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 10px;
-    margin-top: 0;
-}
-
-.progress-bar {
-  margin-top: 0;
-  padding-top: 0;
-    background-color: #08022b77;
-    border-radius: 5px;
-    overflow: hidden;
-    height: 20px;
-    margin-bottom: 2em;
-}
-.progress-text{
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 20px;
-}
-#progress {
-    background-color: #150552;
-    border-radius: 5px;
-    height: 100%;
-}
-
-#subscription{
-  background-color: #150552;
-}
-.actual-buttons {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    /* padding: 10px 20px; */
-    padding: 0.6em 0.5em;
-    margin-right: 12em;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.actual-buttons:hover {
-    background-color: #0056b3;
-}
-
-.subscription-features ul {
-    padding-left: 20px;
-}
-
-.recent-transactions .transaction {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.plan-usage input {
-            margin-bottom: 0.5em;
-            padding: 0.6em 0.5em;
-            margin-right: 10em;
-            font-size: 1em;
-            border: 1px solid #ffffff60;
-            background-color: #02021E00;
-            border-radius: 5px;
-            transition: border-color 0.3s;
-            color: #fff;
-        }
-    .plan-usage input::placeholder{
-          color: white;
-        }
-
-.support-resources{
-  background-color: #02021E;
-}
+   
     </style>
 </body>
 </html>
