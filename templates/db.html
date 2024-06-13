@@ -1718,6 +1718,96 @@ body {
   align-self: center;
   justify-self: center;
 }
+#newContent {
+            background-color: #1a1a3d;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 80%;
+            max-width: 800px;
+            padding: 20px;
+        }
+        #newContent h1 {
+            font-size: 24px;
+            color: #ffffff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #newContent table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+        #newContent table thead {
+            background-color: #333355;
+        }
+        #newContent table th, #newContent table td {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #444477;
+        }
+        #newContent table th {
+            border-bottom: 2px solid #444477;
+        }
+        #newContent table tbody tr:nth-child(even) {
+            background-color: #2a2a55;
+        }
+        #newContent button {
+            background-color: #0056b3;
+            color: #ffffff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        #newContent button:hover {
+            background-color: #003d80;
+        }
+        #newContent button:disabled {
+            background-color: #666666;
+            cursor: not-allowed;
+        }
+        #newContent button + button {
+            margin-left: 10px;
+        }
+        #newContent .details div {
+            padding: 10px;
+            background-color: #1a1a3d;
+            border: 1px solid #444477;
+            border-radius: 4px;
+        }
+        #newContent .details label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        #newContent .details input[type="text"],
+        #newContent .details textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #666666;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #2a2a55;
+            color: #ffffff;
+        }
+        #newContent .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 4px solid #3498db;
+            width: 12px;
+            height: 12px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+        @-webkit-keyframes spin {
+            0% { -webkit-transform: rotate(0deg); }
+            100% { -webkit-transform: rotate(360deg); }
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
       
     </style>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -1798,9 +1888,24 @@ body {
         <h1>Welcome <b>{{ name }}</b></h1>
 
         <div class="row">
-            <div class="pitch-col">
+          <div id="newContent" style="display: none;">
+            <h1>Your Emails</h1>
+            <table id="emailTable">
+                <thead>
+                    <tr>
+                        <th>Recipient Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Rows will be populated here -->
+                </tbody>
+            </table>
+            <button id="sendAllBtn">Send All</button>
+            <button id="regenerateAllBtn">Regenerate All Emails</button>
+        </div>
+            <div class="pitch-col" id="currentContent">
                <div class="pitch-row">
-
                 <div id="csvContainer" style="display: none;">
                     <!-- <label for="csvFile">Upload CSV file:</label> -->
                     <!-- <input type="file" id="csvFile" accept=".csv"><br><br> -->
@@ -2506,6 +2611,177 @@ function updateRowStatus(index, status) {
             return checkbox.checked;
         }
 
+        function Submitandcheckautosend(){
+          if (IsAutoSend()){
+            CallThisWhenAutosendIsOff()
+          }else{
+            manualSend();
+          }
+        }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+let generatedData = [];
+
+function showNewHtml() {
+            document.getElementById('currentContent').style.display = 'none';
+            document.getElementById('newContent').style.display = 'block';
+            populateEmailTable();
+}
+
+function toggleDetails(index) {
+            const detailsRow = document.getElementById(`details-${index}`);
+            if (detailsRow.classList.contains('hidden')) {
+                detailsRow.classList.remove('hidden');
+                detailsRow.classList.add('expanded');
+            } else {
+                detailsRow.classList.remove('expanded');
+                detailsRow.classList.add('hidden');
+            }
+        }
+
+async function manualSend() {
+  const userPitch = document.getElementById('userPitch').value; // Get user pitch from textarea
+  button.innerHTML=`<button class="btn"><div class="loader"></div> </button>`
+  const threadResponse = await fetch('/create-thread', { method: 'POST' });
+
+  const threadData = await threadResponse.json();
+  const threadID = threadData.thread_id;
+  showNewHtml()
+  generatedData = [];
+  for ( let index = 0; index < submittedData.length; index++) {
+    const data = submittedData[index];
+    try{
+            const descriptionResponse = await fetch('/get-site-description', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ url: data.website })
+            });
+            const descriptionData = await descriptionResponse.json();
+            console.log("get descrp")
+            const website_content = descriptionData.description;
+            const Uname = '{{ name }}'
+            const To = data.name
+            console.log(data.email, website_content,Uname, To );
+
+            updateRowStatus(index, 'Personalizing message');
+            // Add messages to the thread
+            const emailContentResponse = await fetch('/add-messages-to-thread', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    thread_id: threadID,
+                    website_content: website_content,
+                    user_pitch: userPitch,
+                    To: To,
+                    Me: Uname
+                })
+            });
+
+            const emailContentData = await emailContentResponse.json();
+            const email_content = emailContentData.email_content;
+            const lines = email_content.split('\n');
+            const subject_line = lines[0].replace('Subject: ', '');
+            const main_message = lines.slice(1).join('\n').trim();
+            console.log(data.email, "returned email sub : ", subject_line);
+            console.log(data.email, " email content : ", main_message);
+
+            generatedData.push({
+                        email: data.email,
+                        subject: subject_line,
+                        content: main_message
+                    });
+            populateEmailTable();
+
+    } catch (error) {
+                    console.error('Error generating email for', data.email, ':', error);
+                    showNotification(`Error generating email for ${data.email}`);
+                }
+  }
+  populateEmailTable();
+}
+
+async function sendEmailindex(index) {
+            const data = generatedData[index];
+            const subject = document.getElementById(`subject-${index}`).value;
+            const content = document.getElementById(`content-${index}`).value;
+            // Implement send logic here
+            try {
+                updateRowStatus(index, 'Sending');
+                const result = await sendMessage('me', data.email, subject, content);
+                console.log('Message to ', data.email, ' successfully sent:', result);
+                showNotification(`Message to ${data.email} successfully sent`);
+                removeRow(index);
+            } catch (error) {
+                console.error('Error sending email to', data.email, ':', error);
+                showNotification(`Error sending email to ${data.email}`);
+            }
+        }
+
+function populateEmailTable() {
+  const tbody = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
+
+  tbody.innerHTML = "";
+  generatedData.forEach((data, index) => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+                    <td>${data.email}</td>
+                    <td>
+                        <button onclick="toggleDetails(${index})">↓</button>
+                        <button onclick="sendEmailindex(${index})">Send Now</button>
+                    </td>
+                `;
+    tbody.appendChild(row);
+
+    const detailsRow = document.createElement('tr');
+                detailsRow.classList.add('hidden');
+                detailsRow.id = `details-${index}`;
+                detailsRow.innerHTML = `
+                    <td colspan="2">
+                        <div>
+                            <label>Subject: <input type="text" id="subject-${index}" value="${data.subject}"></label><br>
+                            <label>Content: <textarea id="content-${index}">${data.content}</textarea></label><br>
+                            <button onclick="editEmail(${index})">Edit</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(detailsRow);
+  })
+}
+
+function removeRow(index) {
+            const row = document.getElementById(`details-${index}`).previousElementSibling;
+            row.remove();
+            document.getElementById(`details-${index}`).remove();
+            generatedData.splice(index, 1);
+        }
+
+        function regenerateAllEmails() {
+            manualSend();
+        }
+
+        async function CallThisWhenAutosend() {
+            document.getElementById('sendAllBtn').innerHTML = `<div class="loader"></div>`;
+            for (let index = 0; index < generatedData.length; index++) {
+                const data = generatedData[index];
+                try {
+                    updateRowStatus(index, 'Sending');
+                    const result = await sendMessage('me', data.email, data.subject, data.content);
+                    console.log('Message to ', data.email, ' successfully sent:', result);
+                    showNotification(`Message to ${data.email} successfully sent`);
+                    removeRow(index);
+                } catch (error) {
+                    console.error('Error sending email to', data.email, ':', error);
+                    showNotification(`Error sending email to ${data.email}`);
+                }
+            }
+            document.getElementById('sendAllBtn').innerHTML = 'Send All';
+        }
+
+        document.getElementById('sendAllBtn').addEventListener('click', CallThisWhenAutosend);
+        document.getElementById('regenerateAllBtn').addEventListener('click', regenerateAllEmails);
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         // function 
 async function CallThisWhenAutosendIsOff() {
   const dataTable = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
@@ -2853,7 +3129,7 @@ const url = 'https://billing.stripe.com/p/login/bIY15e8DBdSv8SY6oo';
                         <span class="text">Generate</span>
                     </button> -->
                     
-                    <button class="button" onclick="CallThisWhenAutosendIsOff()">
+                    <button class="button" onclick="Submitandcheckautosend()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                           <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
                         </svg>

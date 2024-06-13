@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script>
+        const submittedData = [
+            { email: "example1@test.com", website: "https://example1.com", name: "Recipient 1" },
+            { email: "example2@test.com", website: "https://example2.com", name: "Recipient 2" }
+            // Add more data as needed
+        ];
+
+        let generatedData = [];
+
+        function showNewHtml() {
+            document.getElementById('currentContent').style.display = 'none';
+            document.getElementById('newContent').style.display = 'block';
+            populateEmailTable();
+        }
+
+        async function manualSend() {
+            generatedData = [];
+            for (let index = 0; index < submittedData.length; index++) {
+                const data = submittedData[index];
+                try {
+                    const descriptionResponse = await fetch('/get-site-description', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ url: data.website })
+                    });
+
+                    const descriptionData = await descriptionResponse.json();
+                    const website_content = descriptionData.description;
+                    const userPitch = document.getElementById('userPitch').value;
+
+                    const emailContentResponse = await fetch('/add-messages-to-thread', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            website_content: website_content,
+                            user_pitch: userPitch,
+                            To: data.name,
+                            Me: '{{ name }}'
+                        })
+                    });
+
+                    const emailContentData = await emailContentResponse.json();
+                    const email_content = emailContentData.email_content;
+                    const lines = email_content.split('\n');
+                    const subject_line = lines[0].replace('Subject: ', '');
+                    const main_message = lines.slice(1).join('\n').trim();
+
+                    generatedData.push({
+                        email: data.email,
+                        subject: subject_line,
+                        content: main_message
+                    });
+                } catch (error) {
+                    console.error('Error generating email for', data.email, ':', error);
+                    showNotification(`Error generating email for ${data.email}`);
+                }
+            }
+            populateEmailTable();
+        }
+
+        function populateEmailTable() {
+            const tbody = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
+            tbody.innerHTML = ''; // Clear existing rows
+            generatedData.forEach((data, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${data.email}</td>
+                    <td>
+                        <button onclick="toggleDetails(${index})">↓</button>
+                        <button onclick="sendEmail(${index})">Send Now</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+
+                const detailsRow = document.createElement('tr');
+                detailsRow.classList.add('hidden');
+                detailsRow.id = `details-${index}`;
+                detailsRow.innerHTML = `
+                    <td colspan="2">
+                        <div>
+                            <label>Subject: <input type="text" id="subject-${index}" value="${data.subject}"></label><br>
+                            <label>Content: <textarea id="content-${index}">${data.content}</textarea></label><br>
+                            <button onclick="editEmail(${index})">Edit</button>
+                        </div>
+                    </td>
+                `;
+                tbody.appendChild(detailsRow);
+            });
+        }
+
+        function toggleDetails(index) {
+            const detailsRow = document.getElementById(`details-${index}`);
+            if (detailsRow.classList.contains('hidden')) {
+                detailsRow.classList.remove('hidden');
+                detailsRow.classList.add('expanded');
+            } else {
+                detailsRow.classList.remove('expanded');
+                detailsRow.classList.add('hidden');
+            }
+        }
+
+        async function sendEmail(index) {
+            const data = generatedData[index];
+            const subject = document.getElementById(`subject-${index}`).value;
+            const content = document.getElementById(`content-${index}`).value;
+            // Implement send logic here
+            try {
+                updateRowStatus(index, 'Sending');
+                const result = await sendMessage('me', data.email, subject, content);
+                console.log('Message to ', data.email, ' successfully sent:', result);
+                showNotification(`Message to ${data.email} successfully sent`);
+                removeRow(index);
+            } catch (error) {
+                console.error('Error sending email to', data.email, ':', error);
+                showNotification(`Error sending email to ${data.email}`);
+            }
+        }
+
+        function removeRow(index) {
+            const row = document.getElementById(`details-${index}`).previousElementSibling;
+            row.remove();
+            document.getElementById(`details-${index}`).remove();
+            generatedData.splice(index, 1);
+        }
+
+        async function CallThisWhenAutosend() {
+            document.getElementById('sendAllBtn').innerHTML = `<div class="loader"></div>`;
+            for (let index = 0; index < generatedData.length; index++) {
+                const data = generatedData[index];
+                try {
+                    updateRowStatus(index, 'Sending');
+                    const result = await sendMessage('me', data.email, data.subject, data.content);
+                    console.log('Message to ', data.email, ' successfully sent:', result);
+                    showNotification(`Message to ${data.email} successfully sent`);
+                    removeRow(index);
+                } catch (error) {
+                    console.error('Error sending email to', data.email, ':', error);
+                    showNotification(`Error sending email to ${data.email}`);
+                }
+            }
+            document.getElementById('sendAllBtn').innerHTML = 'Send All';
+        }
+
+        function regenerateAllEmails() {
+            manualSend();
+        }
+
+        function updateRowStatus(index, status) {
+            // Implement row status update logic here
+        }
+
+        function showNotification(message) {
+            alert(message);
+        }
+
+        function sendMessage(from, to, subject, message) {
+            // Mock function to simulate sending an email
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve(`Email sent to ${to}`);
+                }, 1000);
+            });
+        }
+
+        document.getElementById('sendAllBtn').addEventListener('click', CallThisWhenAutosend);
+        document.getElementById('regenerateAllBtn').addEventListener('click', regenerateAllEmails);
+
+        // For demo purposes
+        document.addEventListener('DOMContentLoaded', () => {
+            showNewHtml();
+            manualSend();
+        });
+    </script>
+</body>
+</html>
