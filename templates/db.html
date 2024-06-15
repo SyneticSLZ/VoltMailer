@@ -743,7 +743,33 @@ h1 b {
   .wave-group .input:focus ~ .bar:after {
     width: 50%;
   }
-  
+  .submit-btn {
+    background-color: #880088; /* Bright pink color */
+    color: #fff; /* White text */
+    border: none; /* Remove default border */
+    padding: 10px 20px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s, transform 0.3s; /* Transition for hover effect */
+}
+
+.submit-btn:hover {
+    background-color: #8320aa; /* Darker pink on hover */
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
+.submit-btn:active {
+    background-color: #c71585; /* Even darker pink on click */
+    transform: scale(0.95); /* Slightly smaller on click */
+}
+
+.submit-btn:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5); /* Pink shadow outline */
+}
+
+
   .loading {
             display: none;
         }
@@ -751,6 +777,14 @@ h1 b {
             width: 100%;
             border-collapse: collapse;
             color: #1C1A1C;
+        }
+        tr{
+          /* margin-left: 1em; */
+display: flex;
+align-items: center;
+justify-content: start;
+gap: 5em;
+/* border: #0056b3 solid 7px; */
         }
         table, th, td {
             /* border: 1px solid white; */
@@ -920,7 +954,7 @@ h1 b {
   justify-content: start;
 }
 .submit{
-    justify-self: start;
+    justify-self: center;
     /* border: #ffffff20 solid 1px; */
     /* border-radius: 10px; */
     /* background: rgba(0, 0, 0, 0.2); */
@@ -928,7 +962,7 @@ h1 b {
     color: #1C1A1C;
     /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); */
     height: 5em;
-    width: 100%;
+    width: 110%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1191,6 +1225,7 @@ h1 b {
             border-radius: 5px;
             cursor: pointer;
             float: right;
+            align-self: center;
         }
         .subscription-details {
             display: flex;
@@ -1667,6 +1702,8 @@ body {
     }
 }
 .container-btn-file {
+  /* position: absolute; */
+  /* width: 100%; */
   align-self: center;
   justify-self: center;
   /* margin-left: 7em; */
@@ -1708,112 +1745,341 @@ body {
 .container-btn-file:hover::before {
   width: 100%;
 }
+.requirements{
+  color: white;
+  text-decoration: underline;
+  cursor: pointer;
+}
 #csvContainer{
+  /* position: absolute; */
+  /* width: 40%; */
   padding: auto;
   display: flex;
   /* border: #0056b3 solid 1px; */
   justify-content: center;
   align-items: center;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-self: center;
   justify-self: center;
 }
+#errorRows {
+    color: red;
+    margin-top: 10px;
+}
+
+#fileName {
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.instructions-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    position: relative;
+    text-align: center;
+    color: #fff;
+}
+
+.popup-content h3 {
+    color: #fff;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.popup-content p {
+    color: #fff;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.popup-content a {
+    color: #ff69b4;
+    text-decoration: underline;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: #ff69b4;
+}
+
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 #newContent {
-            background-color: rgb(5, 1, 24);
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-            box-shadow: 
+    background-color: rgb(5, 1, 24);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 
         0 1px 3px rgba(0, 0, 0, 0.12), 
         0 1px 2px rgba(0, 0, 0, 0.24), 
         0 5px 15px rgba(0, 255, 255, 0.5), 
         0 10px 20px rgba(255, 0, 255, 0.5);
-            width: 80%;
-            max-width: 1000px;
-            padding: 20px;
-            max-height: 400px;
-        }
-        #newContent h1 {
-            font-size: 24px;
-            color: #ffffff;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        #newContent table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-            color: #ffffff;
-        }
-        #newContent table thead {
-            background-color: #333355;
-        }
-        #newContent table th, #newContent table td {
-            padding: 12px 15px;
-            text-align: left;
-            border: 1px solid red;
-        }
-        #newContent table th {
-            border-bottom: 2px solid #2d1ead;
-        }
-        #newContent table tbody tr:nth-child(even) {
-            background-color: #0dd69a;
-        }
-        #newContent button {
-            background-color: #0056b3;
-            color: #ffffff;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        #newContent button:hover {
-            background-color: #003d80;
-        }
-        #newContent button:disabled {
-            background-color: #666666;
-            cursor: not-allowed;
-        }
-        #newContent button + button {
-            margin-left: 10px;
-        }
-        #newContent .details div {
-            padding: 10px;
-            background-color: #040120;
-            border: 1px solid #444477;
-            border-radius: 4px;
-        }
-        #newContent .details label {
-            display: block;
-            margin-bottom: 8px;
-        }
-        #newContent .details input[type="text"],
-        #newContent .details textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #666666;
-            border-radius: 4px;
-            margin-bottom: 10px;
-            border: 1px solid #2a2a55;
-            color: #ffffff;
-        }
-        #newContent .loader {
-            border: 4px solid #f3f3f3;
-            border-radius: 50%;
-            border-top: 4px solid #3498db;
-            width: 12px;
-            height: 12px;
-            -webkit-animation: spin 2s linear infinite; /* Safari */
-            animation: spin 2s linear infinite;
-        }
-        @-webkit-keyframes spin {
-            0% { -webkit-transform: rotate(0deg); }
-            100% { -webkit-transform: rotate(360deg); }
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+    width: 80%;
+    max-width: 1000px;
+    padding: 20px;
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden; /* Add this to hide horizontal scrollbar */
+    position: relative;
+}
+
+#newContent h1 {
+    font-size: 24px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+
+#newContent table {
+    width: 100%; /* Ensure the table takes up the full width of its container */
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    color: #ffffff;
+    position: relative;
+}
+
+#newContent table thead {
+    border-bottom: none;
+    border-bottom: solid 1px #ffffff60;
+}
+
+#newContent table th, #newContent table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+}
+
+#newContent table th {
+    border-bottom: none;
+}
+
+#newContent table tbody tr:nth-child(even) {
+    background-color: #0dd69a00;
+    margin-top: 10px;
+}
+
+#newContent table tbody tr {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#newContent button {
+    background-color: #683FEA;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#newContent button:hover {
+    background-color: #8320aa;
+}
+
+#newContent button:disabled {
+    background-color: #666666;
+    cursor: not-allowed;
+}
+
+.button-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 10px;
+}
+
+#newContent button + button {
+    margin-left: 10px;
+}
+
+.details {
+    padding: 10px;
+    background-color: #1e1e2f00;
+    border: 1px solid #444477;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.details label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.details input[type="text"],
+.details textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #666666;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #2a2a55;
+    color: #ffffff;
+    background-color: #2a2a55;
+    resize: none;
+}
+
+.custom-loader {
+    margin: 20px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    perspective: 780px;
+}
+
+.text {
+    font-size: 20px;
+    font-weight: 700;
+    color: #cecece;
+    z-index: 10;
+}
+
+.load-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 50%;
+}
+
+.load-inner.load-one {
+    left: 0%;
+    top: 0%;
+    border-bottom: 3px solid #5c5edc;
+    animation: rotate1 1.15s linear infinite;
+}
+
+.load-inner.load-two {
+    right: 0%;
+    top: 0%;
+    border-right: 3px solid #9147ff;
+    animation: rotate2 1.15s 0.1s linear infinite;
+}
+
+.load-inner.load-three {
+    right: 0%;
+    bottom: 0%;
+    border-top: 3px solid #3b82f6;
+    animation: rotate3 1.15s 0.15s linear infinite;
+}
+
+@keyframes rotate1 {
+    0% { transform: rotateX(45deg) rotateY(-45deg) rotateZ(0deg); }
+    100% { transform: rotateX(45deg) rotateY(-45deg) rotateZ(360deg); }
+}
+
+@keyframes rotate2 {
+    0% { transform: rotateX(45deg) rotateY(45deg) rotateZ(0deg); }
+    100% { transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg); }
+}
+
+@keyframes rotate3 {
+    0% { transform: rotateX(-60deg) rotateY(0deg) rotateZ(0deg); }
+    100% { transform: rotateX(-60deg) rotateY(0deg) rotateZ(360deg); }
+}
+
+.hidden {
+    display: none;
+}
+
+.expanded {
+    display: table-row;
+    animation: expand 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.collapsed {
+    display: table-row;
+    animation: collapse 0.3s ease-in, opacity 0.3s ease-in;
+}
+
+@keyframes expand {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+    to {
+        opacity: 1;
+        height: auto;
+    }
+}
+
+@keyframes collapse {
+    from {
+        opacity: 1;
+        height: auto;
+    }
+    to {
+        opacity: 0;
+        height: 0;
+    }
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Position the tooltip above the text */
+    left: 50%;
+    margin-left: -60px; /* Center the tooltip */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+ 
+
+
+
       
     </style>
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.3.0/uicons-bold-straight/css/uicons-bold-straight.css'>
@@ -1871,7 +2137,7 @@ body {
                 <li onclick="loadContent('billing')" class="noHover" id="2"><a href="#"><i class="fi fi-rr-credit-card"></i> <span>Billing</span></a></li>
                 <li class="tools-header">Tools</li>
                 <li onclick="loadContent('accountSettings')" class="noHover" id="4"><a href="#"><i class="fi fi-rr-user-pen"></i> <span>Account Settings</span></a></li>
-                <li onclick="loadContent('supportResources')" class="noHover" id="5"><a href="#"><i class="fi fi-rr-customer-service"></i> <span>Support and Resources</span></a></li>
+                <!-- <li onclick="loadContent('supportResources')" class="noHover" id="5"><a href="#"><i class="fi fi-rr-customer-service"></i> <span>Support and Resources</span></a></li> -->
             </ul>
         </div>
         <div class="logout sidebarItem">
@@ -1900,58 +2166,77 @@ body {
                 <thead>
                     <tr>
                         <th>Recipient Email</th>
-                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
                     <!-- Rows will be populated here -->
                 </tbody>
             </table>
-            <button id="sendAllBtn">Send All</button>
-            <button id="regenerateAllBtn">Regenerate All Emails</button>
+            <button id="regenerateAllBtn" onclick='regenerateAllEmails()'>Regenerate All Emails</button>
+            <button onclick="Restart()" >Reset</button>
+            <div class="custom-loader" id="customLoader" style="display: none;">
+                <div class="load-inner load-one"></div>
+                <div class="load-inner load-two"></div>
+                <div class="load-inner load-three"></div>
+                <span class="text" id="loaderText"></span>
+            </div>
         </div>
+        
+        
+        
+        
+        <div id="instructionsPopup" class="instructions-popup" style="display: none;">
+          <div class="popup-content">
+              <span class="close-btn" id="closePopup" onclick="closepopup()">&times;</span>
+              <h3>Instructions:</h3>
+              <p>The CSV file must have the following columns: <strong>email, website, name</strong>. There </p>
+              <!-- <p>Download an example CSV file <a href="../example.csv" download>here</a>.</p> -->
+              <p>Ensure that all rows have complete data; incomplete rows will not be added to the table.</p>
+          </div>
+      </div>
+        
+
             <div class="pitch-col" id="currentContent">
                <div class="pitch-row">
                 <div id="csvContainer" style="display: none;">
-                    <!-- <label for="csvFile">Upload CSV file:</label> -->
-                    <!-- <input type="file" id="csvFile" accept=".csv"><br><br> -->
-                    <button class="container-btn-file">
-                      <svg
-                        fill="#fff"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 50 50"
-                      >
-                        <path
-                          d="M28.8125 .03125L.8125 5.34375C.339844 
-                        5.433594 0 5.863281 0 6.34375L0 43.65625C0 
-                        44.136719 .339844 44.566406 .8125 44.65625L28.8125 
-                        49.96875C28.875 49.980469 28.9375 50 29 50C29.230469 
-                        50 29.445313 49.929688 29.625 49.78125C29.855469 49.589844 
-                        30 49.296875 30 49L30 1C30 .703125 29.855469 .410156 29.625 
-                        .21875C29.394531 .0273438 29.105469 -.0234375 28.8125 .03125ZM32 
-                        6L32 13L34 13L34 15L32 15L32 20L34 20L34 22L32 22L32 27L34 27L34 
-                        29L32 29L32 35L34 35L34 37L32 37L32 44L47 44C48.101563 44 49 
-                        43.101563 49 42L49 8C49 6.898438 48.101563 6 47 6ZM36 13L44 
-                        13L44 15L36 15ZM6.6875 15.6875L11.8125 15.6875L14.5 21.28125C14.710938 
-                        21.722656 14.898438 22.265625 15.0625 22.875L15.09375 22.875C15.199219 
-                        22.511719 15.402344 21.941406 15.6875 21.21875L18.65625 15.6875L23.34375 
-                        15.6875L17.75 24.9375L23.5 34.375L18.53125 34.375L15.28125 
-                        28.28125C15.160156 28.054688 15.035156 27.636719 14.90625 
-                        27.03125L14.875 27.03125C14.8125 27.316406 14.664063 27.761719 
-                        14.4375 28.34375L11.1875 34.375L6.1875 34.375L12.15625 25.03125ZM36 
-                        20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"
-                        ></path>
+
+                  <button class="container-btn-file">
+                    <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
+                        <path d="M28.8125 .03125L.8125 5.34375C.339844 5.433594 0 5.863281 0 6.34375L0 43.65625C0 44.136719 .339844 44.566406 .8125 44.65625L28.8125 49.96875C28.875 49.980469 28.9375 50 29 50C29.230469 50 29.445313 49.929688 29.625 49.78125C29.855469 49.589844 30 49.296875 30 49L30 1C30 .703125 29.855469 .410156 29.625 .21875C29.394531 .0273438 29.105469 -.0234375 28.8125 .03125ZM32 6L32 13L34 13L34 15L32 15L32 20L34 20L34 22L32 22L32 27L34 27L34 29L32 29L32 35L34 35L34 37L32 37L32 44L47 44C48.101563 44 49 43.101563 49 42L49 8C49 6.898438 48.101563 6 47 6ZM36 13L44 13L44 15L36 15ZM6.6875 15.6875L11.8125 15.6875L14.5 21.28125C14.710938 21.722656 14.898438 22.265625 15.0625 22.875L15.09375 22.875C15.199219 22.511719 15.402344 21.941406 15.6875 21.21875L18.65625 15.6875L23.34375 15.6875L17.75 24.9375L23.5 34.375L18.53125 34.375L15.28125 28.28125C15.160156 28.054688 15.035156 27.636719 14.90625 27.03125L14.875 27.03125C14.8125 27.316406 14.664063 27.761719 14.4375 28.34375L11.1875 34.375L6.1875 34.375L12.15625 25.03125ZM36 20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"></path>
+                    </svg>
+                    <span id="buttonText">Upload CSV File</span>
+                    <input class="file" name="text" type="file" id="csvFile" accept=".csv" onchange="handleFileSelect(this)"/>
+                </button>
+                    
+                    <!-- <div class="loading" id="loadingIcon">Loading...</div> -->
+
+
+                </div> 
+                <div id="req" class="requirements" onclick="popup()" style="display: none;">Requirements</div>
+                <div class="loadingcsv" id="loadingIconcsv" style="display: none;">Loading...</div>
+                <div id="errorRows" style="color: red;" style="display: none;"></div>
+
+                <!-- <div id="csvContainer" style="display: none;">
+                  <button class="container-btn-file">
+                      <svg fill="#fff" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 50 50">
+                          <path d="M28.8125 .03125L.8125 5.34375C.339844 5.433594 0 5.863281 0 6.34375L0 43.65625C0 44.136719 .339844 44.566406 .8125 44.65625L28.8125 49.96875C28.875 49.980469 28.9375 50 29 50C29.230469 50 29.445313 49.929688 29.625 49.78125C29.855469 49.589844 30 49.296875 30 49L30 1C30 .703125 29.855469 .410156 29.625 .21875C29.394531 .0273438 29.105469 -.0234375 28.8125 .03125ZM32 6L32 13L34 13L34 15L32 15L32 20L34 20L34 22L32 22L32 27L34 27L34 29L32 29L32 35L34 35L34 37L32 37L32 44L47 44C48.101563 44 49 43.101563 49 42L49 8C49 6.898438 48.101563 6 47 6ZM36 13L44 13L44 15L36 15ZM6.6875 15.6875L11.8125 15.6875L14.5 21.28125C14.710938 21.722656 14.898438 22.265625 15.0625 22.875L15.09375 22.875C15.199219 22.511719 15.402344 21.941406 15.6875 21.21875L18.65625 15.6875L23.34375 15.6875L17.75 24.9375L23.5 34.375L18.53125 34.375L15.28125 28.28125C15.160156 28.054688 15.035156 27.636719 14.90625 27.03125L14.875 27.03125C14.8125 27.316406 14.664063 27.761719 14.4375 28.34375L11.1875 34.375L6.1875 34.375L12.15625 25.03125ZM36 20L44 20L44 22L36 22ZM36 27L44 27L44 29L36 29ZM36 35L44 35L44 37L36 37Z"></path>
                       </svg>
                       Upload CSV File
                       <input class="file" name="text" type="file" id="csvFile" accept=".csv" />
-                    </button>
-                    
-                    <div class="loading" id="loadingIcon">Loading...</div>
-
-
-                </div>
+                  </button>
+                  
+                  <div class="loading" id="loadingIcon" style="display: none;">Loading...</div>
+                  <div id="fileName"></div>
+                  <div id="errorRows" style="color: red;"></div>
+              
+              
+              <div id="instructions" style="padding: 20px; margin-top: 20px; border: 1px solid #ccc;">
+                  <h3>Instructions:</h3>
+                  <p>The CSV file must have the following columns: <strong>email, website, name</strong>.</p>
+                  <p>Download an example CSV file <a href="example.csv" download>here</a>.</p>
+                  <p>Ensure that all rows have complete data; incomplete rows will not be added to the table.</p>
+              </div>
+            </div> -->
 
                 <div id="form-Container">
                 <formq class="pitch-row" id="inputForm">
@@ -1973,7 +2258,7 @@ body {
                         </label>
                       </div>
                       <div class="wave-group">
-                        <input required="" type="text" class="input" id="website">
+                        <input required="" type="text" class="input" id="website" value="https://">
                         <span class="bar"></span>
                         <label class="label">
                           <span class="label-char" style="--index: 0">E</span>
@@ -2004,7 +2289,7 @@ body {
                         </label>
                       </div> 
 
-                      <button  onclick="a()">Submit</button>
+                      <button  onclick="a()" class="submit-btn">Submit</button>
                     
                       
                  </formq>
@@ -2041,14 +2326,14 @@ body {
                         </label>
                       </div> -->
                 </div>
-                <div class="row-notification">
+                <div class="row-notification" >
                     <!-- <div class="notification">
                         <div class="notiglow"></div>
                         <div class="notiborderglow"></div>
                         <div class="notititle">Welcome To Volt.</div>
                         <div class="notibody">Contribute to Open Source UI Elements</div>
                       </div> -->
-                      <div class="slide">
+                      <div class="slide" id="togglewoggle">
                       <div class="manual">Enter Manually</div>
                       <label class="switch">
                         <input class="checkbox" type="checkbox" id="toggleCheckbox" />
@@ -2070,16 +2355,21 @@ body {
                         <span class="text">Generate</span>
                     </button> -->
 
-                    <button class="button">
+                    <button class="button" onclick="billing()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
                           <path d="m18 0 8 12 10-8-4 20H4L0 4l10 8 8-12z"></path>
                         </svg>
                         Unlock Pro
-                      </button>
+                    </button>
+
                 </div>
+                
             </div>
+            <!-- <div onclick='Restart()'>Reset</div> -->
         </div>
+        <!-- <div onclick='Restart()'>Reset</div> -->
     </div>
+    <!-- <div onclick='Restart()'>Reset</div> -->
   <!-- </div> -->
 </div>
     <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
@@ -2396,14 +2686,28 @@ document.addEventListener('DOMContentLoaded', (event) => {
     const checkbox = document.getElementById('toggleCheckbox');
     const csvContainer = document.getElementById('csvContainer');
     const formContainer = document.getElementById('form-Container');
+    const req = document.getElementById('req');
+    const errorrorw = document.getElementById('errorRows');
+    const load = document.getElementById('loadingIconcsv');
+
+    csvContainer.style.display = 'none';
+            req.style.display = 'none';
+            errorrorw.style.display = 'none';
+            load.style.display = 'none';
+            formContainer.style.display = 'block';
 
     checkbox.addEventListener('change', function() {
       console.log("state changed")
         if (this.checked) {
             csvContainer.style.display = 'block';
+            req.style.display = 'block';
+            errorrorw.style.display = 'block';
             formContainer.style.display = 'none';
         } else {
             csvContainer.style.display = 'none';
+            req.style.display = 'none';
+            errorrorw.style.display = 'none';
+            load.style.display = 'none';
             formContainer.style.display = 'block';
         }
     });
@@ -2443,7 +2747,93 @@ document.addEventListener('DOMContentLoaded', (event) => {
             // inputForm.reset(); // Clear the input fields after submission
             // console.log("hi", formData)
         // });
+// CSV //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function popup() {
+    document.getElementById('instructionsPopup').style.display = 'flex';
+};
 
+function closepopup() {
+    document.getElementById('instructionsPopup').style.display = 'none';
+};
+
+document.getElementById('csvFile').addEventListener('change', handleFileSelect, false);
+
+function handleFileSelect(input) {
+    const file = input.files[0];
+    if (file) {
+        // const buttonText = document.getElementById('buttonText');
+        // buttonText.textContent = file.name
+        showNotification(`Uploading, ${file.name}  ...`);
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            const csvData = e.target.result;
+            showNotification(`Finished Uploading, ${file.name}`);
+            processData(csvData);
+        };
+        reader.readAsText(file);
+
+        // showLoading();
+    }
+}
+
+function showLoading() {
+    const loadingIcon = document.getElementById('loadingIconcsv');
+    
+    loadingIcon.style.display = 'block';
+    let progress = 0;
+
+    const interval = setInterval(() => {
+        if (progress < 100) {
+            progress += 10;
+            loadingIcon.textContent = `Loading... ${progress}%`;
+        } else {
+            clearInterval(interval);
+            loadingIcon.style.display = 'none';
+        }
+    }, 200);
+}
+
+function processData(csvData) {
+    const lines = csvData.split('\n');
+    const result = [];
+    const errorRows = [];
+    const headers = lines[0].split(',');
+
+    for (let i = 1; i < lines.length; i++) {
+        const currentline = lines[i].split(',');
+
+        if (currentline.length === headers.length) {
+            const obj = {};
+            for (let j = 0; j < headers.length; j++) {
+                obj[headers[j].trim()] = currentline[j].trim();
+            }
+            if (obj.email && obj.website && obj.name) {
+                result.push(obj);
+            } else {
+                let missingFields = [];
+                if (!obj.email) missingFields.push('email');
+                if (!obj.website) missingFields.push('website');
+                if (!obj.name) missingFields.push('name');
+                errorRows.push(`Row ${i + 1}: Missing fields - ${missingFields.join(', ')}`);
+            }
+        } else {
+            errorRows.push(`Row ${i + 1}: Incorrect number of columns (expected ${headers.length}, got ${currentline.length})`);
+        }
+    }
+
+    submittedData = submittedData.concat(result);
+    updateTable();
+
+    if (errorRows.length > 0) {
+        document.getElementById('errorRows').textContent = `Errors found:\n${errorRows.join('\n')}`;
+        console.log(`Errors found:\n${errorRows.join('\n')}`);
+    } else {
+        document.getElementById('errorRows').textContent = '';
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         csvFileInput.addEventListener('change', function(event) {
             const file = event.target.files[0];
             if (file) {
@@ -2497,11 +2887,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         const nameInput = document.getElementById('name');
         
         const email = emailInput.value;
-        const website = websiteInput.value;
+        let website = websiteInput.value;
         const name = nameInput.value;
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         const websiteRegex = /^https:\/\/.+$/;
+
+    // Prepend "https://" if not included
+    if (!/^https:\/\//i.test(website)) {
+        website = 'https://' + website;
+    }
 
         if (!emailRegex.test(email)) {
             manualError.textContent = "Invalid email format.";
@@ -2618,55 +3013,256 @@ function updateRowStatus(index, status) {
         }
 
         function Submitandcheckautosend(){
-          if (IsAutoSend()){
-            CallThisWhenAutosendIsOff()
-          }else{
-            manualSend();
+          if (submittedData.length === 0) {
+              // The array is empty
+              console.log('The array is empty');
+              showNotification(`Please submit data`);
+          } 
+          else {
+            // The array is not empty
+            console.log('The array is not empty');
+            const userPitch = document.getElementById('userPitch').value;
+
+            if (userPitch.trim() === '') {
+                // The value is empty or only contains whitespace
+                console.log('No value provided');
+                showNotification(`Please submit a pitch`);
+            } else {
+                // The value is not empty
+                console.log('Value provided:', userPitch);
+                if (IsAutoSend()){
+                  CallThisWhenAutosendIsOff()
+                }else{
+                  manualSend();
+            }
+            }
           }
+
+
         }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// let generatedData = [];
+
+// function showNewHtml() {
+//             document.getElementById('currentContent').style.display = 'none';
+//             document.getElementById('newContent').style.display = 'block';
+//             populateEmailTable();
+// }
+
+// function toggleDetails(index) {
+//             const detailsRow = document.getElementById(`details-${index}`);
+//             if (detailsRow.classList.contains('hidden')) {
+//                 detailsRow.classList.remove('hidden');
+//                 detailsRow.classList.add('expanded');
+//             } else {
+//                 detailsRow.classList.remove('expanded');
+//                 detailsRow.classList.add('hidden');
+//             }
+//         }
+
+// async function manualSend() {
+//   const userPitch = document.getElementById('userPitch').value; // Get user pitch from textarea
+//   button.innerHTML=`<button class="btn"><div class="loader"></div> </button>`
+//   const threadResponse = await fetch('/create-thread', { method: 'POST' });
+
+//   const threadData = await threadResponse.json();
+//   const threadID = threadData.thread_id;
+//   showNewHtml()
+//   generatedData = [];
+//   for ( let index = 0; index < submittedData.length; index++) {
+//     const data = submittedData[index];
+//     try{
+//             const descriptionResponse = await fetch('/get-site-description', {
+//                         method: 'POST',
+//                         headers: { 'Content-Type': 'application/json' },
+//                         body: JSON.stringify({ url: data.website })
+//             });
+//             const descriptionData = await descriptionResponse.json();
+//             console.log("get descrp")
+//             const website_content = descriptionData.description;
+//             const Uname = '{{ name }}'
+//             const To = data.name
+//             console.log(data.email, website_content,Uname, To );
+
+//             updateRowStatus(index, 'Personalizing message');
+//             // Add messages to the thread
+//             const emailContentResponse = await fetch('/add-messages-to-thread', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json'
+//                 },
+//                 body: JSON.stringify({
+//                     thread_id: threadID,
+//                     website_content: website_content,
+//                     user_pitch: userPitch,
+//                     To: To,
+//                     Me: Uname
+//                 })
+//             });
+
+//             const emailContentData = await emailContentResponse.json();
+//             const email_content = emailContentData.email_content;
+//             const lines = email_content.split('\n');
+//             const subject_line = lines[0].replace('Subject: ', '');
+//             const main_message = lines.slice(1).join('\n').trim();
+//             console.log(data.email, "returned email sub : ", subject_line);
+//             console.log(data.email, " email content : ", main_message);
+
+//             generatedData.push({
+//                         email: data.email,
+//                         subject: subject_line,
+//                         content: main_message
+//                     });
+//             populateEmailTable();
+
+//     } catch (error) {
+//                     console.error('Error generating email for', data.email, ':', error);
+//                     showNotification(`Error generating email for ${data.email}`);
+//                 }
+//   }
+//   populateEmailTable();
+// }
+
+// async function sendEmailindex(index) {
+//             const data = generatedData[index];
+//             const subject = document.getElementById(`subject-${index}`).value;
+//             const content = document.getElementById(`content-${index}`).value;
+//             // Implement send logic here
+//             try {
+//                 updateRowStatus(index, 'Sending');
+//                 const result = await sendMessage('me', data.email, subject, content);
+//                 console.log('Message to ', data.email, ' successfully sent:', result);
+//                 showNotification(`Message to ${data.email} successfully sent`);
+//                 removeRow(index);
+//             } catch (error) {
+//                 console.error('Error sending email to', data.email, ':', error);
+//                 showNotification(`Error sending email to ${data.email}`);
+//             }
+//         }
+
+// function populateEmailTable() {
+//   const tbody = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
+
+//   tbody.innerHTML = "";
+//   generatedData.forEach((data, index) => {
+//     const row = document.createElement('tr');
+//     row.innerHTML = `
+//                     <td>${data.email}</td>
+//                     <td>
+//                         <button onclick="sendEmailindex(${index})" class="button-icon">Send Now</button>
+//                         <button onclick="toggleDetails(${index})">↓</button>
+                        
+//                     </td>
+//                 `;
+//     tbody.appendChild(row);
+
+//     const detailsRow = document.createElement('tr');
+//                 detailsRow.classList.add('hidden');
+//                 detailsRow.id = `details-${index}`;
+//                 detailsRow.innerHTML = `
+//                     <td colspan="2">
+//                         <div>
+//                             <label>Subject: <input type="text" id="subject-${index}" value="${data.subject}"></label><br>
+//                             <label>Content: <textarea id="content-${index}">${data.content}</textarea></label><br>
+//                             <button onclick="editEmail(${index})">Edit</button>
+//                         </div>
+//                     </td>
+//                 `;
+//                 tbody.appendChild(detailsRow);
+//   })
+// }
+
+// function removeRow(index) {
+//             const row = document.getElementById(`details-${index}`).previousElementSibling;
+//             row.remove();
+//             document.getElementById(`details-${index}`).remove();
+//             generatedData.splice(index, 1);
+//         }
+
+//         function regenerateAllEmails() {
+//             manualSend();
+//         }
+
+//         async function CallThisWhenAutosend() {
+//             document.getElementById('sendAllBtn').innerHTML = `<div class="loader"></div>`;
+//             for (let index = 0; index < generatedData.length; index++) {
+//                 const data = generatedData[index];
+//                 try {
+//                     updateRowStatus(index, 'Sending');
+//                     const result = await sendMessage('me', data.email, data.subject, data.content);
+//                     console.log('Message to ', data.email, ' successfully sent:', result);
+//                     showNotification(`Message to ${data.email} successfully sent`);
+//                     removeRow(index);
+//                 } catch (error) {
+//                     console.error('Error sending email to', data.email, ':', error);
+//                     showNotification(`Error sending email to ${data.email}`);
+//                 }
+//             }
+//             document.getElementById('sendAllBtn').innerHTML = 'Send All';
+//         }
+
+//         document.getElementById('sendAllBtn').addEventListener('click', CallThisWhenAutosend);
+//         document.getElementById('regenerateAllBtn').addEventListener('click', regenerateAllEmails);
 let generatedData = [];
 
 function showNewHtml() {
-            document.getElementById('currentContent').style.display = 'none';
-            document.getElementById('newContent').style.display = 'block';
-            populateEmailTable();
+    document.getElementById('currentContent').style.display = 'none';
+    document.getElementById('newContent').style.display = 'block';
+    populateEmailTable();
 }
 
 function toggleDetails(index) {
-            const detailsRow = document.getElementById(`details-${index}`);
-            if (detailsRow.classList.contains('hidden')) {
-                detailsRow.classList.remove('hidden');
-                detailsRow.classList.add('expanded');
-            } else {
-                detailsRow.classList.remove('expanded');
-                detailsRow.classList.add('hidden');
-            }
-        }
+    const detailsRow = document.getElementById(`details-${index}`);
+    const arrowIcon = document.getElementById(`arrow-${index}`);
+    if (detailsRow.style.display === 'none' || detailsRow.style.display === '') {
+        detailsRow.style.display = 'table-row';
+        detailsRow.style.height = '0px';
+        arrowIcon.innerHTML = '↑';
+        setTimeout(() => {
+            detailsRow.style.transition = 'height 0.3s ease-out, opacity 0.3s ease-out';
+            detailsRow.style.height = detailsRow.scrollHeight + 'px';
+            detailsRow.style.opacity = '1';
+        }, 0);
+    } else {
+        detailsRow.style.transition = 'height 0.3s ease-out, opacity 0.3s ease-out';
+        detailsRow.style.height = '0px';
+        detailsRow.style.opacity = '0';
+        arrowIcon.innerHTML = '↓';
+        setTimeout(() => {
+            detailsRow.style.display = 'none';
+        }, 300);
+    }
+}
 
 async function manualSend() {
-  const userPitch = document.getElementById('userPitch').value; // Get user pitch from textarea
-  button.innerHTML=`<button class="btn"><div class="loader"></div> </button>`
-  const threadResponse = await fetch('/create-thread', { method: 'POST' });
+    const userPitch = document.getElementById('userPitch').value; // Get user pitch from textarea
+    document.getElementById('customLoader').style.display = 'flex';
+    document.getElementById('togglewoggle').style.display = 'none';
+    const button = document.getElementById('submit');
+    button.innerHTML = `
+                    <button class="button" onclick="sendAllEmails()">
+                        <img width="30" height="30" src="https://img.icons8.com/nolan/64/new-post.png" alt="new-post"/>
+                        Send All
+                    </button>
+                `;
+    const threadResponse = await fetch('/create-thread', { method: 'POST' });
 
-  const threadData = await threadResponse.json();
-  const threadID = threadData.thread_id;
-  showNewHtml()
-  generatedData = [];
-  for ( let index = 0; index < submittedData.length; index++) {
-    const data = submittedData[index];
-    try{
+    const threadData = await threadResponse.json();
+    const threadID = threadData.thread_id;
+    showNewHtml();
+    generatedData = [];
+    for (let index = 0; index < submittedData.length; index++) {
+        const data = submittedData[index];
+        try {
             const descriptionResponse = await fetch('/get-site-description', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ url: data.website })
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ url: data.website })
             });
             const descriptionData = await descriptionResponse.json();
-            console.log("get descrp")
             const website_content = descriptionData.description;
-            const Uname = '{{ name }}'
-            const To = data.name
-            console.log(data.email, website_content,Uname, To );
+            const Uname = '{{ name }}';
+            const To = data.name;
 
             updateRowStatus(index, 'Personalizing message');
             // Add messages to the thread
@@ -2689,103 +3285,163 @@ async function manualSend() {
             const lines = email_content.split('\n');
             const subject_line = lines[0].replace('Subject: ', '');
             const main_message = lines.slice(1).join('\n').trim();
-            console.log(data.email, "returned email sub : ", subject_line);
-            console.log(data.email, " email content : ", main_message);
 
             generatedData.push({
-                        email: data.email,
-                        subject: subject_line,
-                        content: main_message
-                    });
+                email: data.email,
+                subject: subject_line,
+                content: main_message
+            });
+
+            document.getElementById('loaderText').innerText = `Generating email for ${data.email}...`;
+            await new Promise(resolve => setTimeout(resolve, 500)); // Simulate delay
             populateEmailTable();
 
-    } catch (error) {
-                    console.error('Error generating email for', data.email, ':', error);
-                    showNotification(`Error generating email for ${data.email}`);
-                }
-  }
-  populateEmailTable();
+        } catch (error) {
+            console.error('Error generating email for', data.email, ':', error);
+            showNotification(`Error generating email for ${data.email}`);
+        }
+    }
+    document.getElementById('customLoader').style.display = 'none';
+    populateEmailTable();
 }
 
 async function sendEmailindex(index) {
-            const data = generatedData[index];
-            const subject = document.getElementById(`subject-${index}`).value;
-            const content = document.getElementById(`content-${index}`).value;
-            // Implement send logic here
-            try {
-                updateRowStatus(index, 'Sending');
-                const result = await sendMessage('me', data.email, subject, content);
-                console.log('Message to ', data.email, ' successfully sent:', result);
-                showNotification(`Message to ${data.email} successfully sent`);
-                removeRow(index);
-            } catch (error) {
-                console.error('Error sending email to', data.email, ':', error);
-                showNotification(`Error sending email to ${data.email}`);
-            }
-        }
+    const data = generatedData[index];
+    const subjectElement = document.getElementById(`subject-${index}`);
+    const contentElement = document.getElementById(`content-${index}`);
+
+    if (!subjectElement || !contentElement) {
+        console.error(`Element(s) not found for index ${index}`);
+        showNotification(`Error: Could not find elements to send email for index ${index}`);
+        return;
+    }
+
+    const subject = subjectElement.value;
+    const content = contentElement.value;
+    // Implement send logic here
+    try {
+        updateRowStatus(index, 'Sending');
+        const result = await sendMessage('me', data.email, subject, content);
+        console.log('Message to ', data.email, ' successfully sent:', result);
+        showNotification(`Message to ${data.email} successfully sent`);
+        removeRow(index);
+    } catch (error) {
+        console.error('Error sending email to', data.email, ':', error);
+        showNotification(`Error sending email to ${data.email}`);
+    }
+}
+
+async function sendAllEmails() {
+    const promises = generatedData.map((_, index) => sendEmailindex(index));
+
+    try {
+        await Promise.all(promises);
+        showNotification('All emails sent successfully');
+        initialize()
+    } catch (error) {
+        console.error('Error sending one or more emails:', error);
+        showNotification('Error sending one or more emails');
+    }
+}
+
 
 function populateEmailTable() {
-  const tbody = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
+    const tbody = document.getElementById('emailTable').getElementsByTagName('tbody')[0];
 
-  tbody.innerHTML = "";
-  generatedData.forEach((data, index) => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-                    <td>${data.email}</td>
-                    <td>
-                        <button onclick="toggleDetails(${index})">↓</button>
-                        <button onclick="sendEmailindex(${index})">Send Now</button>
-                    </td>
-                `;
-    tbody.appendChild(row);
+    tbody.innerHTML = "";
+    generatedData.forEach((data, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${data.email}</td>
+            <td class="action-buttons">
+                <button onclick="sendEmailindex(${index})" class="button-icon">Send Now</button>
+                <div class="tooltip">
+                    <button onclick="toggleDetails(${index})" class="button-icon" id="arrow-${index}">↓</button>
+                    <span class="tooltiptext">Show/Hide Details</span>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(row);
 
-    const detailsRow = document.createElement('tr');
-                detailsRow.classList.add('hidden');
-                detailsRow.id = `details-${index}`;
-                detailsRow.innerHTML = `
-                    <td colspan="2">
-                        <div>
-                            <label>Subject: <input type="text" id="subject-${index}" value="${data.subject}"></label><br>
-                            <label>Content: <textarea id="content-${index}">${data.content}</textarea></label><br>
-                            <button onclick="editEmail(${index})">Edit</button>
-                        </div>
-                    </td>
-                `;
-                tbody.appendChild(detailsRow);
-  })
+        const detailsRow = document.createElement('tr');
+        detailsRow.style.display = 'none';
+        detailsRow.id = `details-${index}`;
+        detailsRow.innerHTML = `
+            <td colspan="2">
+                <div class="details">
+                    <label>Subject: 
+                        <input type="text" id="subject-${index}" value="${data.subject}" class="editable">
+                        <span class="pencil-icon" id="subject-pencil-${index}" onclick="makeEditable('subject', ${index})">✏️</span>
+                    </label><br>
+                    <label>Content: 
+                        <textarea id="content-${index}" class="editable">${data.content}</textarea>
+                        <span class="pencil-icon" id="content-pencil-${index}" onclick="makeEditable('content', ${index})">✏️</span>
+                    </label><br>
+                </div>
+            </td>
+        `;
+        tbody.appendChild(detailsRow);
+    });
+}
+
+function makeEditable(field, index) {
+    const displayElement = document.getElementById(`${field}-display-${index}`);
+    const pencilIcon = document.getElementById(`${field}-pencil-${index}`);
+    const value = displayElement.innerText;
+    if (field === 'content') {
+        displayElement.innerHTML = `<textarea id="${field}-${index}" rows="4">${value}</textarea>`;
+    } else {
+        displayElement.innerHTML = `<input type="text" id="${field}-${index}" value="${value}">`;
+    }
+    pencilIcon.innerText = '✔️';
+    pencilIcon.onclick = function() { saveChanges(field, index); };
+}
+
+function saveChanges(field, index) {
+    const inputElement = document.getElementById(`${field}-${index}`);
+    const displayElement = document.getElementById(`${field}-display-${index}`);
+    const pencilIcon = document.getElementById(`${field}-pencil-${index}`);
+    if (inputElement) {
+        displayElement.innerHTML = inputElement.value.replace(/\n/g, '<br>');
+        generatedData[index][field] = inputElement.value;
+    }
+    pencilIcon.innerText = '✏️';
+    pencilIcon.onclick = function() { makeEditable(field, index); };
 }
 
 function removeRow(index) {
-            const row = document.getElementById(`details-${index}`).previousElementSibling;
-            row.remove();
-            document.getElementById(`details-${index}`).remove();
-            generatedData.splice(index, 1);
-        }
+    const row = document.getElementById(`details-${index}`).previousElementSibling;
+    row.remove();
+    document.getElementById(`details-${index}`).remove();
+    generatedData.splice(index, 1);
+}
 
-        function regenerateAllEmails() {
-            manualSend();
-        }
+function regenerateAllEmails() {
+    manualSend();
+}
 
-        async function CallThisWhenAutosend() {
-            document.getElementById('sendAllBtn').innerHTML = `<div class="loader"></div>`;
-            for (let index = 0; index < generatedData.length; index++) {
-                const data = generatedData[index];
-                try {
-                    updateRowStatus(index, 'Sending');
-                    const result = await sendMessage('me', data.email, data.subject, data.content);
-                    console.log('Message to ', data.email, ' successfully sent:', result);
-                    showNotification(`Message to ${data.email} successfully sent`);
-                    removeRow(index);
-                } catch (error) {
-                    console.error('Error sending email to', data.email, ':', error);
-                    showNotification(`Error sending email to ${data.email}`);
-                }
-            }
-            document.getElementById('sendAllBtn').innerHTML = 'Send All';
+async function CallThisWhenAutosend() {
+    document.getElementById('sendAllBtn').innerHTML = `<div class="loader"></div>`;
+    for (let index = 0; index < generatedData.length; index++) {
+        const data = generatedData[index];
+        try {
+            updateRowStatus(index, 'Sending');
+            const result = await sendMessage('me', data.email, data.subject, data.content);
+            console.log('Message to ', data.email, ' successfully sent:', result);
+            showNotification(`Message to ${data.email} successfully sent`);
+            removeRow(index);
+        } catch (error) {
+            console.error('Error sending email to', data.email, ':', error);
+            showNotification(`Error sending email to ${data.email}`);
         }
+    }
+    // document.getElementById('sendAllBtn').innerHTML = 'Send All';
+}
 
-        document.getElementById('sendAllBtn').addEventListener('click', CallThisWhenAutosend);
-        document.getElementById('regenerateAllBtn').addEventListener('click', regenerateAllEmails);
+// document.getElementById('sendAllBtn').addEventListener('click', CallThisWhenAutosend);
+document.getElementById('regenerateAllBtn').addEventListener('click', regenerateAllEmails);
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // function 
@@ -2874,6 +3530,11 @@ async function CallThisWhenAutosendIsOff() {
 }
 async function Restart() {
   submittedData = [];
+  generatedData = [];
+  document.getElementById('currentContent').style.display = 'block';
+  document.getElementById('newContent').style.display = 'none';
+  document.getElementById('togglewoggle').style.display = 'flex';
+  dataTable = document.getElementById('dataTable');
   dataTable.innerHTML=``;
   button.innerHTML=`<button class="button" onclick="SendEmails()">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 24">
@@ -3073,6 +3734,7 @@ function removeActive(){
                     mainContent.innerHTML = document.getElementById('main-content').innerHTML;
                     removeActive()
                     hometab.classList.add("active");
+                    initialize();
                     // home.syle.display = 'block';
                     break;
                     case 'myAccount':
