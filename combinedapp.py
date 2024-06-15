@@ -1067,9 +1067,13 @@ def generate_pitch(email, website_content, user_pitch):
 # @app.route('/transactions', methods=['GET'])
 # def get_transactions():
 #     return jsonify(transactions)
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def index():
+    return render_template('index.html')
+
+
+# @app.route('/', methods=['GET', 'POST'])
+def indexold():
     # service = get_gmail_service()
     if request.method == 'POST':
         user_pitch = request.form.get('user_pitch', '')
