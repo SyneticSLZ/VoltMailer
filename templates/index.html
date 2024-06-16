@@ -226,7 +226,7 @@ body {
   /* border: none; */
   border: 2px solid; /* Set border width */
     border-image: linear-gradient(to bottom, rgba(255, 0, 255, 0.719), rgba(0, 255, 255, 0.637)) 1;
-    border-radius: 50px;
+    border-radius: 2em;
   background: none;
   cursor: pointer;
 }
@@ -1407,23 +1407,34 @@ input:checked + .slider:before {
 }
 .title {
     text-align: center;
-    font-size: 2.5em;
+    align-self: center;
+    justify-content: center;
+    width: 100%;
+    padding: auto;
+    margin: 0;
+    font-size: 30px;
     margin-bottom: 10px;
     /* color: #ff6f61; */
     background: linear-gradient(to right,#f0f, #0ff);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
-
+.t{
+  font-size: 2.5em;
+}
+.st{
+  font-size: 1.3em;
+}
 .subtitle {
-    text-align: center;
+  text-align: center;
+    align-self: center;
+    justify-content: center;
     /* margin: 0; */
     /* padding: auto; */
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin-bottom: 30px;
     color: #ddd;
     /* border: #00DDEB 2px solid; */
-    /* width: 100%; */
 }
 
 .contact-form label, .faq-question {
@@ -1642,7 +1653,7 @@ flex-direction: column;
 .faq .title{
     margin-bottom: 2em;
     align-self: start;
-    margin-left: 1em;
+    margin-left: 10px;
     color: white;
 }
 .faq .faq-item {
@@ -1651,13 +1662,13 @@ flex-direction: column;
 }
 
 .faq-question {
-    margin-left: 1em;
+    margin-left: 10px;
     font-size: 1.5em;
     color:  rgba(0, 255, 255, 0.637)
 }
 
 .faq-answer {
-    margin-left: 1em;
+    margin-left: 10px;
     margin-top: 10px;
     font-size: 1em;
     color: #ddd;
@@ -1785,12 +1796,29 @@ flex-direction: column;
   height: 70px;
   width: 70px;
 } */
+.hero{
+        align-items: start;
+}
 
 .container-contact {
   width: 100%;
 }
+.t{
+  font-size: 1.2em;
+}
+.st{
+  font-size: 1em;
+}
 .container-contact .subtitle{
-  width: 100%;
+  width: 70vw;
+  font-size: 1em;
+}
+.subscriptions{
+  text-align: left;
+}
+.subscriptions h1{
+  margin-left: 0;
+  align-self: start;
 }
 .row-cube{
     display: none;
@@ -1810,8 +1838,14 @@ margin-inline-end: 1em;
   flex-direction: column;
   /* border: #00DDEB 1px solid; */
 }
+  
+.info-container{
+  width: 100%;
+}
+  .info h3, .info p{
+    text-align: left;
   }
-
+}
 
 </style>
 <script>
@@ -2393,9 +2427,13 @@ async function addCustomer() {
         </div>
         <!-- <div class="faq"></div> -->
         <div class="container-contact">
-            <div class="row"><h1 class="title">Contact Us</h1>
-                <p class="subtitle">We'd love to hear from you! Reach out to us using the form below.</p></div>
-            
+            <div class="row">
+              <div class="title">
+              <h1 class="t">Contact Us</h1>
+            </div>
+            <div class="subtitle">
+                <p class="st">We'd love to hear from you! Reach out to us using the form below.</p></div>
+            </div>
             <!-- <form class="contact-form">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required>
