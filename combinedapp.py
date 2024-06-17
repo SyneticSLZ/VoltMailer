@@ -495,7 +495,7 @@ def create_checkout_session():
     try:
         session = stripe.checkout.Session.create(
             mode='subscription',
-            line_items=[{"price": 'price_1PJsseKJeZAyw8f4UVbMQfRa', "quantity": 1}],
+            line_items=[{"price": 'price_1PSlQtKJeZAyw8f4MmLf3Ftd', "quantity": 1}],
             customer_email=customer_email,
             ui_mode='embedded',
             return_url=url_for('payment_status', _external=True, _scheme='http') + f'?session_id={{CHECKOUT_SESSION_ID}}&email={customer_email}&service={service}&password={password}'
