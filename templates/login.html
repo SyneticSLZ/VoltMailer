@@ -88,9 +88,9 @@
             border-radius: 10px;
             cursor: pointer;
             margin: 0.5em 0;
-            /* margin-right: 10em; */
+            margin-right: 10em;
             transition: background-color 0.3s;
-            width:70%;
+            /* width:80%/; */
         }
         button:hover {
             background-color: #007bff;
@@ -191,7 +191,8 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <div class="nav">VoltMail</div>
+            <!-- <div class="nav">VoltMail</div> -->
+            <img  src="{{ url_for('static', filename='vm.png') }}" alt="google">
             <div id="loginForm" class="login-form active">
                 <h1>Login</h1>
                 <h4>Enter your email and password</h4>
