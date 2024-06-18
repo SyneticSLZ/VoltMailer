@@ -55,9 +55,10 @@ def create_app():
 # from Google import Create_Service
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = Flask(__name__)
-# CORS(app)
+CORS(app)
 # CORS(app)  # Enable CORS for the Flask app
 CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins (for development only)
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 
