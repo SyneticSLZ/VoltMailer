@@ -21,19 +21,70 @@ import time
 import stripe
 import pickle
 from dotenv import load_dotenv
+from tasks import send_emails, create_thread, add_messages_to_thread, get_site_description
+from celery import Celery
+# from celery_config import make_celery  # Import the Celery configuration
+from celery_config import celery_init_app
+from flask_cors import CORS
 
 # Load environment variables from .env file
 load_dotenv()
 
+def create_app():
+    app = Flask(__name__)
+    app.config.update(
+        CELERY=dict(
+            broker_url='redis://localhost:6379/0',
+            result_backend='redis://localhost:6379/0',
+            task_ignore_result=True
+        ),
+        SECRET_KEY=os.urandom(24),
+        SESSION_TYPE='filesystem',
+        SESSION_FILE_DIR='/tmp/flask_session/',
+        SESSION_PERMANENT=False,
+        SESSION_USE_SIGNER=True
+    )
+
+    if not os.path.exists(app.config['SESSION_FILE_DIR']):
+        os.makedirs(app.config['SESSION_FILE_DIR'])
+        os.chmod(app.config['SESSION_FILE_DIR'], 0o700)
+
+    Session(app)
+    return app
+
 # from Google import Create_Service
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = Flask(__name__)
-SESSION_FILE_DIR = '/tmp/flask_session/'
-if not os.path.exists(SESSION_FILE_DIR):
-    os.makedirs(SESSION_FILE_DIR)
-    os.chmod(SESSION_FILE_DIR, 0o700)
+# CORS(app)
+# CORS(app)  # Enable CORS for the Flask app
+CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins (for development only)
 
 
+
+app.config.from_mapping(
+    CELERY=dict(
+        broker_url="redis://localhost:6379/0",
+        result_backend="redis://localhost:6379/0",
+        task_ignore_result=True,
+    ),
+)
+
+app.secret_key = os.urandom(24)
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_FILE_DIR'] = '/tmp/flask_session/'
+app.config['SESSION_PERMANENT'] = False
+app.config['SESSION_USE_SIGNER'] = True
+
+Session(app)
+celery_app = celery_init_app(app)
+
+# SESSION_FILE_DIR = '/tmp/flask_session/'
+# if not os.path.exists(SESSION_FILE_DIR):
+    # os.makedirs(SESSION_FILE_DIR)
+    # os.chmod(SESSION_FILE_DIR, 0o700)
+
+
+# SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 # SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly']
 
@@ -49,18 +100,18 @@ REDIRECT_URI = 'http://localhost:5000/oauth2callback'
 COST_FILE = 'costs.json'
 TRANSACTIONS_FILE = 'transactions.json'
 app.secret_key = os.urandom(24)
-app.config['SESSION_TYPE'] = 'filesystem'  # You can also use 'redis', 'memcached', etc.
+# app.config['SESSION_TYPE'] = 'filesystem'  # You can also use 'redis', 'memcached', etc.
 # app.config['SESSION_TYPE'] = 'filesystem'  # Use filesystem to store sessions
-app.config['SESSION_FILE_DIR'] = '/tmp/flask_session/'  # Ensure this directory exists and is writable
-app.config['SESSION_PERMANENT'] = False
-app.config['SESSION_USE_SIGNER'] = True
+# app.config['SESSION_FILE_DIR'] = '/tmp/flask_session/'  # Ensure this directory exists and is writable
+# app.config['SESSION_PERMANENT'] = False
+# app.config['SESSION_USE_SIGNER'] = True
 
 Session(app)
 
 CLIENT_SECRETS_FILE = "client_secret.json"
 API_NAME = 'gmail'
 API_VERSION = 'v1'
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+# SCOPES = ['https://www.googleapis.com/auth/gmail.send']
 
 
 stripe.api_key = os.getenv('STRIPE_API_KEY')
@@ -85,6 +136,180 @@ try:
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
+
+def get_flow():
+    return Flow.from_client_secrets_file(
+        'credentials.json',
+        scopes=SCOPES,
+        redirect_uri=url_for('oauth2callback', _external=True)
+    )
+
+@app.route('/authorize')
+def authorize():
+    flow = get_flow()
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true'
+    )
+    session['state'] = state
+    return redirect(authorization_url)
+
+@app.route('/oauth2callback')
+def oauth2callback():
+    state = session['state']
+    flow = get_flow()
+    flow.fetch_token(authorization_response=request.url)
+
+    credentials = flow.credentials
+    session['credentials'] = credentials_to_dict(credentials)
+    
+    return redirect(url_for('Db'))
+
+def credentials_to_dict(credentials):
+    return {
+        'token': credentials.token,
+        'refresh_token': credentials.refresh_token,
+        'token_uri': credentials.token_uri,
+        'client_id': credentials.client_id,
+        'client_secret': credentials.client_secret,
+        'scopes': credentials.scopes
+    }
+
+def load_credentials():
+    if 'credentials' not in session:
+        return None
+    return Credentials(
+        token=session['credentials']['token'],
+        refresh_token=session['credentials']['refresh_token'],
+        token_uri=session['credentials']['token_uri'],
+        client_id=session['credentials']['client_id'],
+        client_secret=session['credentials']['client_secret'],
+        scopes=session['credentials']['scopes']
+    )
+
+
+@app.route('/create-thread-auto', methods=['POST'])
+def create_thread_auto():
+    thread_id = create_thread()
+    return jsonify({'thread_id': thread_id})
+
+@app.route('/add-messages-to-thread-auto', methods=['POST'])
+def add_messages_to_thread_auto():
+    data = request.json
+    thread_id = data['thread_id']
+    website_content = data['website_content']
+    user_pitch = data['user_pitch']
+    To = data['To']
+    Me = data['Me']
+    email_content = add_messages_to_thread(thread_id, website_content, user_pitch, To, Me)
+    return jsonify({'email_content': email_content})
+
+@app.route('/get-site-description-auto', methods=['POST'])
+def get_site_description_auto():
+    url = request.json.get('url')
+    description = get_site_description(url)
+    return jsonify({'description': description})
+
+@app.route('/start-email-task', methods=['POST'])
+def start_email_task():
+    if 'credentials' not in session:
+        return redirect(url_for('authorize'))
+
+    submitted_data = request.json.get('submittedData')
+    user_pitch = request.json.get('userPitch')
+    uname = request.json.get('username')
+    credentials_dict = session['credentials']
+    task = send_emails.apply_async(args=[credentials_dict, submitted_data, user_pitch, uname])
+    return jsonify({'task_id': task.id}), 202
+
+@app.route('/task-status/<task_id>')
+def task_status(task_id):
+    task = send_emails.AsyncResult(task_id)
+    if task.state == 'PENDING':
+        response = {'state': task.state, 'status': 'Pending...'}
+    elif task.state != 'FAILURE':
+        response = {
+            'state': task.state,
+            'result': task.result,
+        }
+    else:
+        response = {
+            'state': task.state,
+            'status': str(task.info),
+        }
+    return jsonify(response)
+
+# @celery.task
+# def send_emails(submitted_data, user_pitch):
+#     SENT_EMAILS = 0
+#     Uname = 'Your Name'  # Replace with your actual name or dynamic value
+
+#     for index, data in enumerate(submitted_data):
+#         try:
+#             # Update row status logic here if needed
+#             print(f'Starting send to {data["email"]}')
+
+#             # Get the website content
+#             description_response = requests.post(
+#                 'http://your-backend-endpoint/get-site-description',
+#                 json={'url': data['website']}
+#             )
+#             description_data = description_response.json()
+#             website_content = description_data['description']
+
+#             To = data['name']
+
+#             print(f'Email: {data["email"]}, Website Content: {website_content}, Uname: {Uname}, To: {To}')
+
+#             # Personalize message
+#             email_content_response = requests.post(
+#                 'http://your-backend-endpoint/add-messages-to-thread',
+#                 json={
+#                     'thread_id': 'your-thread-id',
+#                     'website_content': website_content,
+#                     'user_pitch': user_pitch,
+#                     'To': To,
+#                     'Me': Uname
+#                 }
+#             )
+#             email_content_data = email_content_response.json()
+#             email_content = email_content_data['email_content']
+#             lines = email_content.split('\n')
+#             subject_line = lines[0].replace('Subject: ', '')
+#             main_message = '\n'.join(lines[1:]).strip()
+
+#             print(f'Email: {data["email"]}, Subject: {subject_line}, Message: {main_message}')
+
+#             # Send the email (you need to implement sendMessage)
+#             result = sendMessage('me', data['email'], subject_line, main_message)
+#             print(f'Message to {data["email"]} successfully sent: {result}')
+#             SENT_EMAILS += 1
+#         except Exception as e:
+#             print(f'Error processing email for {data["email"]}: {e}')
+#             # Handle the exception (log it, update status, etc.)
+
+    # return {'status': 'completed', 'sent_emails': SENT_EMAILS}
+
+
+
+# @app.route('/task-status/<task_id>')
+# def task_status(task_id):
+#     task = send_emails.AsyncResult(task_id)
+#     if task.state == 'PENDING':
+#         response = {'state': task.state, 'status': 'Pending...'}
+#     elif task.state != 'FAILURE':
+#         response = {
+#             'state': task.state,
+#             'result': task.result,
+#         }
+#     else:
+#         response = {
+#             'state': task.state,
+#             'status': str(task.info),
+#         }
+#     return jsonify(response)
+
+
 
 @app.route('/login-customer', methods=['POST'])
 def login_customer():
@@ -116,49 +341,49 @@ def loginToDatabase(email, password):
         
     else: return 'Account Not found'
     
-@app.route('/generate_service', methods=['POST'])
-def generate_service():
-    return Create_Service("client_secret.json", 'gmail', 'v1', ['https://www.googleapis.com/auth/gmail.send'])
+# @app.route('/generate_service', methods=['POST'])
+# def generate_service():
+#     return Create_Service("client_secret.json", 'gmail', 'v1', ['https://www.googleapis.com/auth/gmail.send'])
 
-def get_service():
-    creds = None
-    # The file token.pickle stores the user's access and refresh tokens, and is
-    # created automatically when the authorization flow completes for the first
-    # time.
-    if os.path.exists('token.pickle'):
-        with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
-    # If there are no (valid) credentials available, let the user log in.
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            creds.refresh(Request())
-        else:
-            flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
-        # Save the credentials for the next run
-        with open('token.pickle', 'wb') as token:
-            pickle.dump(creds, token)
+# def get_service():
+#     creds = None
+#     # The file token.pickle stores the user's access and refresh tokens, and is
+#     # created automatically when the authorization flow completes for the first
+#     # time.
+#     if os.path.exists('token.pickle'):
+#         with open('token.pickle', 'rb') as token:
+#             creds = pickle.load(token)
+#     # If there are no (valid) credentials available, let the user log in.
+#     if not creds or not creds.valid:
+#         if creds and creds.expired and creds.refresh_token:
+#             creds.refresh(Request())
+#         else:
+#             flow = InstalledAppFlow.from_client_secrets_file(
+#                 'credentials.json', SCOPES)
+#             creds = flow.run_local_server(port=0)
+#         # Save the credentials for the next run
+#         with open('token.pickle', 'wb') as token:
+#             pickle.dump(creds, token)
 
-    service = build('gmail', 'v1', credentials=creds)
+#     service = build('gmail', 'v1', credentials=creds)
 
-    return service
-@app.route('/oauth2callback')
-def oauth2callback():
-    state = session['state']
-    flow = Flow.from_client_secrets_file(
-        'client_secret.json',
-        scopes=['https://www.googleapis.com/auth/gmail.send'],
-        state=state,
-        redirect_uri=url_for('oauth2callback', _external=True)
-    )
-    flow.fetch_token(authorization_response=request.url)
+#     return service
+# @app.route('/oauth2callback')
+# def oauth2callback():
+#     state = session['state']
+#     flow = Flow.from_client_secrets_file(
+#         'client_secret.json',
+#         scopes=['https://www.googleapis.com/auth/gmail.send'],
+#         state=state,
+#         redirect_uri=url_for('oauth2callback', _external=True)
+#     )
+#     flow.fetch_token(authorization_response=request.url)
 
-    cred = flow.credentials
-    with open(f'token_gmail_v1.pickle', 'wb') as token:
-        pickle.dump(cred, token)
+#     cred = flow.credentials
+#     with open(f'token_gmail_v1.pickle', 'wb') as token:
+#         pickle.dump(cred, token)
 
-    return redirect(url_for('show_form'))
+#     return redirect(url_for('show_form'))
 
 @app.route('/Db', methods=['GET'])
 def show_form():
@@ -670,17 +895,17 @@ async def AddMessagesToThread(ThreadId, website_content, user_pitch, To, Me):
 #         json.dump(transactions, file)
 
 
-@app.route('/connect_gmail')
-def connect_gmail():
-    flow = InstalledAppFlow.from_client_secrets_file(
-        'credentials.json', SCOPES)
-    flow.redirect_uri = url_for('oauth2callback', _external=True)
-    authorization_url, state = flow.authorization_url(
-        access_type='offline',
-        include_granted_scopes='true'
-    )
-    session['state'] = state
-    return redirect(authorization_url)
+#---------------------------------------# @app.route('/connect_gmail')
+# def connect_gmail():
+#     flow = InstalledAppFlow.from_client_secrets_file(
+#         'credentials.json', SCOPES)
+#     flow.redirect_uri = url_for('oauth2callback', _external=True)
+#     authorization_url, state = flow.authorization_url(
+#         access_type='offline',
+#         include_granted_scopes='true'
+#     )
+#     session['state'] = state
+#     return redirect(authorization_url)
 
 # @app.route('/oauth2callback')
 # def oauth2callback():
@@ -781,7 +1006,12 @@ def connect_gmail():
 @app.route('/connect')
 def connect():
     #  GetService()
+    
+    # if 'credentials' not in session:
+        # return redirect(url_for('authorize'))
     return render_template('login.html')
+ 
+
     # session.clear()
     # flow = Flow.from_client_secrets_file(
     #     CLIENT_SECRETS_FILE, scopes=SCOPES, redirect_uri=REDIRECT_URI)
@@ -905,13 +1135,13 @@ def find_customer(email):
 
 # ###########################################################################
 
-def credentials_to_dict(credentials):
-    return {'token': credentials.token,
-            'refresh_token': credentials.refresh_token,
-            'token_uri': credentials.token_uri,
-            'client_id': credentials.client_id,
-            'client_secret': credentials.client_secret,
-            'scopes': credentials.scopes}
+# def credentials_to_dict(credentials):
+#     return {'token': credentials.token,
+#             'refresh_token': credentials.refresh_token,
+#             'token_uri': credentials.token_uri,
+#             'client_id': credentials.client_id,
+#             'client_secret': credentials.client_secret,
+#             'scopes': credentials.scopes}
 
 # def dict_to_credentials(credentials_dict):
 #     from google.oauth2.credentials import Credentials
@@ -1069,7 +1299,11 @@ def generate_pitch(email, website_content, user_pitch):
 #     return jsonify(transactions)
 @app.route('/')
 def index():
+    # if 'credentials' not in session:
+    #     return redirect(url_for('authorize'))
     return render_template('index.html')
+ 
+
 
 
 # @app.route('/', methods=['GET', 'POST'])
