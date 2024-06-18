@@ -45,9 +45,9 @@
      justify-content: start;
   }
   img{
-    padding-left: 10px;
-    height: 45px; 
-    width: 45px;
+    padding-right: 30px;
+    /* height: 45px;  */
+    /* width: 45px; */
   }
   
   .top img{
