@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for, session
+from flask import Flask, request, jsonify, render_template, redirect, url_for, session,  make_response
 from flask_session import Session
 import json
 import pandas as pd
@@ -25,13 +25,16 @@ from tasks import send_emails, create_thread, add_messages_to_thread, get_site_d
 from celery import Celery
 # from celery_config import make_celery  # Import the Celery configuration
 from celery_config import celery_init_app
-from flask_cors import CORS
+import logging
+# from flask_cors import CORS
+from flask_cors import CORS  # Import Flask-CORS
 
 # Load environment variables from .env file
 load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}})  # Enable CORS for all routes
     app.config.update(
         CELERY=dict(
             broker_url='redis://localhost:6379/0',
@@ -55,17 +58,17 @@ def create_app():
 # from Google import Create_Service
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 app = Flask(__name__)
-CORS(app)
+# CORS(app)
 # CORS(app)  # Enable CORS for the Flask app
-CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins (for development only)
-CORS(app, resources={r"/api/*": {"origins": "*"}})
+# CORS(app, resources={r"/*": {"origins": "*"}})  # Allow all origins (for development only)
+# CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 
 
 app.config.from_mapping(
     CELERY=dict(
-        broker_url="redis://localhost:6379/0",
-        result_backend="redis://localhost:6379/0",
+        broker_url=os.getenv('REDIS_URL'),
+        result_backend=os.getenv('REDIS_URL'),
         task_ignore_result=True,
     ),
 )
@@ -137,6 +140,28 @@ try:
     print("Pinged your deployment. You successfully connected to MongoDB!")
 except Exception as e:
     print(e)
+
+
+@app.before_request
+def before_request():
+    if request.method == 'OPTIONS':
+        return _build_cors_preflight_response()
+    elif request.method == 'POST':
+        return _corsify_actual_response(jsonify(request.json))
+
+def _build_cors_preflight_response():
+    response = make_response()
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    response.headers.add("Access-Control-Allow-Headers", "Content-Type,Authorization")
+    response.headers.add("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE")
+    return response
+
+def _corsify_actual_response(response):
+    response.headers.add("Access-Control-Allow-Origin", "*")
+    return response
+
+
+
 
 def get_flow():
     return Flow.from_client_secrets_file(
@@ -239,6 +264,27 @@ def task_status(task_id):
             'status': str(task.info),
         }
     return jsonify(response)
+
+
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
+
+@app.errorhandler(500)
+def internal_error(error):
+    logger.error(f"Server Error: {error}")
+    return jsonify({"error": "Internal server error"}), 500
+
+@app.errorhandler(404)
+def not_found_error(error):
+    logger.error(f"Not Found: {error}")
+    return jsonify({"error": "Not found"}), 404
+
+@app.errorhandler(Exception)
+def unhandled_exception(e):
+    logger.error(f"Unhandled Exception: {e}")
+    return jsonify({"error": "Something went wrong"}), 500
 
 # @celery.task
 # def send_emails(submitted_data, user_pitch):
