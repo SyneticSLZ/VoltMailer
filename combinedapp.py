@@ -32,14 +32,15 @@ from flask_cors import CORS  # Import Flask-CORS
 # Load environment variables from .env file
 load_dotenv()
 
+
 def create_app():
     app = Flask(__name__)
     CORS(app, resources={r"/*": {"origins": "*"}})  # Enable CORS for all routes
     app.config.update(
         CELERY=dict(
-            broker_url='redis://localhost:6379/0',
-            result_backend='redis://localhost:6379/0',
-            task_ignore_result=True
+            broker_url=os.getenv('REDIS_URL'),
+            result_backend=os.getenv('REDIS_URL'),
+            task_ignore_result=False  # Ensure this is set to False to store results
         ),
         SECRET_KEY=os.urandom(24),
         SESSION_TYPE='filesystem',
@@ -54,6 +55,9 @@ def create_app():
 
     Session(app)
     return app
+
+app = create_app()
+celery_app = celery_init_app(app)
 
 # from Google import Create_Service
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'

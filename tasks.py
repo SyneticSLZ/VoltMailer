@@ -26,17 +26,11 @@ from celery import shared_task
 
 load_dotenv()
 
-# app = Flask(__name__)
-# app.config.update(
-    # CELERY_BROKER_URL='redis://localhost:6379/0',
-#    / CELERY_RESULT_BACKEND='redis://localhost:6379/0'
-# )
 SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly']
 openai_api_key = os.getenv('OPENAI_API_KEY')
 openai.api_key = openai_api_key
 AIclient = OpenAI(api_key=openai_api_key)
 ASSISTANT_ID = "asst_shvdCBA7snGDSENhmE5iugIm"
-# celery = make_celery(app)
 
 @shared_task
 def send_email(credentials_dict, subject, message_text, to):
